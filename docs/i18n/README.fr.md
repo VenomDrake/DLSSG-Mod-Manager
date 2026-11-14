@@ -10,9 +10,11 @@ Une application de bureau Windows qui accompagne [DLSSG for SM86](https://github
 - **Adaptation RTX 20 / SM75 :** [Coldwood1026](https://github.com/Coldwood1026), cité dans les [mentions du projet d'origine](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **Ce gestionnaire :** une interface indépendante d'installation et de diagnostic. Le mérite du mod d'origine revient à ses auteurs ; le gestionnaire ne s'attribue pas leur travail et ne prétend pas bénéficier de leur approbation officielle.
 
-## Intégration ANR — gestionnaire stable 0.4.4
+## Intégration ANR — gestionnaire stable 0.4.5
 
-[Télécharger la version stable v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [ZIP portable](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [installateur Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi). Le gestionnaire est une version stable. **ANR reste une bêta du projet amont, FG-V.B17** ; la mention Bêta désigne cette technologie, pas cette version du gestionnaire.
+[Télécharger la version stable v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [ZIP portable](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [installateur Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). Le gestionnaire est une version stable. **ANR reste une bêta du projet amont, FG-V.B17** ; la mention Bêta désigne cette technologie, pas cette version du gestionnaire.
+
+La version **0.4.5** renouvelle l’icône du gestionnaire dans l’application et sous Windows.
 
 - Choisissez **Technologie de génération d’images** : SM86 d’origine (NVIDIA DLSS-G / XeSS-FG) ou **Apex Neural Rendering · Bêta**. Le gestionnaire prend en charge ANR sur **NVIDIA GTX 16 / RTX 20–50** et **AMD Radeon RX 5000/6000/7000/9000** ; **GTX 10 / Pascal n’est pas pris en charge**. Le jeu doit proposer DLSS Frame Generation natif via **Direct3D 12 ou Vulkan**.
 - Ce gestionnaire prend en charge ANR uniquement sous **Windows 10/11 x64** ; **Linux, Steam Deck et Intel Arc ne font pas partie du périmètre pris en charge par cette version**. La prise en charge AMD a été vérifiée par des tests automatisés, sans essai en jeu sur du matériel AMD. Confirmez la génération effective dans le journal du jeu.
@@ -51,7 +53,7 @@ Activez **NVIDIA DLSS Frame Generation** dans le jeu. Le sélecteur **2×** gris
 
 ## Téléchargement et utilisation
 
-[Télécharger la version stable v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [ZIP portable](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [installateur Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi).
+[Télécharger la version stable v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [ZIP portable](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [installateur Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
 
 Utilisez `DLSSGModManager.exe` depuis le paquet portable ou exécutez `DLSSGModManager-Setup.msi`, qui installe l'application pour l'utilisateur actuel. Les binaires publiés ne nécessitent pas d'installation séparée de .NET, Python ou CUDA Toolkit.
 
@@ -136,6 +138,6 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## Publier votre fork
 
-Créez un dépôt GitHub public et poussez cet arbre de sources. Le workflow Windows inclus compile et teste les pull requests ainsi que les envois sur la branche principale. Une étiquette comme `v0.4.4` publie aussi les binaires sous forme de version GitHub à l'aide du jeton Actions du dépôt. Aucun jeton n'est stocké dans les sources ni demandé aux utilisateurs finaux.
+Créez un dépôt GitHub public et poussez cet arbre de sources. Le workflow Windows inclus compile et teste les pull requests ainsi que les envois sur la branche principale. Une étiquette comme `v0.4.5` publie aussi les binaires sous forme de version GitHub à l'aide du jeton Actions du dépôt. Aucun jeton n'est stocké dans les sources ni demandé aux utilisateurs finaux.
 
 Consultez [CONTRIBUTING.md](../../CONTRIBUTING.md), [SECURITY.md](../../SECURITY.md) et [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md). Ce gestionnaire indépendant est distribué sous licence MIT ; le matériel du mod d'origine conserve ses propres conditions.

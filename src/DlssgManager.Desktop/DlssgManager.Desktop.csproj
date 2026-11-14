@@ -18,5 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DlssgManager.Core\DlssgManager.Core.csproj" />
     <EmbeddedResource Include="Locales\*.json" />
+    <Resource Include="Assets\app.png" />
+    <Resource Include="Assets\app.ico" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,8 @@
   <Package Name="DLSSG Mod Manager" Manufacturer="DLSSG Mod Manager contributors" Version="$(var.AppVersion)" Language="1033" UpgradeCode="B704AF01-12FC-43EF-AB32-A3859FB716D0" Scope="perUser">
     <MajorUpgrade DowngradeErrorMessage="A newer version of DLSSG Mod Manager is already installed." />
     <MediaTemplate EmbedCab="yes" />
+    <Icon Id="ManagerIcon.ico" SourceFile="$(var.RepoDir)/src/DlssgManager.Desktop/Assets/app.ico" />
+    <Property Id="ARPPRODUCTICON" Value="ManagerIcon.ico" />
     <SetProperty Id="ARPINSTALLLOCATION" Value="[APPFOLDER]" After="CostFinalize" />
     <Launch Condition="VersionNT64" Message="DLSSG Mod Manager requires 64-bit Windows 10 or Windows 11." />
     <StandardDirectory Id="LocalAppDataFolder"><Directory Id="INSTALLFOLDER" Name="Programs"><Directory Id="APPFOLDER" Name="DLSSG Mod Manager">

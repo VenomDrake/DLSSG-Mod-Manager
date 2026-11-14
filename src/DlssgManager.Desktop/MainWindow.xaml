@@ -1,7 +1,7 @@
 <Window x:Class="DlssgManager.Desktop.MainWindow"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
- Title="DLSSG Mod Manager" Width="1240" Height="900" MinWidth="1060" MinHeight="740"
+ Title="DLSSG Mod Manager" Icon="Assets/app.ico" Width="1240" Height="900" MinWidth="1060" MinHeight="740"
  Style="{StaticResource {x:Type Window}}" WindowStartupLocation="CenterScreen"
  Loaded="Window_Loaded" Closing="Window_Closing">
  <Grid Margin="26,20,26,18">
@@ -12,9 +12,7 @@
 
   <Grid Margin="0,0,0,18">
    <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="180"/></Grid.ColumnDefinitions>
-   <Border Width="48" Height="48" Background="{StaticResource AccentDark}" BorderBrush="#2B6553" BorderThickness="1" CornerRadius="13" Margin="0,0,16,0" VerticalAlignment="Center">
-    <Canvas Width="34" Height="34" FlowDirection="LeftToRight"><Rectangle Width="22" Height="16" Stroke="#70E5BB" StrokeThickness="2.5" RadiusX="2" RadiusY="2" Canvas.Top="4" Canvas.Left="2"/><Rectangle Width="22" Height="16" Fill="#183C36" Stroke="#70E5BB" StrokeThickness="2.5" RadiusX="2" RadiusY="2" Canvas.Top="13" Canvas.Left="11"/></Canvas>
-   </Border>
+   <Image Source="Assets/app.png" Width="48" Height="48" Margin="0,0,16,0" VerticalAlignment="Center" FlowDirection="LeftToRight" RenderOptions.BitmapScalingMode="HighQuality"/>
    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,0,22,0">
     <WrapPanel><TextBlock Text="DLSSG Mod Manager" FontSize="25" FontWeight="SemiBold" Margin="0,0,12,0" VerticalAlignment="Center"/><Border Background="{StaticResource PanelRaised}" CornerRadius="5" Padding="8,4" VerticalAlignment="Center"><TextBlock x:Name="ManagerVersionText" Foreground="{StaticResource Muted}" FontSize="13"/></Border></WrapPanel>
     <TextBlock Text="{DynamicResource tagline}" Foreground="{StaticResource Muted}" FontSize="13" Margin="0,5,0,0"/>

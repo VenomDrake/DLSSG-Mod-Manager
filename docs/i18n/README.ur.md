@@ -12,9 +12,11 @@
 - **RTX 20 / SM75 موافقت:** [Coldwood1026](https://github.com/Coldwood1026)، جن کی خدمات [اصل منصوبے کے نوٹس](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt) میں تسلیم کی گئی ہیں۔
 - **یہ مینیجر:** تنصیب اور تشخیص کے لیے ایک آزاد انٹرفیس ہے۔ اصل موڈ کا سہرا اس کے مصنفین کو جاتا ہے؛ مینیجر ان کے کام کی ملکیت یا کسی سرکاری توثیق کا دعویٰ نہیں کرتا۔
 
-## ANR انضمام — مستحکم مینیجر 0.4.4
+## ANR انضمام — مستحکم مینیجر 0.4.5
 
-[مستحکم v0.4.4 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi). مینیجر ایک مستحکم ریلیز ہے۔ **ANR خود اب بھی اصل پروجیکٹ کا بیٹا FG-V.B17 ہے**؛ بیٹا کا لیبل اس ٹیکنالوجی کے لیے ہے، مینیجر کی اس ریلیز کے لیے نہیں۔
+[مستحکم v0.4.5 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). مینیجر ایک مستحکم ریلیز ہے۔ **ANR خود اب بھی اصل پروجیکٹ کا بیٹا FG-V.B17 ہے**؛ بیٹا کا لیبل اس ٹیکنالوجی کے لیے ہے، مینیجر کی اس ریلیز کے لیے نہیں۔
+
+ورژن **0.4.5** میں ایپ اور Windows کے لیے مینیجر کا آئیکن تازہ کیا گیا ہے۔
 
 - **فریم جنریشن ٹیکنالوجی** منتخب کریں: اصل SM86 (NVIDIA DLSS-G / XeSS-FG) یا **Apex Neural Rendering · بیٹا**۔ مینیجر **NVIDIA GTX 16 / RTX 20–50** اور **AMD Radeon RX 5000/6000/7000/9000** پر ANR کی معاونت کرتا ہے؛ **GTX 10 / Pascal معاون نہیں**۔ گیم کو **Direct3D 12 یا Vulkan** کے ذریعے مقامی DLSS Frame Generation فراہم کرنا چاہیے۔
 - یہ مینیجر ANR کی معاونت صرف **Windows 10/11 x64** پر کرتا ہے؛ **Linux، Steam Deck اور Intel Arc اس ریلیز کے معاون دائرے میں نہیں ہیں**۔ AMD کی معاونت خودکار ٹیسٹ سے جانچی گئی ہے، AMD ہارڈویئر پر گیم چلا کر نہیں۔ حقیقی فریم جنریشن کی تصدیق گیم کے لاگ میں کریں۔
@@ -47,7 +49,7 @@
 
 ## ڈاؤن لوڈ اور استعمال
 
-[مستحکم v0.4.4 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi).
+[مستحکم v0.4.5 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
 
 پورٹیبل پیکیج سے `DLSSGModManager.exe` چلائیں یا صرف موجودہ صارف کے لیے نصب ہونے والا `DLSSGModManager-Setup.msi` چلائیں۔ شائع شدہ بائنریز کے لیے الگ سے .NET، Python یا CUDA Toolkit نصب کرنے کی ضرورت نہیں ہے۔
 
@@ -138,7 +140,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## اپنا فورک شائع کریں
 
-ایک عوامی GitHub repository بنائیں اور اس source tree کو push کریں۔ شامل Windows workflow، pull requests اور مرکزی branch پر pushes کے لیے بلڈ اور ٹیسٹ کرتا ہے۔ `v0.4.4` جیسا tag اسی repository کے Actions token سے بائنریز کو GitHub release کے طور پر بھی شائع کرتا ہے۔ source میں کوئی token محفوظ نہیں ہوتا اور آخری صارفین کو token درکار نہیں ہے۔
+ایک عوامی GitHub repository بنائیں اور اس source tree کو push کریں۔ شامل Windows workflow، pull requests اور مرکزی branch پر pushes کے لیے بلڈ اور ٹیسٹ کرتا ہے۔ `v0.4.5` جیسا tag اسی repository کے Actions token سے بائنریز کو GitHub release کے طور پر بھی شائع کرتا ہے۔ source میں کوئی token محفوظ نہیں ہوتا اور آخری صارفین کو token درکار نہیں ہے۔
 
 [CONTRIBUTING.md](../../CONTRIBUTING.md)، [SECURITY.md](../../SECURITY.md) اور [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) دیکھیں۔ یہ آزاد مینیجر MIT لائسنس کے تحت ہے؛ اصل منصوبے کے موڈ مواد پر اس کی اپنی شرائط لاگو ہوتی ہیں۔
 

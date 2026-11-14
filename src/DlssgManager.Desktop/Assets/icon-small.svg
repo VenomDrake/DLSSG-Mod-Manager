@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>DLSSG Mod Manager - compact icon</title>
+  <!-- Pixel-aligned solid shapes keep the chip and frame pair readable at 16-24 px. -->
+  <rect width="256" height="256" rx="64" fill="#122630"/>
+  <g fill="#70e5bb">
+    <path d="M80 32H96V64H80Z M160 32H176V64H160Z
+             M80 192H96V224H80Z M160 192H176V224H160Z
+             M32 80H64V96H32Z M32 160H64V176H32Z
+             M192 80H224V96H192Z M192 160H224V176H192Z"/>
+    <rect x="48" y="48" width="160" height="160" rx="24"/>
+  </g>
+  <rect x="64" y="64" width="128" height="128" rx="12" fill="#122630"/>
+  <rect x="80" y="80" width="80" height="64" rx="8" fill="#499e8d"/>
+  <rect x="96" y="96" width="48" height="32" fill="#122630"/>
+  <rect x="112" y="112" width="80" height="64" rx="8" fill="#d6ffef"/>
+  <rect x="128" y="128" width="48" height="32" fill="#122630"/>
+</svg>

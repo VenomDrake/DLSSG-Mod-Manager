@@ -10,9 +10,11 @@
 - **Адаптация для RTX 20 / SM75:** [Coldwood1026](https://github.com/Coldwood1026), указанный в [уведомлениях исходного проекта](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **Этот менеджер:** независимый интерфейс для установки и диагностики. Авторство оригинального мода принадлежит его разработчикам; менеджер не присваивает их работу и не заявляет об официальном одобрении с их стороны.
 
-## Интеграция ANR — стабильный менеджер 0.4.4
+## Интеграция ANR — стабильный менеджер 0.4.5
 
-[Скачать стабильную v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [портативный ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [установщик Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi). Менеджер выпущен как стабильная версия. **Сам ANR остаётся бетой исходного проекта FG-V.B17**; пометка «Бета» относится к этой технологии, а не к выпуску менеджера.
+[Скачать стабильную v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [портативный ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [установщик Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). Менеджер выпущен как стабильная версия. **Сам ANR остаётся бетой исходного проекта FG-V.B17**; пометка «Бета» относится к этой технологии, а не к выпуску менеджера.
+
+В версии **0.4.5** обновлена иконка менеджера в приложении и Windows.
 
 - Выберите **Технология генерации кадров**: исходный SM86 (NVIDIA DLSS-G / XeSS-FG) или **Apex Neural Rendering · Бета**. Менеджер поддерживает ANR на **NVIDIA GTX 16 / RTX 20–50** и **AMD Radeon RX 5000/6000/7000/9000**; **GTX 10 / Pascal не поддерживается**. Игра должна предоставлять нативный DLSS Frame Generation через **Direct3D 12 или Vulkan**.
 - Этот менеджер поддерживает ANR только в **Windows 10/11 x64**; **Linux, Steam Deck и Intel Arc не входят в поддерживаемую область этого выпуска**. Поддержка AMD проверена автоматическими тестами, без запуска игры на оборудовании AMD. Подтвердите фактическую генерацию в журнале игры.
@@ -45,7 +47,7 @@
 
 ## Скачивание и использование
 
-[Скачать стабильную v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [портативный ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [установщик Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi).
+[Скачать стабильную v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [портативный ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [установщик Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
 
 Запустите `DLSSGModManager.exe` из портативного пакета или установите `DLSSGModManager-Setup.msi` для текущего пользователя. Для опубликованных исполняемых файлов не требуется отдельная установка .NET, Python или CUDA Toolkit.
 
@@ -136,6 +138,6 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## Публикация собственного форка
 
-Создайте публичный репозиторий GitHub и отправьте в него это дерево исходного кода. Включённый workflow для Windows собирает приложение и запускает тесты для pull request и отправок в основную ветку. Тег наподобие `v0.4.4` также публикует исполняемые файлы как релиз GitHub с помощью токена Actions этого репозитория. Токены не хранятся в исходном коде и не требуются конечным пользователям.
+Создайте публичный репозиторий GitHub и отправьте в него это дерево исходного кода. Включённый workflow для Windows собирает приложение и запускает тесты для pull request и отправок в основную ветку. Тег наподобие `v0.4.5` также публикует исполняемые файлы как релиз GitHub с помощью токена Actions этого репозитория. Токены не хранятся в исходном коде и не требуются конечным пользователям.
 
 См. [CONTRIBUTING.md](../../CONTRIBUTING.md), [SECURITY.md](../../SECURITY.md) и [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md). Независимый менеджер распространяется по лицензии MIT; материалы исходного мода имеют собственные условия.
