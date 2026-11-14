@@ -10,7 +10,11 @@ public sealed partial class InstallService
 {
     public const string AnrProviderRoot = "OptiScaler/custom/Apex Neural Rendering FG";
     public const string AnrIniPath = AnrProviderRoot + "/dlssg/nr_fg.ini";
-    private const string ReviewedOptiScalerHash = "52d7b390b129deb026333835a85cece808cb99ba9201fe58dca9d2d35ac8fd6b";
+    private static readonly HashSet<string> ReviewedOptiScalerHashes = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "52d7b390b129deb026333835a85cece808cb99ba9201fe58dca9d2d35ac8fd6b", // ANR B15
+        "b35eec64bd1c0027a5245a90b39c5d7118bf55b5c0c533a7e7a98669df6ca919" // ANR B17
+    };
 
     private static void ValidateAnrOptions(ModOptions options)
     {
@@ -39,7 +43,7 @@ public sealed partial class InstallService
             if ((metadata.ProductName ?? "").Contains("OptiScaler", StringComparison.OrdinalIgnoreCase) ||
                 (metadata.FileDescription ?? "").Contains("OptiScaler", StringComparison.OrdinalIgnoreCase)) return true;
             await using var stream = File.OpenRead(loader);
-            return Convert.ToHexString(await SHA256.HashDataAsync(stream, cancellationToken)).Equals(ReviewedOptiScalerHash, StringComparison.OrdinalIgnoreCase);
+            return ReviewedOptiScalerHashes.Contains(Convert.ToHexString(await SHA256.HashDataAsync(stream, cancellationToken)));
         }
         catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidDataException or ArgumentException or BadImageFormatException) { return false; }
     }

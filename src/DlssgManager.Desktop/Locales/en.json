@@ -88,7 +88,7 @@
   "confirm_install": "Apply the selected settings to this game? A backup will be kept before any files are changed.",
   "confirm_restore": "Restore the state saved before the last installation? This can return the game to a previous mod version or remove a first installation.",
   "confirm_disable": "Disable the manager's loader for this game? Your backup will be kept.",
-  "unsupported_package": "This package layout is not supported by this manager version. Installation is unavailable.",
+  "unsupported_package": "The package was downloaded, but this manager has not yet reviewed its installation requirements. Update the manager before installing.",
   "prechecks_only": "Preliminary checks passed. Actual frame generation still needs a test in the game.",
   "checks_blocked": "Resolve the blocked checks before installing.",
   "verified": "Frame generation verified in the recorded session",
@@ -117,7 +117,7 @@
   "close_busy": "An operation is running. Cancel it and wait for cleanup before closing.",
   "step_detect": "Detecting",
   "demo": "Preview / read-only",
-  "software_version": "DLSSG Mod Manager 0.4.3",
+  "software_version": "DLSSG Mod Manager 0.4.4",
   "launch_note": "Use the game's graphics menu to enable DLSS Frame Generation. The manager will read the log while this window is open.",
   "no_steam_games": "No installed Steam games found. You can still choose a folder manually.",
   "manual_install": "Verified manual installation detected",
@@ -145,7 +145,7 @@
   "game_closed": "Game is closed before file changes",
   "target_readonly": "Target file access",
   "disk_space": "Free disk space",
-  "package_ready": "Verified mod package",
+  "package_ready": "Mod package ready for installation",
   "mod_modified": "Managed files have changed outside the manager",
   "mod_managed": "Managed mod installation",
   "mod_record": "Valid installation record",
@@ -239,5 +239,7 @@
   "anr_session_time": "Recorded session: {0}",
   "anr_no_gpu": "No supported NVIDIA or AMD GPU detected",
   "amd_driver_page": "AMD driver downloads ↗",
-  "anr_amd_test_note": "AMD support follows the upstream GPU list. Actual generation must be confirmed in the game log."
+  "anr_amd_test_note": "AMD support follows the upstream GPU list. Actual generation must be confirmed in the game log.",
+  "package_recipe_unreviewed": "Mod package not yet supported by this manager",
+  "package_recipe_help": "{0} was downloaded and its integrity verified, but this manager has not reviewed its installation requirements yet. Update the manager. This does not establish whether the game is supported."
 }

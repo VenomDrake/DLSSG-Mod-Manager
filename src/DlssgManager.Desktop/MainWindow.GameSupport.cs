@@ -21,8 +21,9 @@ public partial class MainWindow
         var state = assessment?.State ?? GameSupportState.NeedsReview;
         var pcBlocked = state == GameSupportState.RequirementsDetected && PrechecksBlocked();
         if (pcBlocked) state = GameSupportState.InstallationBlocked;
+        var unreviewedPackage = state == GameSupportState.InstallationBlocked && _package is { SupportedLayout: false };
         var confirmed = state == GameSupportState.RequirementsDetected && _verification?.Evaluated == true;
-        var titleKey = _gameSupportAnalyzing ? "support_analyzing" : confirmed ? "verified" : state switch
+        var titleKey = _gameSupportAnalyzing ? "support_analyzing" : unreviewedPackage ? "package_recipe_unreviewed" : confirmed ? "verified" : state switch
         {
             GameSupportState.Unsupported => "support_unsupported",
             GameSupportState.InstallationBlocked => "support_install_blocked",
@@ -43,10 +44,14 @@ public partial class MainWindow
         GameSupportSymbol.Text = _gameSupportAnalyzing ? "…" : symbol;
         GameSupportTitle.Text = Localization.Get(titleKey);
         GameSupportReason.Text = _gameSupportAnalyzing ? "" : confirmed ? Localization.Get(_provider == ModProvider.Anr ? "anr_log_scope" : "log_scope")
+            : unreviewedPackage ? string.Join("\n", new[] { UnreviewedPackageHelp() }.Concat(assessment?.ReasonKeys
+                .Where(key => key != "support_reason_other").Select(Localization.Get) ?? []))
             : pcBlocked ? Localization.Get("support_reason_other") : string.Join("\n", assessment!.ReasonKeys.Select(Localization.Get));
         GameSupportReason.Visibility = string.IsNullOrWhiteSpace(GameSupportReason.Text) ? Visibility.Collapsed : Visibility.Visible;
         GameSupportNotice.Visibility = Visibility.Visible;
     }
+
+    private string UnreviewedPackageHelp() => string.Format(Localization.Get("package_recipe_help"), _package?.Release.Version ?? "—");
 
     private void Folder_TextChanged(object sender, TextChangedEventArgs e)
     {

@@ -78,15 +78,30 @@ using (var canceled = new CancellationTokenSource())
     Require(stopped, "cancellation is not treated as offline");
 }
 
+// The reviewed 0.4.2 package keeps the runtime/install layout, and adds a root
+// HTML configurator. It is verified as data and never opened or executed.
+using (var reviewedClient = new HttpClient(new FakeHandler(BuildArchive("0.4.2", includeConfigurator: true), "0.4.2")))
+using (var reviewedUpdater = new ReleaseService(Path.Combine(testRoot, "reviewed-042"), reviewedClient))
+{
+    var reviewed = await reviewedUpdater.EnsureLatestAsync();
+    Require(reviewed.State == UpdateState.Downloaded && reviewed.Package is { SupportedLayout: true },
+        "reviewed 0.4.2 package passes the explicit compatibility recipe");
+    Require(reviewed.Package!.Files.Any(f => f.Path == "dlssg_sm86ini_Configurator.html"),
+        "new root HTML configurator is verified in the package inventory as data");
+    Require((await reviewedUpdater.EnsureLatestAsync()).State == UpdateState.UpToDate
+        && (await reviewedUpdater.LoadCachedAsync()) is { SupportedLayout: true },
+        "reviewed 0.4.2 remains supported after cache verification");
+}
+
 // A verified new download must remain available for inspection while installation
 // stays blocked until the manager has an explicit compatibility recipe.
-using (var futureClient = new HttpClient(new FakeHandler(BuildArchive("0.4.2"), "0.4.2")))
+using (var futureClient = new HttpClient(new FakeHandler(BuildArchive("0.4.3"), "0.4.3")))
 using (var futureUpdater = new ReleaseService(Path.Combine(testRoot, "future"), futureClient))
 {
     var future = await futureUpdater.EnsureLatestAsync();
     Require(future.State == UpdateState.Downloaded && future.Package is { SupportedLayout: false }
         && future.Package.Checks.Any(c => c.Code == "package_layout" && c.Level == CheckLevel.Blocked),
-        "verified future 0.4.2 downloads but cannot be installed");
+        "verified future 0.4.3 downloads but cannot be installed");
     Require((await futureUpdater.LoadCachedAsync()) is { SupportedLayout: false }, "unsupported future package remains verifiable in cache");
 }
 using (var changedModelClient = new HttpClient(new FakeHandler(BuildArchive(runtimeModel: "310.10.0"))))
@@ -101,6 +116,13 @@ using (var changedVersionUpdater = new ReleaseService(Path.Combine(testRoot, "ch
     Require((await changedVersionUpdater.EnsureLatestAsync()).Package is { SupportedLayout: false },
         "changed runtime version under same release has no compatibility recipe");
 }
+foreach (var (model, version) in new[] { ("310.10.0", "310.9.16.0"), ("310.9.16", "310.10.0.0") })
+using (var changedRuntimeClient = new HttpClient(new FakeHandler(BuildArchive("0.4.2", model, version), "0.4.2")))
+using (var changedRuntimeUpdater = new ReleaseService(Path.Combine(testRoot, "changed-042-" + Guid.NewGuid().ToString("N")), changedRuntimeClient))
+{
+    Require((await changedRuntimeUpdater.EnsureLatestAsync()).Package is { SupportedLayout: false },
+        "reviewed 0.4.2 refuses changed bundled runtime requirements: " + model + " / " + version);
+}
 
 if (args.Contains("--live"))
 {
@@ -110,11 +132,13 @@ if (args.Contains("--live"))
         if (p.Stage != "downloading_package") Console.WriteLine(p.Stage + " " + p.Detail);
     }));
     Require(liveFirst.State == UpdateState.Downloaded && liveFirst.Package is not null, "live official release verifies");
+    Require(liveFirst.Package!.Release.Version.TrimStart('v', 'V') == ReleaseService.ReviewedRelease
+        && liveFirst.Package.SupportedLayout, "live reviewed official release is installable by its verified recipe");
     Require((await live.EnsureLatestAsync()).State == UpdateState.UpToDate, "live second run is up-to-date");
 }
 Console.WriteLine($"{tests} release checks passed.");
 
-static byte[] BuildArchive(string version = "0.4.1", string runtimeModel = "310.9.16", string runtimeVersion = "310.9.16.0")
+static byte[] BuildArchive(string version = "0.4.1", string runtimeModel = "310.9.16", string runtimeVersion = "310.9.16.0", bool includeConfigurator = false)
 {
     var paths = new[]
     {
@@ -122,7 +146,8 @@ static byte[] BuildArchive(string version = "0.4.1", string runtimeModel = "310.
         "dlssg_sm86/runtime/nvngx_dlssg.dll", "dlssg_sm86/sr/nvngx_dlss.dll", "dlssg_sm86/sr/sr_kernels.dll",
         "dlssg_sm86/xefg/xefg_kernels.dll", "LICENSE.md", "THIRD_PARTY_NOTICES.txt"
     };
-    var files = paths.Select(p => new { path = p, data = Encoding.UTF8.GetBytes("fixture-" + p) }).ToArray();
+    var files = paths.Concat(includeConfigurator ? ["dlssg_sm86ini_Configurator.html"] : Array.Empty<string>())
+        .Select(p => new { path = p, data = Encoding.UTF8.GetBytes("fixture-" + p) }).ToArray();
     using var stream = new MemoryStream();
     using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
     {

@@ -88,7 +88,7 @@
   "confirm_install": "将所选设置应用于此游戏？更改任何文件前都会保留备份。",
   "confirm_restore": "还原上次安装前保存的状态？这可能恢复先前的模组版本，或移除首次安装的模组。",
   "confirm_disable": "禁用此游戏的管理器加载器？您的备份将保留。",
-  "unsupported_package": "此管理器版本不支持该安装包的结构，无法安装。",
+  "unsupported_package": "安装包已下载，但此管理器尚未审核其安装要求。安装前请更新管理器。",
   "prechecks_only": "初步检查已通过。实际帧生成仍需在游戏中测试。",
   "checks_blocked": "安装前请先解决被阻止的检查项。",
   "verified": "已在记录的会话中验证帧生成",
@@ -117,7 +117,7 @@
   "close_busy": "正在执行操作。请先取消并等待清理完成，再关闭窗口。",
   "step_detect": "正在检测",
   "demo": "预览 / 只读",
-  "software_version": "DLSSG Mod Manager 0.4.3",
+  "software_version": "DLSSG Mod Manager 0.4.4",
   "launch_note": "请在游戏图形菜单中启用 DLSS 帧生成。此窗口打开时，管理器会读取日志。",
   "no_steam_games": "未找到已安装的 Steam 游戏。您仍可手动选择文件夹。",
   "manual_install": "检测到经过验证的手动安装",
@@ -145,7 +145,7 @@
   "game_closed": "更改文件前游戏已关闭",
   "target_readonly": "目标文件访问权限",
   "disk_space": "可用磁盘空间",
-  "package_ready": "已验证的模组安装包",
+  "package_ready": "模组安装包已准备好安装",
   "mod_modified": "管理的文件已在管理器之外被更改",
   "mod_managed": "管理器管理的模组安装",
   "mod_record": "有效的安装记录",
@@ -239,5 +239,7 @@
   "anr_session_time": "记录的会话：{0}",
   "anr_no_gpu": "未检测到受支持的 NVIDIA 或 AMD 显卡",
   "amd_driver_page": "下载 AMD 驱动 ↗",
-  "anr_amd_test_note": "AMD 支持范围遵循上游 GPU 列表。实际帧生成必须通过游戏日志确认。"
+  "anr_amd_test_note": "AMD 支持范围遵循上游 GPU 列表。实际帧生成必须通过游戏日志确认。",
+  "package_recipe_unreviewed": "此管理器尚不支持该模组安装包",
+  "package_recipe_help": "{0} 已下载且完整性验证通过，但此管理器尚未审核其安装要求。请更新管理器。这并不代表游戏受支持或不受支持。"
 }

@@ -289,7 +289,7 @@ Assert(!HardwareService.IsSupportedSm86Gpu("NVIDIA GeForce GTX 1080 Ti", 6.1)
     && AnrSupport.IsSupportedGpu("NVIDIA GeForce RTX 4090") && AnrSupport.IsSupportedGpu("NVIDIA GeForce RTX 5090"),
     "Pascal is unsupported and RTX40/50 are eligible only for the ANR option in this manager recipe");
 string systemFixture = sandbox.PathFor("SyntheticSystem");
-foreach (var file in new[] { "MSVCP140.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll", "vulkan-1.dll" }) WritePe(Path.Combine(systemFixture, file));
+foreach (var file in new[] { "MSVCP140.dll", "MSVCP140_ATOMIC_WAIT.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll", "vulkan-1.dll" }) WritePe(Path.Combine(systemFixture, file));
 var rawHardware = new HardwareInfo([new("NVIDIA GeForce GTX 1660", "550.00", 7.5, false)], true, false, null,
     [new("windows_x64", CheckLevel.Pass), new("gpu_supported", CheckLevel.Blocked), new("driver_r580", CheckLevel.Blocked), new("hags_configured", CheckLevel.Blocked)]);
 var anrHardware = AnrSupport.AdaptHardware(rawHardware, systemFixture);
@@ -327,6 +327,12 @@ WritePe(Path.Combine(systemFixture, "vulkan-1.dll"), 0x014c);
 Assert(AnrSupport.AdaptHardware(amdHardware, systemFixture).Checks.Any(c => c.Code == "anr_vulkan_loader" && c.Level == CheckLevel.Blocked),
     "AMD ANR requires an x64 Vulkan loader and rejects a present x86 loader");
 WritePe(Path.Combine(systemFixture, "vulkan-1.dll"));
+File.Delete(Path.Combine(systemFixture, "MSVCP140_ATOMIC_WAIT.dll"));
+Assert(AnrSupport.AdaptHardware(rawHardware, systemFixture).Checks.Any(c => c.Code == "anr_vc_runtime" && c.Level == CheckLevel.Blocked && c.Detail.Contains("MSVCP140_ATOMIC_WAIT.dll")),
+    "ANR checks the upstream-required atomic-wait Visual C++ dependency on NVIDIA");
+Assert(AnrSupport.AdaptHardware(amdHardware, systemFixture).Checks.Any(c => c.Code == "anr_vc_runtime" && c.Level == CheckLevel.Blocked && c.Detail.Contains("MSVCP140_ATOMIC_WAIT.dll")),
+    "ANR checks the upstream-required atomic-wait Visual C++ dependency on AMD");
+WritePe(Path.Combine(systemFixture, "MSVCP140_ATOMIC_WAIT.dll"));
 File.Delete(Path.Combine(systemFixture, "VCRUNTIME140_1.dll"));
 Assert(AnrSupport.AdaptHardware(rawHardware, systemFixture).Checks.Any(c => c.Code == "anr_vc_runtime" && c.Level == CheckLevel.Blocked), "missing x64 VC runtime blocks ANR prerequisites");
 Assert(AnrSupport.AdaptHardware(amdHardware, systemFixture).Checks.Any(c => c.Code == "anr_vc_runtime" && c.Level == CheckLevel.Blocked),

@@ -88,7 +88,7 @@
   "confirm_install": "¿Aplicar las opciones seleccionadas a este juego? Se conservará una copia de seguridad antes de modificar los archivos.",
   "confirm_restore": "¿Restaurar el estado guardado antes de la última instalación? Puede recuperar una versión anterior del mod o eliminar una primera instalación.",
   "confirm_disable": "¿Desactivar el cargador del gestor para este juego? Se conservará la copia de seguridad.",
-  "unsupported_package": "Esta versión del gestor no admite la estructura del paquete. La instalación no está disponible.",
+  "unsupported_package": "El paquete se ha descargado, pero este gestor todavía no ha revisado sus requisitos de instalación. Actualiza el gestor antes de instalarlo.",
   "prechecks_only": "Comprobaciones preliminares superadas. La generación real de fotogramas aún requiere una prueba en el juego.",
   "checks_blocked": "Resuelve las comprobaciones bloqueadas antes de instalar.",
   "verified": "Generación de fotogramas verificada en la sesión registrada",
@@ -117,7 +117,7 @@
   "close_busy": "Hay una operación en curso. Cancélala y espera a que termine la limpieza antes de cerrar.",
   "step_detect": "Detectando",
   "demo": "Vista previa / solo lectura",
-  "software_version": "DLSSG Mod Manager 0.4.3",
+  "software_version": "DLSSG Mod Manager 0.4.4",
   "launch_note": "Activa DLSS Frame Generation en el menú gráfico del juego. El gestor leerá el registro mientras esta ventana esté abierta.",
   "no_steam_games": "No se encontraron juegos de Steam instalados. Puedes elegir una carpeta manualmente.",
   "manual_install": "Instalación manual verificada detectada",
@@ -145,7 +145,7 @@
   "game_closed": "Juego cerrado antes de modificar los archivos",
   "target_readonly": "Acceso a los archivos de destino",
   "disk_space": "Espacio libre en disco",
-  "package_ready": "Paquete del mod verificado",
+  "package_ready": "Paquete del mod listo para instalar",
   "mod_modified": "Los archivos gestionados se han modificado fuera del gestor",
   "mod_managed": "Instalación del mod gestionada",
   "mod_record": "Registro de instalación válido",
@@ -239,5 +239,7 @@
   "anr_session_time": "Sesión registrada: {0}",
   "anr_no_gpu": "No se detectó ninguna GPU NVIDIA o AMD compatible",
   "amd_driver_page": "Descargar controladores AMD ↗",
-  "anr_amd_test_note": "La compatibilidad con AMD sigue la lista de GPU del proyecto original. La generación real debe confirmarse en el registro del juego."
+  "anr_amd_test_note": "La compatibilidad con AMD sigue la lista de GPU del proyecto original. La generación real debe confirmarse en el registro del juego.",
+  "package_recipe_unreviewed": "Paquete del mod todavía no compatible con este gestor",
+  "package_recipe_help": "Se ha descargado {0} y verificado su integridad, pero este gestor todavía no ha revisado sus requisitos de instalación. Actualiza el gestor. Esto no determina si el juego es compatible."
 }

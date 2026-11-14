@@ -11,6 +11,7 @@ public sealed class ReleaseService : IDisposable
 {
     public const string RepositoryUrl = "https://github.com/sdli1995/dlssg_for_sm86";
     public const string LatestReleaseUrl = "https://api.github.com/repos/sdli1995/dlssg_for_sm86/releases/latest";
+    public const string ReviewedRelease = "0.4.2";
     public const long MaximumArchiveBytes = 512L * 1024 * 1024;
     public const long MaximumExpandedBytes = 2L * 1024 * 1024 * 1024;
     public const int MaximumEntries = 4096;
@@ -233,9 +234,11 @@ public sealed class ReleaseService : IDisposable
                 throw new InvalidDataException("An unlisted file is present in the package: " + relative);
         }
         // Downloading the latest release is independent of knowing how to install it.
-        // The R580 floor and INI recipe are validated for this exact runtime/release;
-        // sharing a minor version does not make a future release compatible.
-        var supportedRecipe = NormalizeVersion(release.Version) == "0.4.1"
+        // Both reviewed releases use the same R580 floor, bundled 310.9.16 runtime
+        // and install layout. The 0.4.2 root HTML configurator is documentation;
+        // it is verified by the manifest, but is not an installation prerequisite.
+        // Sharing a minor version still does not approve an unknown future release.
+        var supportedRecipe = NormalizeVersion(release.Version) is "0.4.1" or ReviewedRelease
             && bundle.TryGetProperty("runtime_model", out var runtimeModel)
             && runtimeModel.ValueKind == JsonValueKind.String && runtimeModel.GetString() == "310.9.16"
             && bundle.TryGetProperty("runtime_version", out var runtimeVersion)

@@ -10,13 +10,13 @@
 - **RTX 20 / SM75 适配：** [Coldwood1026](https://github.com/Coldwood1026)，其贡献列于[原项目声明](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt)。
 - **本管理器：** 独立的安装和诊断界面。原始模组的功劳归其作者所有；本管理器不将其成果归为己有，也不声称获得官方认可。
 
-## ANR 集成 — 稳定版管理器 0.4.3
+## ANR 集成 — 稳定版管理器 0.4.4
 
-[下载稳定版 v0.4.3](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.3): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Setup.msi). 管理器现为稳定版。**ANR 本身仍是上游测试版 FG-V.B15**；“测试版”标签指的是该技术，而非本次管理器发布。
+[下载稳定版 v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi). 管理器现为稳定版。**ANR 本身仍是上游测试版 FG-V.B17**；“测试版”标签指的是该技术，而非本次管理器发布。
 
 - 选择**帧生成技术**：原有 SM86（NVIDIA DLSS-G / XeSS-FG）或 **Apex Neural Rendering · 测试版**。管理器支持 **NVIDIA GTX 16 / RTX 20–50** 和 **AMD Radeon RX 5000/6000/7000/9000** 上的 ANR；**不支持 GTX 10 / Pascal**。游戏必须通过 **Direct3D 12 或 Vulkan** 提供原生 DLSS Frame Generation。
 - 本管理器仅在 **Windows 10/11 x64** 上支持 ANR；**Linux、Steam Deck 和 Intel Arc 不在本次发布的支持范围内**。AMD 支持已通过自动化测试检查，但尚未在 AMD 硬件上进行游戏实测。请通过游戏日志确认实际帧生成。
-- 没有 OptiScaler 时管理器选择 **Full**，已有兼容 OptiScaler 时选择 **Addon**。软件包直接从上游官方发布下载，并验证 SHA-256；管理器**不捆绑 ANR 和 OptiScaler 的二进制文件或模型**。已审核的 ANR 安装规则为 **FG-V.B15**，未知的后续规则会被阻止。 如果已选择 ANR，管理器会在启动时检查 ANR 官方仓库，每次选择 ANR 时也会检查。发现新版本时会自动下载；缓存已是同一版本时会提示已为最新版。只有点击更新操作后，才会在完成检查和备份后更新相应游戏。
+- 没有 OptiScaler 时管理器选择 **Full**，已有兼容 OptiScaler 时选择 **Addon**。软件包直接从上游官方发布下载，并验证 SHA-256；管理器**不捆绑 ANR 和 OptiScaler 的二进制文件或模型**。已审核的 ANR 安装规则为 **FG-V.B17**，未知的后续规则会被阻止。 如果已选择 ANR，管理器会在启动时检查 ANR 官方仓库，每次选择 ANR 时也会检查。发现新版本时会自动下载；缓存已是同一版本时会提示已为最新版。只有点击更新操作后，才会在完成检查和备份后更新相应游戏。
 - 安装或切换前请关闭游戏。管理器会检查冲突、记录管理的文件，并在更改前创建可恢复备份。切换提供程序、禁用和恢复共用事务日志及历史记录；未知或外部修改的文件会受到保护。Addon 保留现有 OptiScaler 加载器。使用**恢复先前状态**可撤销切换。
 - 先离线测试 **2×**。ANR 有自己的计算路径、HDR 亮度、场景切换设置和日志；SM86 专用选项不适用。倍数取决于游戏。日志确认只是初步测试，不能保证长时间游戏稳定。请勿在受反作弊保护的在线游戏中使用任何提供程序。
 
@@ -45,7 +45,7 @@
 
 ## 下载与使用
 
-[下载稳定版 v0.4.3](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.3): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Setup.msi).
+[下载稳定版 v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi).
 
 运行便携包中的 `DLSSGModManager.exe`，或使用仅为当前用户安装的 `DLSSGModManager-Setup.msi`。发布的二进制程序无需单独安装 .NET、Python 或 CUDA Toolkit。
 
@@ -72,7 +72,7 @@
 
 管理器会在后台静默检查自身的 GitHub 发布版本。只有发现更新的稳定版管理器时，才会显示一条小提示；草稿和预发布版本会被忽略。
 
-**仓库已重命名为 [VenomDrake/DLSSG-Mod-Manager](https://github.com/VenomDrake/DLSSG-Mod-Manager)。** 如果管理器 **0.4.2 或更早版本**在迁移后无法再检测更新，请关闭管理器后，使用最新版 MSI 安装一次 **0.4.3**，或替换整个便携软件包。游戏和备份会保留；后续更新将使用新仓库。
+**仓库已重命名为 [VenomDrake/DLSSG-Mod-Manager](https://github.com/VenomDrake/DLSSG-Mod-Manager)。** 如果管理器 **0.4.2 或更早版本**在迁移后无法再检测更新，请关闭管理器后，使用最新版 MSI 安装一次 **0.4.3 或更新版本**，或替换整个便携软件包。游戏和备份会保留；后续更新将使用新仓库。
 
 请在当前操作结束后，选择合适的时间点击 **更新并重启**。管理器会自动选择适合当前安装方式的便携 ZIP 或 MSI，下载软件包，将其 SHA-256 与 GitHub 官方发布文件的摘要进行核对，然后关闭、安装更新并重新打开。游戏、设置和备份都会保留。以后的更新无需访问 GitHub 或手动替换文件。
 
@@ -80,13 +80,15 @@
 
 **MSI 安装版 0.2.0/0.2.1 的一次性修复：** 这些版本的应用内 MSI 更新可能出现 Windows Installer 错误 **1639**，或弹出其帮助窗口。请关闭管理器，从上方链接的发布页下载并**运行一次最新版 MSI 安装程序（0.2.2 或更高版本）**，保留原安装目录。安装 0.2.1 MSI 无法修复此缺陷。安装 0.2.2 后，后续应用内更新将使用已修复的更新程序。便携版安装不受此 MSI 问题影响。
 
-管理器更新与模组更新相互独立。更新管理器不会更改任何游戏中的安装。已审核的规则为 **SM86 0.4.1** 和 **ANR FG-V.B15**。
+管理器更新与模组更新相互独立。更新管理器不会更改任何游戏中的安装。已审核的规则为 **SM86 0.4.1 / 0.4.2** 和 **ANR FG-V.B15 / FG-V.B17**。
 
 ## 支持范围与限制
 
-管理器运行于 **Windows 10/11 x64**。**SM86** 面向受支持的 **RTX 20/30** 显卡；已审核规则对应模组 **0.4.1**，要求 **R580 或更新的驱动**及 **310.9.16** 运行库。**ANR** 支持 **NVIDIA GTX 16 / RTX 20–50** 和 **AMD Radeon RX 5000/6000/7000/9000**，需要游戏通过 **Direct3D 12 或 Vulkan** 提供原生 DLSS Frame Generation，已审核规则为 **FG-V.B15**。**不支持 GTX 10 / Pascal。** 下载更新的上游版本并不代表其要求已获确认：未知规则仍会被阻止，直到管理器更新。
+管理器运行于 **Windows 10/11 x64**。**SM86** 面向受支持的 **RTX 20/30** 显卡；已审核规则对应模组 **0.4.1 / 0.4.2**，要求 **R580 或更新的驱动**及 **310.9.16** 运行库。**ANR** 支持 **NVIDIA GTX 16 / RTX 20–50** 和 **AMD Radeon RX 5000/6000/7000/9000**，需要游戏通过 **Direct3D 12 或 Vulkan** 提供原生 DLSS Frame Generation，已审核规则为 **FG-V.B17**。**不支持 GTX 10 / Pascal。** 下载更新的上游版本并不代表其要求已获确认：未知规则仍会被阻止，直到管理器更新。
 
 **SM86:** 游戏本身必须提供原生 DLSS Frame Generation，并以 DirectX 12 运行。当前原项目安装规则支持 310.x 运行库；更旧的运行库代际会被拒绝。更高倍率取决于游戏的集成方式。XeSS 最高为 4×；DLSS 6× 需要游戏集成本身支持。
+
+在 SM86 0.4.2 中，`[XeSSFG] UseHudless=Auto` 与 `0` 的行为相同：整个画面（包括界面）都会进行插帧。
 
 检测到已知反作弊特征时会阻止安装。未检测到这些特征并不能证明游戏没有反作弊。请勿在受反作弊保护的联网游戏中使用注入式模组。
 
@@ -134,7 +136,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## 发布自己的分支
 
-创建公开的 GitHub 仓库，并推送此源代码目录。随附的 Windows 工作流会对拉取请求和主分支推送进行构建与测试。推送如 `v0.4.3` 的标签时，还会使用该仓库的 Actions 令牌将二进制程序发布为 GitHub release。源代码不存储令牌，终端用户也不需要提供令牌。
+创建公开的 GitHub 仓库，并推送此源代码目录。随附的 Windows 工作流会对拉取请求和主分支推送进行构建与测试。推送如 `v0.4.4` 的标签时，还会使用该仓库的 Actions 令牌将二进制程序发布为 GitHub release。源代码不存储令牌，终端用户也不需要提供令牌。
 
 参阅 [CONTRIBUTING.md](../../CONTRIBUTING.md)、[SECURITY.md](../../SECURITY.md) 和 [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)。此独立管理器采用 MIT 许可证；原项目模组材料遵循各自的条款。
 

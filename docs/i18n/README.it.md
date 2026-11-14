@@ -10,13 +10,13 @@ Un'app desktop per Windows che affianca [DLSSG for SM86](https://github.com/sdli
 - **Adattamento RTX 20 / SM75:** [Coldwood1026](https://github.com/Coldwood1026), citato nelle [note del progetto originale](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **Questo gestore:** un'interfaccia indipendente per l'installazione e la diagnostica. Il merito della mod originale resta ai suoi autori; il gestore non si attribuisce il loro lavoro e non dichiara di essere approvato ufficialmente.
 
-## Integrazione ANR — gestore stabile 0.4.3
+## Integrazione ANR — gestore stabile 0.4.4
 
-[Scarica la versione stabile v0.4.3](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.3): [ZIP portatile](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Portable-win-x64.zip) · [installer Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Setup.msi). Il gestore è una release stabile. **ANR resta una beta del progetto originale, FG-V.B15**: l’etichetta Beta si riferisce alla tecnologia, non a questa release del gestore.
+[Scarica la versione stabile v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [ZIP portatile](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [installer Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi). Il gestore è una release stabile. **ANR resta una beta del progetto originale, FG-V.B17**: l’etichetta Beta si riferisce alla tecnologia, non a questa release del gestore.
 
 - Scegli **Tecnologia di generazione dei fotogrammi**: il percorso SM86 originale (NVIDIA DLSS-G / XeSS-FG) oppure **Apex Neural Rendering · Beta**. Il gestore supporta ANR sulle **NVIDIA GTX 16 / RTX 20–50** e **AMD Radeon RX 5000/6000/7000/9000**; **GTX 10 / Pascal non è supportata**. Il gioco deve offrire DLSS Frame Generation nativo tramite **Direct3D 12 o Vulkan**.
 - Il gestore supporta ANR soltanto su **Windows 10/11 x64**; **Linux, Steam Deck e Intel Arc non rientrano nell’ambito supportato da questa release**. Il supporto AMD è stato controllato con test automatici, senza una prova nel gioco su hardware AMD. Conferma la generazione effettiva nel log del gioco.
-- Il gestore seleziona **Full** se il gioco non ha OptiScaler oppure **Addon** per un’installazione OptiScaler compatibile. I pacchetti vengono scaricati direttamente dalla release ufficiale e verificati con SHA-256; binari e modelli ANR e OptiScaler **non sono inclusi nel gestore**. La procedura ANR verificata è **FG-V.B15**; una procedura futura sconosciuta resta bloccata. Il gestore controlla il repository ufficiale ANR all’avvio quando ANR è selezionato e ogni volta che scegli ANR. Scarica automaticamente una nuova release oppure segnala che quella già presente è l’ultima. Ogni gioco viene aggiornato soltanto quando premi il pulsante di aggiornamento, dopo i controlli e il backup.
+- Il gestore seleziona **Full** se il gioco non ha OptiScaler oppure **Addon** per un’installazione OptiScaler compatibile. I pacchetti vengono scaricati direttamente dalla release ufficiale e verificati con SHA-256; binari e modelli ANR e OptiScaler **non sono inclusi nel gestore**. La procedura ANR verificata è **FG-V.B17**; una procedura futura sconosciuta resta bloccata. Il gestore controlla il repository ufficiale ANR all’avvio quando ANR è selezionato e ogni volta che scegli ANR. Scarica automaticamente una nuova release oppure segnala che quella già presente è l’ultima. Ogni gioco viene aggiornato soltanto quando premi il pulsante di aggiornamento, dopo i controlli e il backup.
 - Chiudi il gioco prima dell’installazione o del cambio. Il gestore verifica i conflitti, registra i file gestiti e crea backup recuperabili prima delle modifiche. Cambio provider, disattivazione e ripristino usano lo stesso giornale e la stessa cronologia; i file sconosciuti o modificati esternamente sono protetti. La modalità addon conserva il loader OptiScaler esistente. Usa **Ripristina stato precedente** per annullare un cambio di provider.
 - Inizia offline a **2×**. ANR ha impostazioni proprie per percorso di calcolo, luminanza HDR e cambi di scena, oltre a un log proprio; le opzioni specifiche di SM86 non si applicano. I moltiplicatori dipendono dal gioco. La conferma nel log è un primo test, non una garanzia di stabilità prolungata. Non usare nessun provider nei giochi online protetti da anti-cheat.
 
@@ -51,7 +51,7 @@ Nel gioco, attiva **NVIDIA DLSS Frame Generation**. Il selettore **2×** grigio 
 
 ## Download e utilizzo
 
-[Scarica la versione stabile v0.4.3](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.3): [ZIP portatile](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Portable-win-x64.zip) · [installer Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Setup.msi).
+[Scarica la versione stabile v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [ZIP portatile](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [installer Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi).
 
 Usa `DLSSGModManager.exe` dal pacchetto portatile oppure esegui `DLSSGModManager-Setup.msi`, che installa il programma per l'utente corrente. I binari pubblicati non richiedono l'installazione separata di .NET, Python o CUDA Toolkit.
 
@@ -72,7 +72,7 @@ Il gestore non modifica automaticamente HAGS o i driver. Apre le impostazioni gr
 
 Il gestore controlla le proprie release GitHub in modo silenzioso in background. Un piccolo avviso appare soltanto quando è disponibile una versione stabile più recente del gestore; le bozze e le versioni preliminari vengono ignorate.
 
-**Repository rinominato in [VenomDrake/DLSSG-Mod-Manager](https://github.com/VenomDrake/DLSSG-Mod-Manager).** Se il gestore **0.4.2 o precedente** non rileva più gli aggiornamenti dopo lo spostamento, installa **0.4.3** una volta dall’MSI più recente oppure sostituisci l’intero pacchetto portatile con il gestore chiuso. Giochi e backup vengono conservati; gli aggiornamenti successivi usano il nuovo repository.
+**Repository rinominato in [VenomDrake/DLSSG-Mod-Manager](https://github.com/VenomDrake/DLSSG-Mod-Manager).** Se il gestore **0.4.2 o precedente** non rileva più gli aggiornamenti dopo lo spostamento, installa **0.4.3 o successivo** una volta dall’MSI più recente oppure sostituisci l’intero pacchetto portatile con il gestore chiuso. Giochi e backup vengono conservati; gli aggiornamenti successivi usano il nuovo repository.
 
 Scegli **Aggiorna e riavvia** quando preferisci, dopo aver terminato l’operazione in corso. Il gestore seleziona automaticamente lo ZIP portatile o l’MSI adatto all’installazione corrente, lo scarica, ne verifica lo SHA-256 confrontandolo con il digest del file della release ufficiale GitHub, si chiude, installa l’aggiornamento e si riapre. Giochi, impostazioni e backup vengono conservati. Gli aggiornamenti successivi non richiedono di visitare GitHub o sostituire manualmente i file.
 
@@ -80,13 +80,15 @@ Scegli **Aggiorna e riavvia** quando preferisci, dopo aver terminato l’operazi
 
 **Correzione una tantum per le installazioni MSI 0.2.0/0.2.1:** il loro aggiornamento MSI dall’app può fallire con l’errore **1639** di Windows Installer o aprire la sua finestra della guida. Chiudi il manager, scarica ed esegui **una volta l’MSI più recente (0.2.2 o successivo)** dalla release indicata sopra, mantenendo la stessa cartella di installazione. Installare l’MSI 0.2.1 non corregge questo difetto. Dopo aver installato 0.2.2, gli aggiornamenti successivi dall’app usano l’updater corretto. Le installazioni portatili non sono interessate da questo problema MSI.
 
-Gli aggiornamenti del gestore e delle mod sono separati. Aggiornare il gestore non modifica le installazioni nei giochi. Le procedure verificate sono **SM86 0.4.1** e **ANR FG-V.B15**.
+Gli aggiornamenti del gestore e delle mod sono separati. Aggiornare il gestore non modifica le installazioni nei giochi. Le procedure verificate sono **SM86 0.4.1 / 0.4.2** e **ANR FG-V.B15 / FG-V.B17**.
 
 ## Ambito supportato e limitazioni
 
-Il gestore funziona su **Windows 10/11 x64**. **SM86** si rivolge alle GPU **RTX 20/30** supportate: la procedura verificata riguarda la mod **0.4.1**, con driver **R580 o successivo** e runtime **310.9.16**. **ANR** supporta **NVIDIA GTX 16 / RTX 20–50** e **AMD Radeon RX 5000/6000/7000/9000**, richiede DLSS Frame Generation nativo tramite **Direct3D 12 o Vulkan** e usa la procedura verificata **FG-V.B15**. **GTX 10 / Pascal non è supportata.** Scaricare una nuova release originale non ne approva i requisiti: le procedure sconosciute restano bloccate finché il gestore non viene aggiornato.
+Il gestore funziona su **Windows 10/11 x64**. **SM86** si rivolge alle GPU **RTX 20/30** supportate: la procedura verificata riguarda la mod **0.4.1 / 0.4.2**, con driver **R580 o successivo** e runtime **310.9.16**. **ANR** supporta **NVIDIA GTX 16 / RTX 20–50** e **AMD Radeon RX 5000/6000/7000/9000**, richiede DLSS Frame Generation nativo tramite **Direct3D 12 o Vulkan** e usa la procedura verificata **FG-V.B17**. **GTX 10 / Pascal non è supportata.** Scaricare una nuova release originale non ne approva i requisiti: le procedure sconosciute restano bloccate finché il gestore non viene aggiornato.
 
 **SM86:** Il gioco deve includere DLSS Frame Generation nativo ed essere eseguito con DirectX 12. La procedura attuale supporta i runtime 310.x; le vecchie generazioni di runtime vengono rifiutate. I moltiplicatori più alti dipendono dall'integrazione nel gioco. XeSS è limitato a 4×; DLSS 6× richiede un'integrazione che lo supporti.
+
+In SM86 0.4.2, `[XeSSFG] UseHudless=Auto` si comporta come `0`: viene interpolata l’intera immagine, inclusa l’interfaccia.
 
 Gli indicatori noti di anti-cheat bloccano l'installazione. La loro assenza non dimostra che un gioco sia privo di anti-cheat. Non usare mod iniettate nei giochi online protetti da anti-cheat.
 
@@ -134,6 +136,6 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## Pubblicare un fork
 
-Crea una repository GitHub pubblica e carica questo albero dei sorgenti. Il workflow Windows incluso compila e testa le pull request e i push sul ramo principale. Un tag come `v0.4.3` pubblica anche i binari come release GitHub usando il token Actions della repository. Nessun token viene salvato nei sorgenti o richiesto agli utenti finali.
+Crea una repository GitHub pubblica e carica questo albero dei sorgenti. Il workflow Windows incluso compila e testa le pull request e i push sul ramo principale. Un tag come `v0.4.4` pubblica anche i binari come release GitHub usando il token Actions della repository. Nessun token viene salvato nei sorgenti o richiesto agli utenti finali.
 
 Consulta [CONTRIBUTING.md](../../CONTRIBUTING.md), [SECURITY.md](../../SECURITY.md) e [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md). Questo gestore indipendente è distribuito con licenza MIT; il materiale della mod originale mantiene le proprie condizioni.

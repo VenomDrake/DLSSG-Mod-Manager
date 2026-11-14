@@ -11,7 +11,7 @@ public sealed class AnrReleaseService : IDisposable
 {
     public const string RepositoryUrl = "https://github.com/apex-compute/ANR";
     public const string LatestReleaseUrl = "https://api.github.com/repos/apex-compute/ANR/releases/latest";
-    public const string ReviewedRelease = "FG-V.B15";
+    public const string ReviewedRelease = "FG-V.B17";
     public const long MaximumArchiveBytes = 128L * 1024 * 1024;
     public const long MaximumExpandedBytes = 512L * 1024 * 1024;
     public const int MaximumEntries = 4096;
@@ -19,6 +19,8 @@ public sealed class AnrReleaseService : IDisposable
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true, WriteIndented = true };
     private static readonly HashSet<string> RedirectHosts = new(StringComparer.OrdinalIgnoreCase)
     { "github.com", "api.github.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com", "github-releases.githubusercontent.com" };
+    private static readonly string[] ReviewedPrograms = new[] { "coopmat", "dp4a", "packed", "portable-linalg", "portable", "portable-xmx" }
+        .SelectMany(path => new[] { "fg-lite-any-" + path + "-pq10", "fg-lite-any-" + path + "-srgb8" }).ToArray();
     private readonly string _cacheRoot;
     private readonly HttpClient _client;
     private readonly bool _ownsClient;
@@ -82,12 +84,7 @@ public sealed class AnrReleaseService : IDisposable
             var containers = Path.Combine(variantRoot, "packages");
             EnsureSafeDirectory(containers);
             var destination = Path.Combine(containers, key);
-            if (Directory.Exists(destination))
-            {
-                RejectReparsePoint(destination);
-                Directory.Move(destination, destination + ".previous-" + Guid.NewGuid().ToString("N"));
-            }
-            Directory.Move(stage, destination);
+            PromoteStage(stage, destination);
             stage = null;
             var state = new CacheState(release, key, variant);
             var temporary = Path.Combine(variantRoot, ".current-" + Guid.NewGuid().ToString("N") + ".json");
@@ -180,18 +177,28 @@ public sealed class AnrReleaseService : IDisposable
             prefix + "adapters/pack.nrx", prefix + "kernels/pack.nrx", prefix + "kernels-portable/pack.nrx" };
         var programs = data.GetProperty("programs");
         if (programs.ValueKind != JsonValueKind.Array || programs.GetArrayLength() is < 1 or > 64) throw new InvalidDataException("ANR program inventory is invalid.");
+        var programNames = new List<string>();
         foreach (var program in programs.EnumerateArray())
         {
             var name = program.GetString() ?? "";
             if (!Regex.IsMatch(name, @"^fg-lite-any-[a-z0-9-]+$", RegexOptions.CultureInvariant)) throw new InvalidDataException("Unsafe ANR program name.");
+            programNames.Add(name);
             required.Add(prefix + "programs/" + name + "/pack.nrx");
         }
         if (variant == "full") required.AddRange(["game/dxgi.dll", "game/OptiScaler.ini", "LICENSES/OptiScaler-GPL-3.0.txt"]);
         if (required.Any(p => !names.TryGetValue(p, out var f) || f.Size == 0)) throw new InvalidDataException("A required ANR package file is missing or empty.");
         // A future release is downloaded and inspectable, but never gains installation support from its version alone.
-        var supported = release.Version == ReviewedRelease && data.TryGetProperty("code_revision", out var revision)
-            && revision.GetString() == "fdfa515491b9140954008df404a79a0c2eda2da1"
-            && programs.GetArrayLength() == 12;
+        var recipe = release.Version switch
+        {
+            "FG-V.B15" => (Revision: "fdfa515491b9140954008df404a79a0c2eda2da1", Model: "model: fbv-s0+silhouette_blend=true"),
+            ReviewedRelease => (Revision: "71dc9cdcf87ef10f13c4aa2e07213648719337f4", Model: "model: fn-pc8s1-s0"),
+            _ => (Revision: "", Model: "")
+        };
+        var supported = recipe.Revision.Length > 0 && data.TryGetProperty("code_revision", out var revision)
+            && revision.ValueKind == JsonValueKind.String && revision.GetString() == recipe.Revision
+            && programNames.Count == ReviewedPrograms.Length && programNames.ToHashSet(StringComparer.Ordinal).SetEquals(ReviewedPrograms)
+            && data.TryGetProperty("models", out var models) && models.ValueKind == JsonValueKind.Array && models.GetArrayLength() == 1
+            && models[0].ValueKind == JsonValueKind.String && models[0].GetString() == recipe.Model;
         return new(release, root, files.OrderBy(f => f.Path, StringComparer.OrdinalIgnoreCase).ToArray(), supported,
             [new("package_hash", CheckLevel.Pass, release.Sha256), new("package_layout", supported ? CheckLevel.Pass : CheckLevel.Blocked, release.Version)])
             { Provider = ModProvider.Anr, Variant = variant };
@@ -237,6 +244,30 @@ public sealed class AnrReleaseService : IDisposable
         or JsonException or CryptographicException or ArgumentException or InvalidOperationException or KeyNotFoundException or FormatException or OverflowException;
     private static bool IsSha256(string? value) => value is not null && Regex.IsMatch(value, "^[A-Fa-f0-9]{64}$", RegexOptions.CultureInvariant);
     private static string SafeError(Exception error) => error.Message.Length <= 500 ? error.Message : error.Message[..500];
+    private static void PromoteStage(string stage, string destination)
+    {
+        string? previous = null;
+        if (Directory.Exists(destination))
+        {
+            RejectReparsePoint(destination);
+            previous = destination + ".previous-" + Guid.NewGuid().ToString("N");
+            Directory.Move(destination, previous);
+        }
+        try { Directory.Move(stage, destination); }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException)
+        {
+            // A failed promotion must not leave current.json pointing at a directory
+            // displaced by this operation. Keep all package bytes; do not retry a failed
+            // filesystem operation or make an unverified staging directory current.
+            if (previous is not null && !Directory.Exists(destination) && !File.Exists(destination))
+            {
+                try { RejectReparsePoint(previous); Directory.Move(previous, destination); }
+                catch (Exception recovery) when (recovery is IOException or UnauthorizedAccessException)
+                { throw new IOException("ANR cache promotion failed; the previous package was retained but could not be restored.", new AggregateException(error, recovery)); }
+            }
+            throw;
+        }
+    }
     private void EnsureCacheRoot() { RejectAllAncestors(_cacheRoot); EnsureSafeDirectory(_cacheRoot); }
     private static void RejectAllAncestors(string path)
     { for (var current = Path.GetFullPath(path); current is not null; current = Path.GetDirectoryName(current)) RejectReparsePoint(current); }

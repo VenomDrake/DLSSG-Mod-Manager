@@ -30,7 +30,7 @@ public static class AnrSupport
         checks.Add(new("anr_hags", CheckLevel.Info,
             hardware.HagsConfigured is true ? "Configured" : hardware.HagsConfigured is false ? "Not configured" : "Unknown"));
         var system = systemDirectory ?? Environment.GetFolderPath(Environment.SpecialFolder.System);
-        var required = new[] { "MSVCP140.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll" };
+        var required = new[] { "MSVCP140.dll", "MSVCP140_ATOMIC_WAIT.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll" };
         var missing = required.Where(name => !IsX64File(Path.Combine(system, name))).ToArray();
         checks.Add(new("anr_vc_runtime", missing.Length == 0 ? CheckLevel.Pass : CheckLevel.Blocked,
             missing.Length == 0 ? "Microsoft Visual C++ 2015–2022 x64" : string.Join(", ", missing)));

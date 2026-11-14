@@ -23,7 +23,7 @@ public partial class MainWindow
         }
         SelectedGameTitle.Text = string.IsNullOrWhiteSpace(gameName) ? Localization.Get("ui_next_select") : gameName;
         var nextKey = _readOnly ? "ui_preview_disabled" : _operation is not null ? "busy"
-            : _scan is null ? "ui_next_select" : PrechecksBlocked() ? "ui_next_blocked"
+            : _scan is null ? "ui_next_select" : _package is { SupportedLayout: false } ? "package_recipe_unreviewed" : PrechecksBlocked() ? "ui_next_blocked"
             : IsGameCurrent() ? "up_to_date" : "ui_next_ready";
         NextActionText.Text = Localization.Get(nextKey);
         NextActionText.Foreground = (Brush)FindResource(nextKey == "up_to_date" ? "Accent" : "Muted");

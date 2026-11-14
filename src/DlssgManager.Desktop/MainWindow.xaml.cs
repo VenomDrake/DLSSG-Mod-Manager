@@ -195,6 +195,7 @@ public partial class MainWindow : Window
         var support = GameSupportAssessment.Evaluate(_scan);
         SetStatus(support.State == GameSupportState.Unsupported ? "support_unsupported"
             : support.State == GameSupportState.NeedsReview ? "support_requires_action"
+            : _package is { SupportedLayout: false } ? "package_recipe_unreviewed"
             : PrechecksBlocked() ? "checks_blocked" : _verification?.Evaluated == true ? "verified" : "prechecks_only");
     }
 
@@ -209,7 +210,7 @@ public partial class MainWindow : Window
             UpdateState.OfflineCache => "offline_cache", UpdateState.Failed => "update_failed", _ => "checking_update"
         };
         PackageStatus.Text = Localization.Get(updateKey);
-        if (_package is { SupportedLayout: false }) PackageStatus.Text += "\n" + Localization.Get("unsupported_package");
+        if (_package is { SupportedLayout: false }) PackageStatus.Text += "\n" + UnreviewedPackageHelp();
         GpuName.Text = _hardware?.Gpus.FirstOrDefault(g => g.Eligible)?.Name ?? _hardware?.Gpus.FirstOrDefault()?.Name ?? "—";
         HardwareStatus.Text = _hardware is null ? Localization.Get("hardware_pending")
             : string.Join(" · ", _hardware.Gpus.Select(g => $"{g.Name} / {g.DriverVersion}"));

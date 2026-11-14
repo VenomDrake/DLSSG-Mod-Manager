@@ -10,13 +10,13 @@ A Windows desktop companion for [DLSSG for SM86](https://github.com/sdli1995/dls
 - **RTX 20 / SM75 adaptation:** [Coldwood1026](https://github.com/Coldwood1026), credited in the [upstream notices](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **This manager:** an independent installation and diagnostics interface. Credit for the original mod remains with its authors; the manager does not claim their work or official endorsement.
 
-## ANR integration — stable manager 0.4.3
+## ANR integration — stable manager 0.4.4
 
-[Download stable v0.4.3](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.3): [portable ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Portable-win-x64.zip) · [Windows installer](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Setup.msi). The manager is a stable release. **ANR itself remains upstream beta FG-V.B15**; its Beta label refers to the provider, not to this manager release.
+[Download stable v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [portable ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [Windows installer](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi). The manager is a stable release. **ANR itself remains upstream beta FG-V.B17**; its Beta label refers to the provider, not to this manager release.
 
 - Choose **Frame generation technology**: the original SM86 path (NVIDIA DLSS-G / XeSS-FG), or **Apex Neural Rendering · Beta**. The manager supports ANR on **NVIDIA GTX 16 / RTX 20–50** and **AMD Radeon RX 5000/6000/7000/9000**; **GTX 10 / Pascal is unsupported**. The game must provide native DLSS Frame Generation through **Direct3D 12 or Vulkan**.
 - This manager supports ANR on **Windows 10/11 x64** only; **Linux, Steam Deck and Intel Arc are outside this release’s supported scope**. AMD coverage was checked with automated tests, not an in-game test on AMD hardware. Confirm actual generation in the game log.
-- The manager selects **Full** for a game without OptiScaler or **Addon** for a compatible existing OptiScaler installation. Packages are downloaded directly from the official upstream release and checked using SHA-256; ANR and OptiScaler binaries/models are **not bundled with the manager**. The reviewed ANR recipe is **FG-V.B15**; a future unknown recipe stays blocked. The manager checks the official ANR repository at startup when ANR is selected and whenever you select ANR. It downloads a new release automatically, or reports that the cached release is already the latest. Each game is updated only when you click the update action, after the checks and backup.
+- The manager selects **Full** for a game without OptiScaler or **Addon** for a compatible existing OptiScaler installation. Packages are downloaded directly from the official upstream release and checked using SHA-256; ANR and OptiScaler binaries/models are **not bundled with the manager**. The reviewed ANR recipe is **FG-V.B17**; a future unknown recipe stays blocked. The manager checks the official ANR repository at startup when ANR is selected and whenever you select ANR. It downloads a new release automatically, or reports that the cached release is already the latest. Each game is updated only when you click the update action, after the checks and backup.
 - Close the game before installing or switching. The manager verifies conflicts, records owned files and creates recoverable backups before changes. Provider switching, disabling and restoring use the same journal and history; unknown or externally modified files are protected. Addon mode preserves the existing OptiScaler loader. Use **Restore previous state** to undo a provider switch.
 - Begin offline at **2×**. ANR has its own compute-path, HDR luminance and scene-cut settings and its own log; SM86-only settings do not apply. Multipliers depend on the game. Log confirmation is a smoke test, not a long gameplay stability guarantee. Do not use either provider in anti-cheat-protected online games.
 
@@ -51,7 +51,7 @@ In the game, enable **NVIDIA DLSS Frame Generation**. A grey or locked **2×** s
 
 ## Download and use
 
-[Download stable v0.4.3](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.3): [portable ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Portable-win-x64.zip) · [Windows installer](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.3/DLSSGModManager-Setup.msi).
+[Download stable v0.4.4](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.4): [portable ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Portable-win-x64.zip) · [Windows installer](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.4/DLSSGModManager-Setup.msi).
 
 Use `DLSSGModManager.exe` from the portable package, or run the per-user `DLSSGModManager-Setup.msi`. No separate .NET, Python or CUDA Toolkit installation is needed for the published binaries.
 
@@ -72,7 +72,7 @@ The manager does not change HAGS or drivers automatically. It opens Windows grap
 
 The manager quietly checks its own GitHub releases in the background. A small notice appears only when a newer stable manager version is available; draft releases and prereleases are ignored.
 
-**Repository renamed to [VenomDrake/DLSSG-Mod-Manager](https://github.com/VenomDrake/DLSSG-Mod-Manager).** If manager **0.4.2 or earlier** no longer detects updates after the move, install **0.4.3** once from the latest MSI or replace the complete portable package with the manager closed. Games and backups are preserved; subsequent updates use the new repository.
+**Repository renamed to [VenomDrake/DLSSG-Mod-Manager](https://github.com/VenomDrake/DLSSG-Mod-Manager).** If manager **0.4.2 or earlier** no longer detects updates after the move, install **0.4.3 or later** once from the latest MSI or replace the complete portable package with the manager closed. Games and backups are preserved; subsequent updates use the new repository.
 
 Choose **Update and restart** when convenient, after the current operation finishes. The manager automatically selects the portable ZIP or MSI for the current installation, downloads it, verifies its SHA-256 against the official GitHub release asset digest, closes, installs the update and reopens. Games, settings and backups are preserved. Future updates do not require visiting GitHub or replacing files manually.
 
@@ -80,13 +80,15 @@ Choose **Update and restart** when convenient, after the current operation finis
 
 **One-time fix for MSI installations of 0.2.0/0.2.1:** their in-app MSI updater may fail with Windows Installer error **1639** or show its help window. Close the manager, download and run the **latest MSI (0.2.2 or later) once** from the release linked above, keeping the same installation folder. Installing the 0.2.1 MSI does not fix this defect. After 0.2.2 is installed, future in-app updates use the corrected updater. Portable installations are not affected by this MSI issue.
 
-Manager updates and mod updates are separate. Updating the manager does not change any game installation. The reviewed provider recipes are **SM86 0.4.1** and **ANR FG-V.B15**.
+Manager updates and mod updates are separate. Updating the manager does not change any game installation. The reviewed provider recipes are **SM86 0.4.1 / 0.4.2** and **ANR FG-V.B15 / FG-V.B17**.
 
 ## Supported scope and limitations
 
-The manager runs on **Windows 10/11 x64**. **SM86** targets supported **RTX 20/30** GPUs; its reviewed recipe is upstream **0.4.1**, with driver **R580 or newer** and runtime **310.9.16**. **ANR** supports **NVIDIA GTX 16 / RTX 20–50** and **AMD Radeon RX 5000/6000/7000/9000**, requires native DLSS Frame Generation through **Direct3D 12 or Vulkan**, and uses the reviewed **FG-V.B15** recipe. **GTX 10 / Pascal is unsupported.** Downloading a newer upstream release does not approve its requirements: unknown recipes stay blocked until the manager is updated.
+The manager runs on **Windows 10/11 x64**. **SM86** targets supported **RTX 20/30** GPUs; its reviewed recipe is upstream **0.4.1 / 0.4.2**, with driver **R580 or newer** and runtime **310.9.16**. **ANR** supports **NVIDIA GTX 16 / RTX 20–50** and **AMD Radeon RX 5000/6000/7000/9000**, requires native DLSS Frame Generation through **Direct3D 12 or Vulkan**, and uses the reviewed **FG-V.B17** recipe. **GTX 10 / Pascal is unsupported.** Downloading a newer upstream release does not approve its requirements: unknown recipes stay blocked until the manager is updated.
 
 **SM86:** The game must supply native DLSS Frame Generation and run with DirectX 12. Runtime 310.x is supported by the current upstream recipe; old runtime generations are refused. A higher multiplier depends on the game's integration. XeSS is capped at 4×; DLSS 6× requires a game integration that supports it.
+
+In SM86 0.4.2, `[XeSSFG] UseHudless=Auto` behaves like `0`: the whole image, including the UI, is interpolated.
 
 Known anti-cheat indicators block installation. Their absence does not prove that a game has no anti-cheat. Do not use injected mods in anti-cheat-protected online games.
 
@@ -134,6 +136,6 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## Publish your fork
 
-Create a public GitHub repository and push this source tree. The included Windows workflow builds and tests pull requests and main-branch pushes. A tag such as `v0.4.3` also publishes the binaries as a GitHub release using that repository's Actions token. No token is stored in source or required by end users.
+Create a public GitHub repository and push this source tree. The included Windows workflow builds and tests pull requests and main-branch pushes. A tag such as `v0.4.4` also publishes the binaries as a GitHub release using that repository's Actions token. No token is stored in source or required by end users.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This independent manager is MIT-licensed; upstream mod material has its own terms.
