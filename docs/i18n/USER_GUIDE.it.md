@@ -2,12 +2,14 @@
 
 **Lingua:** [English](../USER_GUIDE.md) · **Italiano** · [简体中文](USER_GUIDE.zh-Hans.md) · [हिन्दी](USER_GUIDE.hi.md) · [Español](USER_GUIDE.es.md) · [Français](USER_GUIDE.fr.md) · [العربية](USER_GUIDE.ar.md) · [বাংলা](USER_GUIDE.bn.md) · [Português](USER_GUIDE.pt.md) · [Русский](USER_GUIDE.ru.md) · [اردو](USER_GUIDE.ur.md)
 
-Per il **gestore 0.5.1** su **Windows 10/11 x64**. I nomi riportati qui corrispondono all'interfaccia italiana: puoi scegliere la lingua in alto a destra. Questo gestore affianca i progetti originali ed è indipendente: non è un'applicazione ufficiale di NVIDIA, AMD, Intel, ANR o OptiScaler.
+Per il **gestore 0.5.2** su **Windows 10/11 x64**. I nomi riportati qui corrispondono all'interfaccia italiana: puoi scegliere la lingua in alto a destra. Questo gestore affianca i progetti originali ed è indipendente: non è un'applicazione ufficiale di NVIDIA, AMD, Intel, ANR o OptiScaler.
 
 **Indice:** [Primo avvio](#start) · [Sicurezza](#safety) · [Download](#install) · [Scegliere la tecnologia](#choose-provider) · [Schermata e pulsanti](#screen) · [Prima installazione](#first-install) · [Controlli](#checks) · [Impostazioni SM86](#sm86) · [Impostazioni ANR](#anr) · [Impostazioni OptiScaler](#optiscaler) · [Impostazioni nel gioco](#in-game) · [Verifica](#verify) · [Aggiornamenti](#updates) · [Disattivazione e ripristino](#backup) · [Problemi comuni](#troubleshooting) · [File e assistenza](#files) · [Glossario](#glossary) · [Fonti](#sources)
 
 <a id="start"></a>
 ## 1. Primo avvio: la tua prima prova
+
+Nell'app apri **Tutorial** e scegli **Avvia visita guidata** per seguire otto passaggi pratici. Cerca tra gli argomenti, usa **?** accanto a un'impostazione oppure premi **F1** mentre il suo controllo ha il focus. **Mostra nel gestore** apre ed evidenzia i controlli interessati senza applicare modifiche.
 
 1. Chiudi il gioco. Scegli un **gioco per giocatore singolo offline**.
 2. Apri il gestore e attendi il completamento del controllo del pacchetto della tecnologia selezionata.
@@ -56,12 +58,14 @@ Scegli nel menu **Upscaling e generazione dei fotogrammi**. In questa guida la t
 
 HAGS e il driver NVIDIA R580 **non sono requisiti universali** ereditati da ANR o OptiScaler. L'**uscita DLSS** nativa di OptiScaler richiede comunque NVIDIA RTX e il runtime DLSS del gioco. OptiScaler non rende ogni motore utilizzabile con qualsiasi GPU.
 
-Le procedure verificate dal gestore 0.5.1 sono **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** e **OptiScaler 0.9.5**. Un nuovo pacchetto scaricato dal progetto originale può restare bloccato finché i suoi requisiti modificati non vengono verificati.
+Le procedure verificate dal gestore 0.5.2 sono **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** e **OptiScaler 0.9.5**. Un nuovo pacchetto scaricato dal progetto originale può restare bloccato finché i suoi requisiti modificati non vengono verificati.
 
 Il gestore ricorda la tecnologia selezionata: **non sceglie automaticamente quella migliore per la tua GPU**. Seleziona una tecnologia adatta prima di interpretare un messaggio di GPU non supportata.
 
 <a id="screen"></a>
 ## 5. Capire la schermata e tutti i pulsanti principali
+
+La scheda **Tutorial** contiene questa guida completa anche offline, con indice degli argomenti e ricerca. La visita guidata resta accanto al gestore: **Indietro** e **Avanti** scorrono gli otto passaggi, **Leggi la spiegazione completa** apre l'argomento corrispondente e **Chiudi visita guidata** termina la visita. Proseguire non segna come superati i controlli di compatibilità: l'installazione richiede comunque il normale riepilogo e la conferma.
 
 ![Schermata Gestione giochi](../screenshot.png)
 
@@ -200,7 +204,7 @@ Per la prima prova con il solo upscaling, lascia **entrambi i campi Disattivati*
 | **Intel XeSS Frame Generation** (`xefg`) | Richiede le capacità GPU previste dal motore, compreso un supporto DP4a adatto, e condizioni compatibili del gioco e della visualizzazione. Non è abilitata su ogni dispositivo Intel, AMD o NVIDIA soltanto perché ne è stata riconosciuta la marca. Il supporto multi-frame ha ulteriori limiti nel progetto originale. |
 | **Nukem · FSR 3** (`nukems`) | Usa il percorso DLSSG-to-FSR3 incluso e verificato. È obbligatoria quando l'ingresso selezionato è Nukem. |
 
-Il gestore 0.5.1 blocca la FG selezionata quando rileva un percorso **DX11**. Per un percorso **Vulkan** rilevato, la coppia FG ammessa dalla procedura verificata è **Nukem → Nukem**. Gli altri percorsi FG proposti richiedono DX12; se l'API è sconosciuta serve comunque una conferma nel gioco. Questi controlli non rendono compatibile un'integrazione del gioco non supportata.
+Il gestore 0.5.2 blocca la FG selezionata quando rileva un percorso **DX11**. Per un percorso **Vulkan** rilevato, la coppia FG ammessa dalla procedura verificata è **Nukem → Nukem**. Gli altri percorsi FG proposti richiedono DX12; se l'API è sconosciuta serve comunque una conferma nel gioco. Questi controlli non rendono compatibile un'integrazione del gioco non supportata.
 
 ### Altri controlli e impostazioni avanzate
 
@@ -326,4 +330,4 @@ I report vengono salvati localmente e non inviati automaticamente. Non ci sono a
 - [OptiScaler](https://github.com/optiscaler/OptiScaler) e la sua [wiki ufficiale](https://github.com/optiscaler/OptiScaler/wiki), dei relativi collaboratori.
 - [Panoramica del gestore](README.it.md) e [note dei componenti di terze parti](../../THIRD_PARTY_NOTICES.md).
 
-Questa guida descrive i **controlli esposti dal gestore 0.5.1** e le procedure dei provider che ha verificato. Non garantisce la compatibilità di ogni gioco, non è un benchmark e non è un manuale completo di tutte le opzioni degli overlay originali. Per le funzioni avanzate disponibili soltanto nei progetti originali usa la documentazione della versione corrispondente.
+Questa guida descrive i **controlli esposti dal gestore 0.5.2** e le procedure dei provider che ha verificato. Non garantisce la compatibilità di ogni gioco, non è un benchmark e non è un manuale completo di tutte le opzioni degli overlay originali. Per le funzioni avanzate disponibili soltanto nei progetti originali usa la documentazione della versione corrispondente.

@@ -2,12 +2,14 @@
 
 **Langue :** [English](../USER_GUIDE.md) · [Italiano](USER_GUIDE.it.md) · [简体中文](USER_GUIDE.zh-Hans.md) · [हिन्दी](USER_GUIDE.hi.md) · [Español](USER_GUIDE.es.md) · **Français** · [العربية](USER_GUIDE.ar.md) · [বাংলা](USER_GUIDE.bn.md) · [Português](USER_GUIDE.pt.md) · [Русский](USER_GUIDE.ru.md) · [اردو](USER_GUIDE.ur.md)
 
-Pour le **gestionnaire 0.5.1** sous **Windows 10/11 x64**. Les noms ci-dessous se basent sur l’interface anglaise et sont présentés ici en traduction ; choisissez votre langue en haut à droite de l’application. Il s’agit d’un gestionnaire indépendant pour les projets d’origine, et non d’une application officielle NVIDIA, AMD, Intel, ANR ou OptiScaler.
+Pour le **gestionnaire 0.5.2** sous **Windows 10/11 x64**. Les noms ci-dessous se basent sur l’interface anglaise et sont présentés ici en traduction ; choisissez votre langue en haut à droite de l’application. Il s’agit d’un gestionnaire indépendant pour les projets d’origine, et non d’une application officielle NVIDIA, AMD, Intel, ANR ou OptiScaler.
 
 **Sommaire :** [Démarrage rapide](#start) · [Sécurité](#safety) · [Téléchargement](#install) · [Choisir une technologie](#choose-provider) · [Écran et boutons](#screen) · [Première installation](#first-install) · [Vérifications](#checks) · [Réglages SM86](#sm86) · [Réglages ANR](#anr) · [Réglages OptiScaler](#optiscaler) · [Réglages dans le jeu](#in-game) · [Vérification du résultat](#verify) · [Mises à jour](#updates) · [Désactiver et rétablir](#backup) · [Dépannage](#troubleshooting) · [Fichiers et aide](#files) · [Glossaire](#glossary) · [Sources](#sources)
 
 <a id="start"></a>
 ## 1. Démarrage rapide : votre premier essai
+
+Dans l'application, ouvrez **Tutoriel** et choisissez **Démarrer la visite guidée** pour suivre huit étapes pratiques. Recherchez parmi les rubriques, utilisez **?** à côté d'un réglage ou appuyez sur **F1** lorsque sa commande a le focus. **Afficher dans le gestionnaire** ouvre et met en évidence les commandes concernées sans appliquer de modifications.
 
 1. Fermez le jeu. Choisissez un **jeu solo hors ligne**.
 2. Ouvrez le gestionnaire et laissez la vérification du paquet de la technologie sélectionnée se terminer.
@@ -56,12 +58,14 @@ Choisissez dans **Mise à l’échelle et génération d’images**. Dans ce gui
 
 HAGS et NVIDIA R580 **ne sont pas des prérequis universels** transmis à ANR ou OptiScaler. La **sortie** DLSS native dans OptiScaler nécessite toujours une NVIDIA RTX et l’environnement d’exécution DLSS du jeu. OptiScaler ne fait pas fonctionner tous les moteurs sur tous les GPU.
 
-Les procédures examinées par le gestionnaire 0.5.1 sont **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** et **OptiScaler 0.9.5**. Un téléchargement plus récent du projet d’origine peut rester bloqué jusqu’à l’examen de ses prérequis modifiés.
+Les procédures examinées par le gestionnaire 0.5.2 sont **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** et **OptiScaler 0.9.5**. Un téléchargement plus récent du projet d’origine peut rester bloqué jusqu’à l’examen de ses prérequis modifiés.
 
 Le gestionnaire mémorise le fournisseur sélectionné ; il **ne choisit pas automatiquement** le meilleur fournisseur pour votre GPU. Sélectionnez une technologie adaptée avant d’interpréter un échec de vérification GPU.
 
 <a id="screen"></a>
 ## 5. Comprendre l’écran et chaque bouton principal
+
+L'onglet **Tutoriel** contient ce guide complet hors ligne, avec navigation par rubrique et recherche. La visite guidée reste à côté du gestionnaire : **Retour** et **Suivant** parcourent les huit étapes, **Lire l'explication complète** ouvre la rubrique correspondante et **Fermer la visite guidée** termine la visite. Passer à l'étape suivante ne valide pas les vérifications de compatibilité ; l'installation demande toujours la vérification et la confirmation habituelles.
 
 ![Écran de gestion des jeux](../screenshot.png)
 
@@ -200,7 +204,7 @@ Pour un premier essai limité à la mise à l’échelle, laissez **les deux cha
 | **Intel XeSS Frame Generation** (`xefg`) | Nécessite les capacités GPU du moteur, dont une prise en charge DP4a adaptée et des conditions appropriées du jeu/de l’affichage. N’est pas activé pour tous les appareils Intel, AMD ou NVIDIA simplement parce que leur fabricant est détecté. La prise en charge de plusieurs images a d’autres limites dans le projet d’origine. |
 | **Nukem · FSR 3** (`nukems`) | Utilise la voie DLSSG-to-FSR3 incluse et examinée. Obligatoire lorsque l’entrée sélectionnée est Nukem. |
 
-Le gestionnaire 0.5.1 bloque la FG sélectionnée lorsqu’une voie **DX11** est détectée. Pour une voie **Vulkan** détectée, la paire FG examinée et autorisée est **Nukem → Nukem**. Les autres voies FG proposées nécessitent DX12 ; des indices d’API inconnus exigent toujours une confirmation dans le jeu. Ces commandes ne rendent pas compatible une intégration de jeu non prise en charge.
+Le gestionnaire 0.5.2 bloque la FG sélectionnée lorsqu’une voie **DX11** est détectée. Pour une voie **Vulkan** détectée, la paire FG examinée et autorisée est **Nukem → Nukem**. Les autres voies FG proposées nécessitent DX12 ; des indices d’API inconnus exigent toujours une confirmation dans le jeu. Ces commandes ne rendent pas compatible une intégration de jeu non prise en charge.
 
 ### Autres commandes et réglages avancés
 
@@ -326,4 +330,4 @@ Les rapports sont enregistrés localement, pas envoyés automatiquement. Il n’
 - [OptiScaler](https://github.com/optiscaler/OptiScaler) et son [wiki officiel](https://github.com/optiscaler/OptiScaler/wiki), par ses contributeurs.
 - [Présentation du gestionnaire](README.fr.md) et [avis relatifs aux tiers](../../THIRD_PARTY_NOTICES.md).
 
-Ce guide décrit les **commandes exposées par le gestionnaire 0.5.1** et ses procédures de fournisseurs examinées. Il ne garantit pas la compatibilité de tous les jeux, ne constitue pas un test de performances et n’est pas un manuel complet de chaque option des surimpressions d’origine. Pour les fonctions avancées propres aux projets d’origine, utilisez leur documentation correspondant à la version concernée.
+Ce guide décrit les **commandes exposées par le gestionnaire 0.5.2** et ses procédures de fournisseurs examinées. Il ne garantit pas la compatibilité de tous les jeux, ne constitue pas un test de performances et n’est pas un manuel complet de chaque option des surimpressions d’origine. Pour les fonctions avancées propres aux projets d’origine, utilisez leur documentation correspondant à la version concernée.

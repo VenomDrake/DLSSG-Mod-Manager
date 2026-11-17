@@ -12,11 +12,13 @@
 - **RTX 20 / SM75 适配：** [Coldwood1026](https://github.com/Coldwood1026)，其贡献列于[原项目声明](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt)。
 - **本管理器：** 独立的安装和诊断界面。原始模组的功劳归其作者所有；本管理器不将其成果归为己有，也不声称获得官方认可。
 
-## 稳定版管理器 0.5.1
+## 稳定版管理器 0.5.2
 
-[下载稳定版 v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). 管理器现为稳定版。**ANR 本身仍是上游测试版 FG-V.B17**；“测试版”标签指的是该技术，而非本次管理器发布。
+[下载稳定版 v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi). 管理器现为稳定版。**ANR 本身仍是上游测试版 FG-V.B17**；“测试版”标签指的是该技术，而非本次管理器发布。
 
 **0.5.1** 在 SM86 和 ANR 之外新增独立 OptiScaler。
+
+**0.5.2** 新增内置离线交互式**使用教程**，提供搜索、八步首次安装引导、每项设置旁的 **?** 帮助，以及 **F1** 上下文帮助。
 
 ### SM86 和 ANR 的要求
 
@@ -32,9 +34,9 @@
 
 ## 独立 OptiScaler
 
-**稳定版管理器 0.5.1 包含独立 OptiScaler 集成。**
+**稳定版管理器 0.5.2 包含独立 OptiScaler 集成。**
 
-[下载稳定版 v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[下载稳定版 v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 管理器 0.4.3 及更新版本会自动检查更新并显示通知；下载和安装管理器更新需要你的同意。由于仓库更名，0.4.2 及更早版本可能需要先手动更新一次。管理器更新不会修改游戏模组。
 
@@ -55,9 +57,12 @@ OptiScaler 日志只证明诊断加载，**不能证明生成帧或性能提升*
 
 ![ANR 模组设置](../settings-anr.png)
 
+![交互式使用教程与引导教程](../tutorial.png)
+
 ## 功能
 
-- 将界面分为三个清晰的页面：**游戏管理**、**模组设置**和**诊断**，保留原有的深蓝色背景和薄荷绿点缀。
+- 将界面分为四个清晰的页面：**游戏管理**、**模组设置**、**诊断**和交互式**使用教程**，保留原有的深蓝色背景和薄荷绿点缀。
+- **使用教程：**阅读完整离线指南、搜索设置、启动八步引导教程，或使用 **? / F1** 查看上下文说明。
 - 启动时先检查最新官方**完整发布包**，再分析硬件和游戏。自动下载新包，并在已验证的缓存为最新版本时明确提示。
 - 比较发布 ID、附件 ID 和 SHA-256，包括版本号相同但附件已被替换的情况。离线状态与“最新版本”明确区分。
 - 根据所选技术检查 Windows x64、GPU 架构与驱动：SM86 仅支持 NVIDIA，ANR 支持符合要求的 NVIDIA 或 AMD 显卡。SM86 要求硬件加速 GPU 调度（HAGS）；只有游戏运行时日志确认后，才视为已生效。ANR 上游未指定 HAGS 要求。
@@ -72,7 +77,7 @@ OptiScaler 日志只证明诊断加载，**不能证明生成帧或性能提升*
 
 ## 下载与使用
 
-[下载稳定版 v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[下载稳定版 v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 运行便携包中的 `DLSSGModManager.exe`，或使用仅为当前用户安装的 `DLSSGModManager-Setup.msi`。发布的二进制程序无需单独安装 .NET、Python 或 CUDA Toolkit。
 
@@ -163,7 +168,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## 发布自己的分支
 
-创建公开的 GitHub 仓库，并推送此源代码目录。随附的 Windows 工作流会对拉取请求和主分支推送进行构建与测试。推送如 `v0.5.1` 的标签时，还会使用该仓库的 Actions 令牌将二进制程序发布为 GitHub release。源代码不存储令牌，终端用户也不需要提供令牌。
+创建公开的 GitHub 仓库，并推送此源代码目录。随附的 Windows 工作流会对拉取请求和主分支推送进行构建与测试。推送如 `v0.5.2` 的标签时，还会使用该仓库的 Actions 令牌将二进制程序发布为 GitHub release。源代码不存储令牌，终端用户也不需要提供令牌。
 
 参阅 [CONTRIBUTING.md](../../CONTRIBUTING.md)、[SECURITY.md](../../SECURITY.md) 和 [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)。此独立管理器采用 MIT 许可证；原项目模组材料遵循各自的条款。
 

@@ -2,12 +2,14 @@
 
 **Idioma:** [English](../USER_GUIDE.md) · [Italiano](USER_GUIDE.it.md) · [简体中文](USER_GUIDE.zh-Hans.md) · [हिन्दी](USER_GUIDE.hi.md) · [Español](USER_GUIDE.es.md) · [Français](USER_GUIDE.fr.md) · [العربية](USER_GUIDE.ar.md) · [বাংলা](USER_GUIDE.bn.md) · **Português** · [Русский](USER_GUIDE.ru.md) · [اردو](USER_GUIDE.ur.md)
 
-Para o **gerenciador 0.5.1** no **Windows 10/11 x64**. Os nomes abaixo se baseiam na interface em inglês e são apresentados aqui traduzidos; escolha seu idioma no canto superior direito do aplicativo. Este é um gerenciador independente para os projetos originais, e não um aplicativo oficial da NVIDIA, AMD, Intel, ANR ou OptiScaler.
+Para o **gerenciador 0.5.2** no **Windows 10/11 x64**. Os nomes abaixo se baseiam na interface em inglês e são apresentados aqui traduzidos; escolha seu idioma no canto superior direito do aplicativo. Este é um gerenciador independente para os projetos originais, e não um aplicativo oficial da NVIDIA, AMD, Intel, ANR ou OptiScaler.
 
 **Conteúdo:** [Início rápido](#start) · [Segurança](#safety) · [Download](#install) · [Escolher uma tecnologia](#choose-provider) · [Tela e botões](#screen) · [Primeira instalação](#first-install) · [Verificações](#checks) · [Configurações SM86](#sm86) · [Configurações ANR](#anr) · [Configurações OptiScaler](#optiscaler) · [Configurações no jogo](#in-game) · [Confirmação do resultado](#verify) · [Atualizações](#updates) · [Desativar e restaurar](#backup) · [Solução de problemas](#troubleshooting) · [Arquivos e ajuda](#files) · [Glossário](#glossary) · [Fontes](#sources)
 
 <a id="start"></a>
 ## 1. Início rápido: seu primeiro teste
+
+No aplicativo, abra **Tutorial** e escolha **Iniciar tour guiado** para seguir oito etapas práticas. Pesquise os tópicos, use **?** ao lado de uma configuração ou pressione **F1** enquanto seu controle está em foco. **Mostrar no gerenciador** abre e destaca os controles correspondentes sem aplicar alterações.
 
 1. Feche o jogo. Escolha um **jogo offline para um jogador**.
 2. Abra o gerenciador e deixe a verificação do pacote da tecnologia selecionada terminar.
@@ -56,12 +58,14 @@ Escolha em **Ampliação e geração de quadros**. Neste guia, uma tecnologia ta
 
 HAGS e NVIDIA R580 **não são requisitos universais** herdados por ANR ou OptiScaler. A **saída** DLSS nativa no OptiScaler ainda exige NVIDIA RTX e a biblioteca de execução DLSS do jogo. O OptiScaler não faz todos os mecanismos funcionarem em todas as GPUs.
 
-Os procedimentos revisados pelo gerenciador 0.5.1 são **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** e **OptiScaler 0.9.5**. Um download mais recente do projeto original pode continuar bloqueado até que seus requisitos alterados sejam revisados.
+Os procedimentos revisados pelo gerenciador 0.5.2 são **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** e **OptiScaler 0.9.5**. Um download mais recente do projeto original pode continuar bloqueado até que seus requisitos alterados sejam revisados.
 
 O gerenciador lembra o provedor selecionado; ele **não escolhe automaticamente** o melhor provedor para sua GPU. Selecione uma tecnologia adequada antes de interpretar uma falha de GPU.
 
 <a id="screen"></a>
 ## 5. Entenda a tela e cada botão principal
+
+A aba **Tutorial** contém este guia completo offline, com navegação por tópicos e pesquisa. O tour guiado permanece ao lado do gerenciador: **Voltar** e **Avançar** percorrem as oito etapas, **Ler a explicação completa** abre o tópico correspondente e **Fechar tour guiado** encerra o tour. Avançar não marca as verificações de compatibilidade como aprovadas; a instalação continua exigindo a revisão e a confirmação normais.
 
 ![Tela de gerenciamento de jogos](../screenshot.png)
 
@@ -200,7 +204,7 @@ Para um primeiro teste somente de ampliação, mantenha **ambos os campos desati
 | **Intel XeSS Frame Generation** (`xefg`) | Exige os recursos de GPU do mecanismo, incluindo suporte DP4a adequado e condições apropriadas do jogo/da tela. Não é ativado para todos os dispositivos Intel, AMD ou NVIDIA apenas porque seu fabricante foi detectado. O suporte a múltiplos quadros tem outros limites no projeto original. |
 | **Nukem · FSR 3** (`nukems`) | Usa o caminho DLSSG-to-FSR3 incluído e revisado. Obrigatório quando a entrada selecionada é Nukem. |
 
-O gerenciador 0.5.1 bloqueia a FG selecionada em um caminho **DX11** detectado. Para um caminho **Vulkan** detectado, o par FG revisado e permitido é **Nukem → Nukem**. Os outros caminhos FG oferecidos exigem DX12; indícios de API desconhecidos ainda precisam de confirmação no jogo. Esses controles não tornam compatível uma integração de jogo sem suporte.
+O gerenciador 0.5.2 bloqueia a FG selecionada em um caminho **DX11** detectado. Para um caminho **Vulkan** detectado, o par FG revisado e permitido é **Nukem → Nukem**. Os outros caminhos FG oferecidos exigem DX12; indícios de API desconhecidos ainda precisam de confirmação no jogo. Esses controles não tornam compatível uma integração de jogo sem suporte.
 
 ### Outros controles e configurações avançadas
 
@@ -326,4 +330,4 @@ Os relatórios são salvos localmente, não enviados automaticamente. Não há c
 - [OptiScaler](https://github.com/optiscaler/OptiScaler) e sua [wiki oficial](https://github.com/optiscaler/OptiScaler/wiki), de seus colaboradores.
 - [Visão geral do gerenciador](README.pt.md) e [avisos de terceiros](../../THIRD_PARTY_NOTICES.md).
 
-Este guia descreve os **controles expostos pelo gerenciador 0.5.1** e seus procedimentos de provedor revisados. Não é uma garantia de compatibilidade de todos os jogos, um teste de desempenho nem um manual completo de todas as opções das interfaces sobrepostas dos projetos originais. Para recursos avançados exclusivos desses projetos, use a documentação original da versão correspondente.
+Este guia descreve os **controles expostos pelo gerenciador 0.5.2** e seus procedimentos de provedor revisados. Não é uma garantia de compatibilidade de todos os jogos, um teste de desempenho nem um manual completo de todas as opções das interfaces sobrepostas dos projetos originais. Para recursos avançados exclusivos desses projetos, use a documentação original da versão correspondente.

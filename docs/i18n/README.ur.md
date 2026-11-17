@@ -14,11 +14,13 @@
 - **RTX 20 / SM75 موافقت:** [Coldwood1026](https://github.com/Coldwood1026)، جن کی خدمات [اصل منصوبے کے نوٹس](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt) میں تسلیم کی گئی ہیں۔
 - **یہ مینیجر:** تنصیب اور تشخیص کے لیے ایک آزاد انٹرفیس ہے۔ اصل موڈ کا سہرا اس کے مصنفین کو جاتا ہے؛ مینیجر ان کے کام کی ملکیت یا کسی سرکاری توثیق کا دعویٰ نہیں کرتا۔
 
-## مستحکم مینیجر 0.5.1
+## مستحکم مینیجر 0.5.2
 
-[مستحکم v0.5.1 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). مینیجر ایک مستحکم ریلیز ہے۔ **ANR خود اب بھی اصل پروجیکٹ کا بیٹا FG-V.B17 ہے**؛ بیٹا کا لیبل اس ٹیکنالوجی کے لیے ہے، مینیجر کی اس ریلیز کے لیے نہیں۔
+[مستحکم v0.5.2 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi). مینیجر ایک مستحکم ریلیز ہے۔ **ANR خود اب بھی اصل پروجیکٹ کا بیٹا FG-V.B17 ہے**؛ بیٹا کا لیبل اس ٹیکنالوجی کے لیے ہے، مینیجر کی اس ریلیز کے لیے نہیں۔
 
 ورژن **0.5.1** میں SM86 اور ANR کے ساتھ آزاد OptiScaler شامل کیا گیا ہے۔
+
+ورژن **0.5.2** میں ایپ کے اندر آف لائن انٹرایکٹو **رہنما** شامل کیا گیا ہے، جس میں تلاش، پہلی تنصیب کے لیے آٹھ مراحل کا دورہ، ہر ترتیب کے پاس **?** اور **F1** سے متعلقہ مدد دستیاب ہے۔
 
 ### SM86 اور ANR کی ضروریات
 
@@ -34,9 +36,9 @@
 
 ## آزاد OptiScaler
 
-**مستحکم مینیجر 0.5.1 میں آزاد OptiScaler انضمام شامل ہے۔**
+**مستحکم مینیجر 0.5.2 میں آزاد OptiScaler انضمام شامل ہے۔**
 
-[مستحکم ورژن ڈاؤن لوڈ کریں v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[مستحکم ورژن ڈاؤن لوڈ کریں v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 مینیجر 0.4.3 اور نئے ورژن اپ ڈیٹ خودکار طور پر جانچتے اور اطلاع دکھاتے ہیں؛ مینیجر اپ ڈیٹ ڈاؤن لوڈ اور نصب کرنے کے لیے آپ کی رضامندی چاہیے۔ ریپوزٹری کا نام بدلنے کی وجہ سے 0.4.2 اور پرانے ورژن کو پہلے ایک دستی اپ ڈیٹ درکار ہو سکتا ہے۔ مینیجر اپ ڈیٹ گیم کے موڈ نہیں بدلتا۔
 
@@ -57,9 +59,12 @@ OptiScaler لاگ تشخیصی لوڈنگ دکھاتا ہے، **بنائے گئ�
 
 ![ANR موڈ کی ترتیبات](../settings-anr.png)
 
+![انٹرایکٹو رہنما اور رہنمائی کا دورہ](../tutorial.png)
+
 ## اس کی خصوصیات
 
-- اصل گہرے نیلے اور ہلکے سبز رنگ برقرار رکھتے ہوئے انٹرفیس کو تین واضح صفحات میں تقسیم کرتا ہے: **گیمز کا انتظام**، **موڈ کی ترتیبات** اور **تشخیص**۔
+- اصل گہرے نیلے اور ہلکے سبز رنگ برقرار رکھتے ہوئے انٹرفیس کو چار واضح صفحات میں تقسیم کرتا ہے: **گیمز کا انتظام**، **موڈ کی ترتیبات**، **تشخیص** اور انٹرایکٹو **رہنما**۔
+- **رہنما:** مکمل رہنما آف لائن پڑھیں، ترتیبات تلاش کریں، آٹھ مراحل کا رہنمائی دورہ شروع کریں یا متعلقہ وضاحت کے لیے **? / F1** استعمال کریں۔
 - شروع ہوتے ہی ہارڈویئر اور گیم کے تجزیے سے پہلے تازہ ترین سرکاری **مکمل ریلیز پیکیج** کی جانچ کرتا ہے۔ نیا پیکیج خود ڈاؤن لوڈ کرتا ہے اور تصدیق شدہ کیش پہلے ہی تازہ ترین ہو تو بتاتا ہے۔
 - ریلیز ID، اثاثے کی ID اور SHA-256 کا موازنہ کرتا ہے، بشمول ایسے اثاثے جو وہی ورژن نمبر رکھتے ہوئے بدل دیے گئے ہوں۔ آف لائن حالت کو «تازہ ترین ورژن» سے الگ ظاہر کرتا ہے۔
 - منتخب ٹیکنالوجی کے مطابق Windows x64، GPU آرکیٹیکچر اور ڈرائیور کی جانچ کرتا ہے: SM86 کے لیے صرف NVIDIA، ANR کے لیے معاون NVIDIA یا AMD GPUs۔ SM86 کو ہارڈویئر سے تیز GPU شیڈیولنگ (HAGS) چاہیے؛ اس کے فعال ہونے کی تصدیق صرف گیم کے رن ٹائم لاگ سے ہوتی ہے۔ اصل ANR پروجیکٹ نے HAGS کی کوئی شرط نہیں بتائی۔
@@ -74,7 +79,7 @@ OptiScaler لاگ تشخیصی لوڈنگ دکھاتا ہے، **بنائے گئ�
 
 ## ڈاؤن لوڈ اور استعمال
 
-[مستحکم v0.5.1 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[مستحکم v0.5.2 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 پورٹیبل پیکیج سے `DLSSGModManager.exe` چلائیں یا صرف موجودہ صارف کے لیے نصب ہونے والا `DLSSGModManager-Setup.msi` چلائیں۔ شائع شدہ بائنریز کے لیے الگ سے .NET، Python یا CUDA Toolkit نصب کرنے کی ضرورت نہیں ہے۔
 
@@ -165,7 +170,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## اپنا فورک شائع کریں
 
-ایک عوامی GitHub repository بنائیں اور اس source tree کو push کریں۔ شامل Windows workflow، pull requests اور مرکزی branch پر pushes کے لیے بلڈ اور ٹیسٹ کرتا ہے۔ `v0.5.1` جیسا tag اسی repository کے Actions token سے بائنریز کو GitHub release کے طور پر بھی شائع کرتا ہے۔ source میں کوئی token محفوظ نہیں ہوتا اور آخری صارفین کو token درکار نہیں ہے۔
+ایک عوامی GitHub repository بنائیں اور اس source tree کو push کریں۔ شامل Windows workflow، pull requests اور مرکزی branch پر pushes کے لیے بلڈ اور ٹیسٹ کرتا ہے۔ `v0.5.2` جیسا tag اسی repository کے Actions token سے بائنریز کو GitHub release کے طور پر بھی شائع کرتا ہے۔ source میں کوئی token محفوظ نہیں ہوتا اور آخری صارفین کو token درکار نہیں ہے۔
 
 [CONTRIBUTING.md](../../CONTRIBUTING.md)، [SECURITY.md](../../SECURITY.md) اور [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) دیکھیں۔ یہ آزاد مینیجر MIT لائسنس کے تحت ہے؛ اصل منصوبے کے موڈ مواد پر اس کی اپنی شرائط لاگو ہوتی ہیں۔
 

@@ -20,5 +20,11 @@
     <EmbeddedResource Include="Locales\*.json" />
     <Resource Include="Assets\app.png" />
     <Resource Include="Assets\app.ico" />
+    <EmbeddedResource Include="..\..\docs\USER_GUIDE.md" LogicalName="Guide.en.md" WithCulture="false" />
+    <EmbeddedResource Include="..\..\docs\i18n\USER_GUIDE.*.md" LogicalName="Guide.%(Filename)%(Extension)" WithCulture="false" />
+    <Resource Include="..\..\docs\screenshot.png" Link="TutorialImages\screenshot.png" />
+    <Resource Include="..\..\docs\settings-sm86.png" Link="TutorialImages\settings-sm86.png" />
+    <Resource Include="..\..\docs\settings-anr.png" Link="TutorialImages\settings-anr.png" />
+    <Resource Include="..\..\docs\settings-optiscaler.png" Link="TutorialImages\settings-optiscaler.png" />
   </ItemGroup>
 </Project>

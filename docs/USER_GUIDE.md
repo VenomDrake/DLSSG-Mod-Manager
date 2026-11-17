@@ -2,12 +2,14 @@
 
 **Language:** **English** · [Italiano](i18n/USER_GUIDE.it.md) · [简体中文](i18n/USER_GUIDE.zh-Hans.md) · [हिन्दी](i18n/USER_GUIDE.hi.md) · [Español](i18n/USER_GUIDE.es.md) · [Français](i18n/USER_GUIDE.fr.md) · [العربية](i18n/USER_GUIDE.ar.md) · [বাংলা](i18n/USER_GUIDE.bn.md) · [Português](i18n/USER_GUIDE.pt.md) · [Русский](i18n/USER_GUIDE.ru.md) · [اردو](i18n/USER_GUIDE.ur.md)
 
-For **manager 0.5.1** on **Windows 10/11 x64**. The names below refer to the English interface; choose your language at the top right of the app. This is an independent manager for the original projects, not an official NVIDIA, AMD, Intel, ANR or OptiScaler application.
+For **manager 0.5.2** on **Windows 10/11 x64**. The names below refer to the English interface; choose your language at the top right of the app. This is an independent manager for the original projects, not an official NVIDIA, AMD, Intel, ANR or OptiScaler application.
 
 **Contents:** [Quick start](#start) · [Safety](#safety) · [Download](#install) · [Choose a technology](#choose-provider) · [Screen and buttons](#screen) · [First installation](#first-install) · [Checks](#checks) · [SM86 settings](#sm86) · [ANR settings](#anr) · [OptiScaler settings](#optiscaler) · [In-game settings](#in-game) · [Verification](#verify) · [Updates](#updates) · [Disable and restore](#backup) · [Troubleshooting](#troubleshooting) · [Files and support](#files) · [Glossary](#glossary) · [Sources](#sources)
 
 <a id="start"></a>
 ## 1. Quick start: your first test
+
+Inside the app, open **Tutorial** and choose **Start guided tour** for eight practical steps. Search the topics, use **?** beside a setting or press **F1** while its control has focus. **Show in manager** opens and highlights the relevant controls without applying changes.
 
 1. Close the game. Choose an **offline single-player game**.
 2. Open the manager and let the selected technology's package check finish.
@@ -56,12 +58,14 @@ Choose under **Upscaling and frame generation**. A technology is also called a *
 
 HAGS and NVIDIA R580 are **not universal requirements** inherited by ANR or OptiScaler. Native DLSS **output** in OptiScaler still requires NVIDIA RTX and the game's DLSS runtime. OptiScaler does not make every backend work on every GPU.
 
-The recipes reviewed by manager 0.5.1 are **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17**, and **OptiScaler 0.9.5**. A newer upstream download can remain blocked until its changed requirements are reviewed.
+The recipes reviewed by manager 0.5.2 are **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17**, and **OptiScaler 0.9.5**. A newer upstream download can remain blocked until its changed requirements are reviewed.
 
 The manager remembers the selected provider; it does **not** automatically choose the best provider for your GPU. Select a suitable technology before interpreting a GPU failure.
 
 <a id="screen"></a>
 ## 5. Understand the screen and every main button
+
+The **Tutorial** tab contains this complete guide offline, with topic navigation and search. The guided tour stays beside the manager: **Back** and **Next** move between eight steps, **Read the full explanation** opens the matching topic, and **Close guided tour** ends the tour. Moving forward does not mark compatibility checks as successful; installation still requires the normal review and confirmation.
 
 ![Game management screen](screenshot.png)
 
@@ -200,7 +204,7 @@ For an upscaling-only first test, keep **both fields Off**. To enable FG later, 
 | **Intel XeSS Frame Generation** (`xefg`) | Requires the backend's GPU capabilities, including suitable DP4a support and game/display conditions. It is not enabled for every Intel, AMD or NVIDIA device just because its vendor is detected. Multi-frame support has further upstream limits. |
 | **Nukem · FSR 3** (`nukems`) | Uses the reviewed bundled DLSSG-to-FSR3 path. Required when the selected input is Nukem. |
 
-Manager 0.5.1 blocks selected FG on a detected **DX11** path. For a detected **Vulkan** path, its reviewed allowed FG pair is **Nukem → Nukem**. Other offered FG paths require DX12; unknown API evidence still needs in-game confirmation. These controls do not make an unsupported game integration compatible.
+Manager 0.5.2 blocks selected FG on a detected **DX11** path. For a detected **Vulkan** path, its reviewed allowed FG pair is **Nukem → Nukem**. Other offered FG paths require DX12; unknown API evidence still needs in-game confirmation. These controls do not make an unsupported game integration compatible.
 
 ### Remaining controls and advanced settings
 
@@ -326,4 +330,4 @@ Reports are saved locally, not sent automatically. There is no account or teleme
 - [OptiScaler](https://github.com/optiscaler/OptiScaler) and its [official wiki](https://github.com/optiscaler/OptiScaler/wiki), by its contributors.
 - [Manager overview](../README.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).
 
-This guide describes the **controls exposed by manager 0.5.1** and its reviewed provider recipes. It is not a guarantee of every game's compatibility, a benchmark or a complete manual for every upstream overlay option. For upstream-only advanced features, use the matching version's original documentation.
+This guide describes the **controls exposed by manager 0.5.2** and its reviewed provider recipes. It is not a guarantee of every game's compatibility, a benchmark or a complete manual for every upstream overlay option. For upstream-only advanced features, use the matching version's original documentation.

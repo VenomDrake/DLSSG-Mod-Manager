@@ -54,6 +54,7 @@ public partial class MainWindow : Window
         _changingChoices = false;
         InitializeProvider();
         RebuildChoices();
+        InitializeTutorial();
         FlowDirection = Localization.Direction;
         FolderPath.FlowDirection = FlowDirection.LeftToRight;
         Localization.Changed += LanguageChanged;
@@ -294,6 +295,7 @@ public partial class MainWindow : Window
         ReadLogButton.IsEnabled = idle && _scan?.RenderingDirectory is not null;
         RefreshManagerUpdateUi();
         RefreshPreviewDashboard();
+        RefreshTutorialUi();
     }
 
     private bool IsGameCurrent()
@@ -386,6 +388,7 @@ public partial class MainWindow : Window
         RefreshManagerUpdateUi();
         if (_scan is not null) ReadLog(false);
         else VerificationStatus.Text = Localization.Get(_provider == ModProvider.OptiScaler ? "opti_log_missing" : "not_verified");
+        RefreshTutorialUi();
     }
     private void SetStatus(string key, string detail = "")
     {
@@ -540,6 +543,7 @@ public partial class MainWindow : Window
     {
         if (_operation is not null) { e.Cancel = true; _operation.Cancel(); SetStatus("close_busy"); return; }
         _logTimer.Stop(); Localization.Changed -= LanguageChanged; _releases.Dispose(); _anrReleases.Dispose(); _optiReleases.Dispose();
+        CloseTutorialTour();
         StopManagerUpdates();
     }
 }

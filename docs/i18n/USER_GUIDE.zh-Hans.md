@@ -2,12 +2,14 @@
 
 **语言：** [English](../USER_GUIDE.md) · [Italiano](USER_GUIDE.it.md) · **简体中文** · [हिन्दी](USER_GUIDE.hi.md) · [Español](USER_GUIDE.es.md) · [Français](USER_GUIDE.fr.md) · [العربية](USER_GUIDE.ar.md) · [বাংলা](USER_GUIDE.bn.md) · [Português](USER_GUIDE.pt.md) · [Русский](USER_GUIDE.ru.md) · [اردو](USER_GUIDE.ur.md)
 
-适用于 **Windows 10/11 x64** 上的 **管理器 0.5.1**。你可以在应用右上角选择界面语言。本管理器是原始项目的独立配套工具，不是 NVIDIA、AMD、Intel、ANR 或 OptiScaler 的官方应用。
+适用于 **Windows 10/11 x64** 上的 **管理器 0.5.2**。你可以在应用右上角选择界面语言。本管理器是原始项目的独立配套工具，不是 NVIDIA、AMD、Intel、ANR 或 OptiScaler 的官方应用。
 
 **目录：** [快速开始](#start) · [安全须知](#safety) · [下载](#install) · [选择技术](#choose-provider) · [界面与按钮](#screen) · [首次安装](#first-install) · [检查结果](#checks) · [SM86 设置](#sm86) · [ANR 设置](#anr) · [OptiScaler 设置](#optiscaler) · [游戏内设置](#in-game) · [验证结果](#verify) · [更新](#updates) · [禁用与还原](#backup) · [故障排查](#troubleshooting) · [文件与求助](#files) · [术语表](#glossary) · [参考资料](#sources)
 
 <a id="start"></a>
 ## 1. 快速开始：第一次测试
+
+在应用中打开**使用教程**，选择**开始引导教程**即可跟随八个实用步骤。你可以搜索主题、点击设置旁的 **?**，或在该控件获得焦点时按 **F1**。**在管理器中显示**会打开并突出显示对应控件，不会应用任何更改。
 
 1. 关闭游戏。选择一款**离线单人游戏**。
 2. 打开管理器，等待所选技术的安装包检查结束。
@@ -56,12 +58,14 @@
 
 HAGS 和 NVIDIA R580 **不是自动套用于 ANR 或 OptiScaler 的统一要求**。OptiScaler 的原生 **DLSS 输出**仍需要 NVIDIA RTX 和游戏的 DLSS 运行库。OptiScaler 并不能让所有后端在所有显卡上工作。
 
-管理器 0.5.1 已审核的安装方案为 **SM86 0.4.1/0.4.2**、**ANR FG-V.B15/B17**、**OptiScaler 0.9.5**。上游新包的要求尚未审核时，即使下载完成也可能不能安装。
+管理器 0.5.2 已审核的安装方案为 **SM86 0.4.1/0.4.2**、**ANR FG-V.B15/B17**、**OptiScaler 0.9.5**。上游新包的要求尚未审核时，即使下载完成也可能不能安装。
 
 管理器会记住所选提供程序，**不会根据显卡自动选择最佳方案**。看到显卡检查失败时，请先确认是否选了适合的技术。
 
 <a id="screen"></a>
 ## 5. 认识界面和所有主要按钮
+
+**使用教程**选项卡包含这份完整的离线指南，并提供主题导航和搜索。引导教程会留在管理器旁：**上一步**和**下一步**切换八个步骤，**阅读完整说明**打开对应主题，**关闭引导教程**结束引导。进入下一步不会将兼容性检查标记为通过；安装仍需按正常流程审阅并确认。
 
 ![游戏管理界面](../screenshot.png)
 
@@ -200,7 +204,7 @@ DLSS-G 和 XeSS-FG 使用不同参数。界面中能看到某个引擎专用选�
 | **Intel XeSS Frame Generation** (`xefg`) | 需要后端要求的 GPU 能力，包括适合的 DP4a 支持，以及对应的游戏/显示条件。仅识别为 Intel、AMD 或 NVIDIA 并不代表能够启用。多帧生成还有上游限制。 |
 | **Nukem · FSR 3** (`nukems`) | 使用已审核并随包提供的 DLSSG-to-FSR3 路径；选择 Nukem 输入时必须用这个输出。 |
 
-管理器 0.5.1 会在检测到 **DX11** 路径时阻止所选 FG。检测到 **Vulkan** 时，已审核允许的 FG 配对是 **Nukem → Nukem**。其他列出的 FG 路径需要 DX12；API 不明确时仍须在游戏内确认。这些控件不能让本来不支持的游戏集成变得兼容。
+管理器 0.5.2 会在检测到 **DX11** 路径时阻止所选 FG。检测到 **Vulkan** 时，已审核允许的 FG 配对是 **Nukem → Nukem**。其他列出的 FG 路径需要 DX12；API 不明确时仍须在游戏内确认。这些控件不能让本来不支持的游戏集成变得兼容。
 
 ### 其他控件与高级设置
 
@@ -326,4 +330,4 @@ DLSS-G 和 XeSS-FG 使用不同参数。界面中能看到某个引擎专用选�
 - [OptiScaler](https://github.com/optiscaler/OptiScaler) 和[官方 wiki](https://github.com/optiscaler/OptiScaler/wiki)，由项目贡献者维护。
 - [管理器概览](README.zh-Hans.md)与[第三方声明](../../THIRD_PARTY_NOTICES.md)。
 
-本教程说明的是**管理器 0.5.1 提供的控件**及其已审核的技术安装方案，不是所有游戏兼容的保证、性能基准测试，或上游覆盖界面全部高级功能的完整手册。只在上游中提供的高级功能，请使用对应版本的原始文档。
+本教程说明的是**管理器 0.5.2 提供的控件**及其已审核的技术安装方案，不是所有游戏兼容的保证、性能基准测试，或上游覆盖界面全部高级功能的完整手册。只在上游中提供的高级功能，请使用对应版本的原始文档。

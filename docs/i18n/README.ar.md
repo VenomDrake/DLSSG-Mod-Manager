@@ -14,11 +14,13 @@
 - **التكييف لبطاقات RTX 20 / SM75:** [Coldwood1026](https://github.com/Coldwood1026)، المذكور في [إشعارات المشروع الأصلي](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **هذا المدير:** واجهة مستقلة للتثبيت والتشخيص. يظل الفضل في التعديل الأصلي لمؤلفيه؛ ولا ينسب المدير أعمالهم إلى نفسه أو يدّعي تأييدًا رسميًا منهم.
 
-## المدير المستقر 0.5.1
+## المدير المستقر 0.5.2
 
-[تنزيل الإصدار المستقر v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). المدير إصدار مستقر. **يبقى ANR نفسه نسخة تجريبية من المشروع الأصلي، FG-V.B17**؛ وتشير علامة «تجريبي» إلى هذه التقنية لا إلى إصدار المدير.
+[تنزيل الإصدار المستقر v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi). المدير إصدار مستقر. **يبقى ANR نفسه نسخة تجريبية من المشروع الأصلي، FG-V.B17**؛ وتشير علامة «تجريبي» إلى هذه التقنية لا إلى إصدار المدير.
 
 يضيف الإصدار **0.5.1** OptiScaler المستقل إلى جانب SM86 وANR.
+
+يضيف الإصدار **0.5.2** **دليل استخدام** تفاعليًا مدمجًا يعمل دون اتصال، مع بحث وجولة من ثماني خطوات لأول تثبيت، وعلامة **?** بجانب كل إعداد، ومساعدة سياقية عبر **F1**.
 
 ### متطلبات SM86 وANR
 
@@ -34,9 +36,9 @@
 
 ## OptiScaler المستقل
 
-**يتضمن المدير المستقر 0.5.1 دمج OptiScaler المستقل.**
+**يتضمن المدير المستقر 0.5.2 دمج OptiScaler المستقل.**
 
-[تنزيل الإصدار المستقر v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[تنزيل الإصدار المستقر v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 يفحص المدير 0.4.3 والإصدارات الأحدث التحديثات تلقائيًا ويعرض إشعارًا؛ يتطلب تنزيل تحديث المدير وتثبيته موافقتك. قد تحتاج الإصدارات 0.4.2 والأقدم إلى تحديث يدوي أولي بسبب إعادة تسمية المستودع. تحديثات المدير لا تغيّر تعديلات الألعاب.
 
@@ -57,9 +59,12 @@
 
 ![إعدادات تعديل ANR](../settings-anr.png)
 
+![دليل الاستخدام التفاعلي والجولة الإرشادية](../tutorial.png)
+
 ## ما الذي يقدّمه
 
-- ينظّم الواجهة في ثلاث صفحات واضحة: **إدارة الألعاب** و**إعدادات التعديل** و**التشخيص**، مع الحفاظ على الأزرق الداكن واللمسات الخضراء النعناعية.
+- ينظّم الواجهة في أربع صفحات واضحة: **إدارة الألعاب** و**إعدادات التعديل** و**التشخيص** و**دليل الاستخدام** التفاعلي، مع الحفاظ على الأزرق الداكن واللمسات الخضراء النعناعية.
+- **دليل الاستخدام:** اقرأ الدليل الكامل دون اتصال، وابحث عن الإعدادات، وابدأ الجولة الإرشادية من ثماني خطوات، أو استخدم **? / F1** للشرح السياقي.
 - يتحقق عند التشغيل من أحدث **حزمة إصدار رسمية كاملة** قبل تحليل الأجهزة واللعبة. ينزّل الحزمة الجديدة تلقائيًا ويخبرك عندما تكون النسخة المحلية المخبأة والمتحقق منها هي النسخة الحالية بالفعل.
 - يقارن معرّف الإصدار ومعرّف ملف الإصدار وSHA-256، بما في ذلك استبدال الملفات مع إبقاء رقم الإصدار نفسه. وتختلف حالة عدم الاتصال عن حالة «أحدث إصدار».
 - يفحص Windows x64 ومعمارية وحدة الرسومات وبرامج التشغيل وفق التقنية المختارة: NVIDIA فقط مع SM86، وبطاقات NVIDIA أو AMD المدعومة مع ANR. يتطلب SM86 جدولة GPU المسرّعة بالأجهزة (HAGS)؛ ولا يُؤكَّد تفعيلها إلا في سجل بيئة تشغيل اللعبة. لا يحدّد مشروع ANR الأصلي متطلبًا لـ HAGS.
@@ -74,7 +79,7 @@
 
 ## التنزيل والاستخدام
 
-[تنزيل الإصدار المستقر v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[تنزيل الإصدار المستقر v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 شغّل `DLSSGModManager.exe` من الحزمة المحمولة، أو شغّل `DLSSGModManager-Setup.msi` لتثبيته للمستخدم الحالي. لا تحتاج الملفات التنفيذية المنشورة إلى تثبيت .NET أو Python أو CUDA Toolkit بصورة منفصلة.
 
@@ -165,7 +170,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## نشر نسختك المتفرعة
 
-أنشئ مستودع GitHub عامًا وادفع إليه شجرة الشيفرة المصدرية هذه. يقوم سير العمل المضمَّن لنظام Windows بالبناء والاختبار عند طلبات السحب وعمليات الدفع إلى الفرع الرئيسي. كما تنشر علامة مثل `v0.5.1` الملفات التنفيذية كإصدار GitHub باستخدام رمز Actions الخاص بذلك المستودع. ولا يُخزَّن أي رمز وصول في الشيفرة المصدرية، ولا يحتاج المستخدمون النهائيون إليه.
+أنشئ مستودع GitHub عامًا وادفع إليه شجرة الشيفرة المصدرية هذه. يقوم سير العمل المضمَّن لنظام Windows بالبناء والاختبار عند طلبات السحب وعمليات الدفع إلى الفرع الرئيسي. كما تنشر علامة مثل `v0.5.2` الملفات التنفيذية كإصدار GitHub باستخدام رمز Actions الخاص بذلك المستودع. ولا يُخزَّن أي رمز وصول في الشيفرة المصدرية، ولا يحتاج المستخدمون النهائيون إليه.
 
 راجع [CONTRIBUTING.md](../../CONTRIBUTING.md) و[SECURITY.md](../../SECURITY.md) و[THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md). يخضع هذا المدير المستقل لترخيص MIT؛ أما مواد التعديل الأصلي فلها شروطها الخاصة.
 

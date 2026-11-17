@@ -2,12 +2,14 @@
 
 **Idioma:** [English](../USER_GUIDE.md) · [Italiano](USER_GUIDE.it.md) · [简体中文](USER_GUIDE.zh-Hans.md) · [हिन्दी](USER_GUIDE.hi.md) · **Español** · [Français](USER_GUIDE.fr.md) · [العربية](USER_GUIDE.ar.md) · [বাংলা](USER_GUIDE.bn.md) · [Português](USER_GUIDE.pt.md) · [Русский](USER_GUIDE.ru.md) · [اردو](USER_GUIDE.ur.md)
 
-Para el **gestor 0.5.1** en **Windows 10/11 x64**. Los nombres que se indican a continuación se basan en la interfaz en inglés y aquí se presentan traducidos; puedes elegir el idioma en la esquina superior derecha de la aplicación. Este es un gestor independiente de los proyectos originales, no una aplicación oficial de NVIDIA, AMD, Intel, ANR u OptiScaler.
+Para el **gestor 0.5.2** en **Windows 10/11 x64**. Los nombres que se indican a continuación se basan en la interfaz en inglés y aquí se presentan traducidos; puedes elegir el idioma en la esquina superior derecha de la aplicación. Este es un gestor independiente de los proyectos originales, no una aplicación oficial de NVIDIA, AMD, Intel, ANR u OptiScaler.
 
 **Contenido:** [Inicio rápido](#start) · [Seguridad](#safety) · [Descarga](#install) · [Elegir una tecnología](#choose-provider) · [Pantalla y botones](#screen) · [Primera instalación](#first-install) · [Comprobaciones](#checks) · [Ajustes de SM86](#sm86) · [Ajustes de ANR](#anr) · [Ajustes de OptiScaler](#optiscaler) · [Ajustes del juego](#in-game) · [Verificación](#verify) · [Actualizaciones](#updates) · [Desactivar y restaurar](#backup) · [Solución de problemas](#troubleshooting) · [Archivos y ayuda](#files) · [Glosario](#glossary) · [Fuentes](#sources)
 
 <a id="start"></a>
 ## 1. Inicio rápido: tu primera prueba
+
+Dentro de la aplicación, abre **Tutorial** y selecciona **Iniciar recorrido guiado** para seguir ocho pasos prácticos. Busca entre los temas, usa **?** junto a un ajuste o pulsa **F1** mientras su control tiene el foco. **Mostrar en el gestor** abre y resalta los controles correspondientes sin aplicar cambios.
 
 1. Cierra el juego. Elige un **juego de un jugador sin conexión**.
 2. Abre el gestor y deja que termine la comprobación del paquete de la tecnología seleccionada.
@@ -56,12 +58,14 @@ Elige en **Reescalado y generación de fotogramas**. En esta guía también se l
 
 HAGS y NVIDIA R580 **no son requisitos universales** que hereden ANR u OptiScaler. La **salida** DLSS nativa de OptiScaler sigue necesitando NVIDIA RTX y el entorno de ejecución DLSS del juego. OptiScaler no permite que todos los motores funcionen en todas las GPU.
 
-Los procedimientos revisados por el gestor 0.5.1 son **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** y **OptiScaler 0.9.5**. Una descarga más reciente del proyecto original puede seguir bloqueada hasta que se revisen sus requisitos modificados.
+Los procedimientos revisados por el gestor 0.5.2 son **SM86 0.4.1/0.4.2**, **ANR FG-V.B15/B17** y **OptiScaler 0.9.5**. Una descarga más reciente del proyecto original puede seguir bloqueada hasta que se revisen sus requisitos modificados.
 
 El gestor recuerda el proveedor seleccionado; **no** elige automáticamente el mejor para tu GPU. Selecciona una tecnología adecuada antes de interpretar un fallo de GPU.
 
 <a id="screen"></a>
 ## 5. Entiende la pantalla y todos los botones principales
+
+La pestaña **Tutorial** contiene esta guía completa sin conexión, con navegación por temas y búsqueda. El recorrido guiado permanece junto al gestor: **Atrás** y **Siguiente** recorren sus ocho pasos, **Leer la explicación completa** abre el tema correspondiente y **Cerrar recorrido guiado** termina el recorrido. Avanzar no marca las comprobaciones de compatibilidad como superadas; la instalación sigue requiriendo la revisión y confirmación habituales.
 
 ![Pantalla de gestión de juegos](../screenshot.png)
 
@@ -200,7 +204,7 @@ Para una primera prueba solo de reescalado, mantén **ambos campos desactivados 
 | **Intel XeSS Frame Generation** (`xefg`) | Requiere las funciones de GPU del motor, incluido soporte DP4a adecuado y condiciones apropiadas del juego/pantalla. No se activa para cualquier dispositivo Intel, AMD o NVIDIA solo porque se detecte su fabricante. El soporte de varios fotogramas tiene otros límites del proyecto original. |
 | **Nukem · FSR 3** (`nukems`) | Usa la ruta DLSSG-to-FSR3 incluida y revisada. Es obligatoria cuando la entrada seleccionada es Nukem. |
 
-El gestor 0.5.1 bloquea la FG seleccionada cuando detecta una ruta **DX11**. Para una ruta **Vulkan** detectada, la combinación FG permitida y revisada es **Nukem → Nukem**. Las demás rutas FG ofrecidas requieren DX12; si no se puede determinar la API, sigue siendo necesaria la confirmación dentro del juego. Estos controles no vuelven compatible una integración de juego no admitida.
+El gestor 0.5.2 bloquea la FG seleccionada cuando detecta una ruta **DX11**. Para una ruta **Vulkan** detectada, la combinación FG permitida y revisada es **Nukem → Nukem**. Las demás rutas FG ofrecidas requieren DX12; si no se puede determinar la API, sigue siendo necesaria la confirmación dentro del juego. Estos controles no vuelven compatible una integración de juego no admitida.
 
 ### Otros controles y ajustes avanzados
 
@@ -326,4 +330,4 @@ Los informes se guardan localmente y no se envían automáticamente. No hay cuen
 - [OptiScaler](https://github.com/optiscaler/OptiScaler) y su [wiki oficial](https://github.com/optiscaler/OptiScaler/wiki), de sus colaboradores.
 - [Descripción general del gestor](README.es.md) y [avisos de terceros](../../THIRD_PARTY_NOTICES.md).
 
-Esta guía describe los **controles expuestos por el gestor 0.5.1** y sus procedimientos de proveedor revisados. No es una garantía de compatibilidad de todos los juegos, una prueba de rendimiento ni un manual completo de cada opción de las superposiciones de los proyectos originales. Para funciones avanzadas exclusivas de esos proyectos, usa la documentación original de la versión correspondiente.
+Esta guía describe los **controles expuestos por el gestor 0.5.2** y sus procedimientos de proveedor revisados. No es una garantía de compatibilidad de todos los juegos, una prueba de rendimiento ni un manual completo de cada opción de las superposiciones de los proyectos originales. Para funciones avanzadas exclusivas de esos proyectos, usa la documentación original de la versión correspondiente.

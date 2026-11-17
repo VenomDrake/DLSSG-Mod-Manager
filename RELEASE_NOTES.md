@@ -1,24 +1,19 @@
-DLSSG Mod Manager 0.5.1 — standalone OptiScaler integration (stable).
+DLSSG Mod Manager 0.5.2 — interactive tutorial inside the manager (stable).
 
-Choose OptiScaler alongside DLSSG for SM86 and Apex Neural Rendering. This independent manager downloads the official stable OptiScaler release; it is not an official OptiScaler application.
+Open **Tutorial** in the manager to learn without leaving the app. The complete illustrated guide is bundled offline in all eleven interface languages: English, Italian, Simplified Chinese, Hindi, Spanish, French, Arabic, Bengali, Portuguese, Russian and Urdu.
 
-- Reviews stable OptiScaler v0.9.5 using its exact archive digest and 23-file manifest. The 7z reader is included in the manager; no separate extractor is needed. Setup scripts are never executed or installed.
-- Checks temporal-upscaler input files, the rendering executable, graphics API, Visual C++ prerequisites, selected backend requirements, conflicts, anti-cheat indicators, running games and disk space. Missing evidence requires review instead of a claim that the game is unsupported.
-- Exposes upscalers per API, FG input/output, DXGI spoofing, logging and seven loader names. FG starts disabled. The upstream Insert overlay provides advanced settings and output verification.
-- Uses verified backups and the existing transaction journal for install, update, settings, disable, provider switching and restore. Only reviewed individual payload files are owned; unrelated plugins and custom files are preserved. Unmanaged conflicting installations require review.
-- Checks the official repository for updates. A verified future download remains blocked until its installation recipe is reviewed. Existing games are changed only after the user chooses to apply the package.
-- Adds eleven-language interface and guides. Log diagnostics never treat a loaded DLL or an initialized swapchain as proof of successful upscaling or frame generation.
+- Follow the **eight-step guided tour** from technology selection to checks, settings, installation, in-game testing, log verification and recovery. Back/Next moves between the actual manager pages and highlights the relevant control. Advancing the tour does not pass a check or install anything.
+- Search every topic and setting, choose from eighteen chapters, follow internal links, and use previous/next navigation. Screenshots, option tables and explanations stay available without an internet connection.
+- Select **?** beside a setting or press **F1** while a control is focused to open its explanation. **Show in manager** returns to the relevant controls without changing settings, providers, packages or game files.
+- Includes full explanations of SM86, ANR and standalone OptiScaler settings, recommended first-test values, the three types of updates, backup history, disable versus restore, and common problems such as a grey 2× selector.
+- Uses the selected app language, including right-to-left layout for Arabic and Urdu. Tutorials and screenshots are embedded in the app, so the complete portable package keeps its existing file layout.
 
-This stable manager release includes the OptiScaler integration previously published in 0.5.0-opti-preview.1. Validation includes automated fixture tests, checks against the official package and installation/restore tests of the actual payload as data in a synthetic game directory. OptiScaler has not yet been tested in gameplay through this integration; backend and game compatibility must still be confirmed in the game.
+**Updating:** the normal stable update check offers **Update and restart** to existing manager installations (0.4.3 and later). This release is newer than 0.5.1 and is published as stable. Very old versions (0.4.2 and earlier) may need one manual update after the repository rename. Download the complete portable ZIP or the per-user Windows installer below.
 
-**Updating:** manager 0.4.3 and later can detect this stable release through their normal update check and offer **Update and restart**. Restart the manager to check immediately. Versions 0.4.2 and earlier may require one manual MSI or complete portable update because the repository was renamed. Updating the manager does not change mods in any game automatically.
+The integration of standalone OptiScaler introduced in 0.5.1 remains available alongside SM86 and ANR. Provider requirements, installation checks and confirmation remain in place. Manager updates do not apply mod updates to games automatically. ANR itself remains an upstream beta.
 
-Version 0.5.1 is newer than the preview's Windows Installer version 0.5.0, so both stable and preview installations can upgrade. The 0.5.0-opti-preview.1 release remains a historical prerelease.
+**Online games: risk of a ban.** Use injected mods only in offline single-player games. No anti-cheat bypass or protection against bans is provided. Detected requirements and a loaded DLL do not guarantee successful upscaling or frame generation in gameplay.
 
-Download the complete portable ZIP or the per-user Windows installer from this release. Begin with automatic upscaling and frame generation disabled, then inspect OptiScaler's active backend through its Insert overlay in an offline single-player game.
+The [complete web tutorial](https://github.com/VenomDrake/DLSSG-Mod-Manager/blob/main/docs/USER_GUIDE.md) also links all eleven translations.
 
-Stable OptiScaler 0.9.5 and the custom OptiScaler loader bundled by ANR are different recipes. Managed switches replace them through backup and restore; an external ANR addon installation must be restored before switching to standalone OptiScaler.
-
-**Online games: risk of a ban.** Use injected mods only in offline single-player games. No anti-cheat bypass or protection against bans is provided.
-
-Credits: sdli1995 and contributors (SM86), Coldwood1026 (SM75), Apex Compute (ANR), and OptiScaler contributors. Upstream DLLs and models retain their authors' terms and are downloaded at runtime, not bundled with this manager. The manager EXE and MSI remain unsigned.
+Credits: sdli1995 and contributors (SM86), Coldwood1026 (SM75), Apex Compute (ANR), and OptiScaler contributors. This is an independent manager. Upstream DLLs/models retain their authors' terms and are downloaded at runtime. The manager EXE and MSI remain unsigned.

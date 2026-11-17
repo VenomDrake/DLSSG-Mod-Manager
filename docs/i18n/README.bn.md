@@ -12,11 +12,13 @@
 - **RTX 20 / SM75 অভিযোজন:** [Coldwood1026](https://github.com/Coldwood1026), যাঁর অবদানের উল্লেখ [মূল প্রকল্পের বিজ্ঞপ্তিতে](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt) রয়েছে।
 - **এই ম্যানেজার:** ইনস্টলেশন ও ত্রুটি নির্ণয়ের জন্য একটি স্বতন্ত্র ইন্টারফেস। মূল মডের কৃতিত্ব তার লেখকদেরই; এই ম্যানেজার তাঁদের কাজকে নিজের বলে দাবি করে না এবং কোনো আনুষ্ঠানিক অনুমোদনের দাবিও করে না।
 
-## স্থিতিশীল ম্যানেজার 0.5.1
+## স্থিতিশীল ম্যানেজার 0.5.2
 
-[স্থিতিশীল v0.5.1 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). ম্যানেজারটি স্থিতিশীল রিলিজ। **ANR নিজে এখনও মূল প্রকল্পের বিটা FG-V.B17**; বিটা লেবেলটি প্রযুক্তির জন্য, ম্যানেজারের এই সংস্করণের জন্য নয়।
+[স্থিতিশীল v0.5.2 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi). ম্যানেজারটি স্থিতিশীল রিলিজ। **ANR নিজে এখনও মূল প্রকল্পের বিটা FG-V.B17**; বিটা লেবেলটি প্রযুক্তির জন্য, ম্যানেজারের এই সংস্করণের জন্য নয়।
 
 **0.5.1** সংস্করণে SM86 ও ANR-এর পাশাপাশি স্বাধীন OptiScaler যোগ হয়েছে।
+
+**0.5.2** সংস্করণে অ্যাপের ভেতরে অফলাইন ইন্টার‌্যাকটিভ **টিউটোরিয়াল** যোগ হয়েছে। এতে অনুসন্ধান, প্রথম ইনস্টলেশনের জন্য আট ধাপের ট্যুর, প্রতিটি সেটিংয়ের পাশে **?** এবং **F1** দিয়ে প্রসঙ্গ অনুযায়ী সহায়তা আছে।
 
 ### SM86 ও ANR-এর প্রয়োজনীয়তা
 
@@ -32,9 +34,9 @@
 
 ## স্বাধীন OptiScaler
 
-**স্থিতিশীল ম্যানেজার 0.5.1-এ স্বাধীন OptiScaler সংযোজন রয়েছে।**
+**স্থিতিশীল ম্যানেজার 0.5.2-এ স্বাধীন OptiScaler সংযোজন রয়েছে।**
 
-[স্থিতিশীল সংস্করণ ডাউনলোড করুন v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[স্থিতিশীল সংস্করণ ডাউনলোড করুন v0.5.2](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 ম্যানেজার 0.4.3 ও নতুন সংস্করণ স্বয়ংক্রিয়ভাবে আপডেট খোঁজে এবং বিজ্ঞপ্তি দেখায়; ম্যানেজার আপডেট নামানো ও ইনস্টলে আপনার সম্মতি প্রয়োজন। রিপোজিটরির নাম বদলের কারণে 0.4.2 ও পুরোনো সংস্করণে প্রথমে একবার ম্যানুয়াল আপডেট লাগতে পারে। ম্যানেজার আপডেট গেমের মড বদলায় না।
 
@@ -55,9 +57,12 @@ OptiScaler লগ ডায়াগনস্টিক লোডিং দেখ
 
 ![ANR মোডের সেটিংস](../settings-anr.png)
 
+![ইন্টার‌্যাকটিভ টিউটোরিয়াল ও নির্দেশিত ট্যুর](../tutorial.png)
+
 ## যা করতে পারে
 
-- মূল গাঢ় নীল ও মিন্ট-সবুজ রং বজায় রেখে ইন্টারফেসকে তিনটি স্পষ্ট পৃষ্ঠায় সাজায়: **গেম ব্যবস্থাপনা**, **মডের সেটিংস** এবং **সমস্যা নির্ণয়**।
+- মূল গাঢ় নীল ও মিন্ট-সবুজ রং বজায় রেখে ইন্টারফেসকে চারটি স্পষ্ট পৃষ্ঠায় সাজায়: **গেম ব্যবস্থাপনা**, **মডের সেটিংস**, **সমস্যা নির্ণয়** এবং ইন্টার‌্যাকটিভ **টিউটোরিয়াল**।
+- **টিউটোরিয়াল:** সম্পূর্ণ নির্দেশিকা অফলাইনে পড়ুন, সেটিংস খুঁজুন, আট ধাপের নির্দেশিত ট্যুর শুরু করুন বা প্রসঙ্গ অনুযায়ী ব্যাখ্যার জন্য **? / F1** ব্যবহার করুন।
 - চালুর সময় হার্ডওয়্যার ও গেম বিশ্লেষণের আগে সর্বশেষ আনুষ্ঠানিক **সম্পূর্ণ রিলিজ প্যাকেজ** পরীক্ষা করে। নতুন প্যাকেজ স্বয়ংক্রিয়ভাবে ডাউনলোড করে এবং যাচাইকৃত ক্যাশ ইতিমধ্যে হালনাগাদ থাকলে জানায়।
 - রিলিজ ID, অ্যাসেট ID ও SHA-256 তুলনা করে, একই সংস্করণ নম্বর রেখে অ্যাসেট বদলে দেওয়া হলেও তা পরীক্ষা করে। অফলাইন অবস্থাকে “সর্বশেষ সংস্করণ” থেকে আলাদা করে দেখায়।
 - বেছে নেওয়া প্রযুক্তি অনুযায়ী Windows x64, GPU আর্কিটেকচার ও ড্রাইভার যাচাই করে: SM86-এর জন্য শুধু NVIDIA, ANR-এর জন্য সমর্থিত NVIDIA বা AMD GPU। SM86-এর জন্য হার্ডওয়্যার-ত্বরণযুক্ত GPU শিডিউলিং (HAGS) প্রয়োজন; এটি সক্রিয় হওয়ার নিশ্চয়তা শুধু গেমের রানটাইম লগ থেকে পাওয়া যায়। মূল ANR প্রকল্প HAGS-এর প্রয়োজনীয়তা উল্লেখ করেনি।
@@ -72,7 +77,7 @@ OptiScaler লগ ডায়াগনস্টিক লোডিং দেখ
 
 ## ডাউনলোড ও ব্যবহার
 
-[স্থিতিশীল v0.5.1 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+[স্থিতিশীল v0.5.2 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.2): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.2/DLSSGModManager-Setup.msi).
 
 পোর্টেবল প্যাকেজের `DLSSGModManager.exe` চালান, অথবা শুধু বর্তমান ব্যবহারকারীর জন্য ইনস্টল হওয়া `DLSSGModManager-Setup.msi` চালান। প্রকাশিত বাইনারি চালাতে আলাদাভাবে .NET, Python বা CUDA Toolkit ইনস্টল করতে হয় না।
 
@@ -163,7 +168,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## নিজের ফোর্ক প্রকাশ করুন
 
-একটি প্রকাশ্য GitHub রিপোজিটরি তৈরি করে এই source tree push করুন। সঙ্গে থাকা Windows workflow pull request এবং মূল branch-এ push-এর সময় বিল্ড ও পরীক্ষা চালায়। `v0.5.1`-এর মতো tag দিলে একই রিপোজিটরির Actions token ব্যবহার করে বাইনারিগুলো GitHub release হিসেবেও প্রকাশ করা হয়। source-এ কোনো token সংরক্ষণ করা হয় না এবং শেষ ব্যবহারকারীর token প্রয়োজন হয় না।
+একটি প্রকাশ্য GitHub রিপোজিটরি তৈরি করে এই source tree push করুন। সঙ্গে থাকা Windows workflow pull request এবং মূল branch-এ push-এর সময় বিল্ড ও পরীক্ষা চালায়। `v0.5.2`-এর মতো tag দিলে একই রিপোজিটরির Actions token ব্যবহার করে বাইনারিগুলো GitHub release হিসেবেও প্রকাশ করা হয়। source-এ কোনো token সংরক্ষণ করা হয় না এবং শেষ ব্যবহারকারীর token প্রয়োজন হয় না।
 
 [CONTRIBUTING.md](../../CONTRIBUTING.md), [SECURITY.md](../../SECURITY.md) এবং [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) দেখুন। এই স্বতন্ত্র ম্যানেজার MIT লাইসেন্সে প্রকাশিত; মূল প্রকল্পের মড উপকরণের নিজস্ব শর্ত প্রযোজ্য।
 
