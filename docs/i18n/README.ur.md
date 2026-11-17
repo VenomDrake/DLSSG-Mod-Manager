@@ -4,7 +4,7 @@
 
 <div dir="rtl">
 
-[DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86) اور [Apex Neural Rendering](https://github.com/apex-compute/ANR) کے لیے Windows ڈیسک ٹاپ معاون: PC اور گیم کی جانچ کریں، تصدیق شدہ موڈ پیکیج نصب کریں اور تبدیلیوں کی ایسی تاریخ محفوظ رکھیں جس سے پچھلی حالت بحال کی جا سکے۔
+[DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86)، [Apex Neural Rendering](https://github.com/apex-compute/ANR) اور [OptiScaler](https://github.com/optiscaler/OptiScaler) کے لیے Windows ڈیسک ٹاپ معاون: PC اور گیم کی جانچ کریں، تصدیق شدہ موڈ پیکیج نصب کریں اور تبدیلیوں کی ایسی تاریخ محفوظ رکھیں جس سے پچھلی حالت بحال کی جا سکے۔
 
 ## اعترافِ خدمات
 
@@ -12,13 +12,15 @@
 - **RTX 20 / SM75 موافقت:** [Coldwood1026](https://github.com/Coldwood1026)، جن کی خدمات [اصل منصوبے کے نوٹس](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt) میں تسلیم کی گئی ہیں۔
 - **یہ مینیجر:** تنصیب اور تشخیص کے لیے ایک آزاد انٹرفیس ہے۔ اصل موڈ کا سہرا اس کے مصنفین کو جاتا ہے؛ مینیجر ان کے کام کی ملکیت یا کسی سرکاری توثیق کا دعویٰ نہیں کرتا۔
 
-## ANR انضمام — مستحکم مینیجر 0.4.5
+## مستحکم مینیجر 0.5.1
 
-[مستحکم v0.4.5 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). مینیجر ایک مستحکم ریلیز ہے۔ **ANR خود اب بھی اصل پروجیکٹ کا بیٹا FG-V.B17 ہے**؛ بیٹا کا لیبل اس ٹیکنالوجی کے لیے ہے، مینیجر کی اس ریلیز کے لیے نہیں۔
+[مستحکم v0.5.1 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). مینیجر ایک مستحکم ریلیز ہے۔ **ANR خود اب بھی اصل پروجیکٹ کا بیٹا FG-V.B17 ہے**؛ بیٹا کا لیبل اس ٹیکنالوجی کے لیے ہے، مینیجر کی اس ریلیز کے لیے نہیں۔
 
-ورژن **0.4.5** میں ایپ اور Windows کے لیے مینیجر کا آئیکن تازہ کیا گیا ہے۔
+ورژن **0.5.1** میں SM86 اور ANR کے ساتھ آزاد OptiScaler شامل کیا گیا ہے۔
 
-- **فریم جنریشن ٹیکنالوجی** منتخب کریں: اصل SM86 (NVIDIA DLSS-G / XeSS-FG) یا **Apex Neural Rendering · بیٹا**۔ مینیجر **NVIDIA GTX 16 / RTX 20–50** اور **AMD Radeon RX 5000/6000/7000/9000** پر ANR کی معاونت کرتا ہے؛ **GTX 10 / Pascal معاون نہیں**۔ گیم کو **Direct3D 12 یا Vulkan** کے ذریعے مقامی DLSS Frame Generation فراہم کرنا چاہیے۔
+### SM86 اور ANR کی ضروریات
+
+- **اپ اسکیلنگ اور فریم جنریشن** منتخب کریں: اصل SM86 (NVIDIA DLSS-G / XeSS-FG) یا **Apex Neural Rendering · بیٹا**۔ مینیجر **NVIDIA GTX 16 / RTX 20–50** اور **AMD Radeon RX 5000/6000/7000/9000** پر ANR کی معاونت کرتا ہے؛ **GTX 10 / Pascal معاون نہیں**۔ گیم کو **Direct3D 12 یا Vulkan** کے ذریعے مقامی DLSS Frame Generation فراہم کرنا چاہیے۔
 - یہ مینیجر ANR کی معاونت صرف **Windows 10/11 x64** پر کرتا ہے؛ **Linux، Steam Deck اور Intel Arc اس ریلیز کے معاون دائرے میں نہیں ہیں**۔ AMD کی معاونت خودکار ٹیسٹ سے جانچی گئی ہے، AMD ہارڈویئر پر گیم چلا کر نہیں۔ حقیقی فریم جنریشن کی تصدیق گیم کے لاگ میں کریں۔
 - OptiScaler نہ ہو تو مینیجر **Full**، اور موجودہ ہم آہنگ OptiScaler کے لیے **Addon** منتخب کرتا ہے۔ پیکیج اصل پروجیکٹ کی سرکاری ریلیز سے براہ راست ڈاؤن لوڈ اور SHA-256 سے جانچے جاتے ہیں؛ ANR اور OptiScaler کی بائنریز یا ماڈل **مینیجر کے ساتھ شامل نہیں**۔ جانچا گیا ANR طریقہ **FG-V.B17** ہے؛ مستقبل کے نامعلوم طریقے مسدود رہتے ہیں۔ ANR منتخب ہونے پر مینیجر شروع ہوتے وقت اور ہر بار ANR منتخب کرنے پر سرکاری ANR ریپوزٹری کی جانچ کرتا ہے۔ وہ نئی ریلیز خود ڈاؤن لوڈ کرتا ہے یا بتاتا ہے کہ کیش میں موجود ریلیز پہلے ہی تازہ ترین ہے۔ ہر گیم صرف تب اپ ڈیٹ ہوتی ہے جب آپ جانچ اور بیک اپ کے بعد اپ ڈیٹ کا بٹن دباتے ہیں۔
 - انسٹال یا فراہم کنندہ بدلنے سے پہلے گیم بند کریں۔ مینیجر تضادات جانچتا، اپنی فائلوں کا ریکارڈ رکھتا اور تبدیلی سے پہلے قابل بحالی بیک اپ بناتا ہے۔ تبدیلی، غیرفعالی اور بحالی مشترک جرنل اور تاریخ استعمال کرتے ہیں؛ نامعلوم یا باہر سے بدلی فائلیں محفوظ رہتی ہیں۔ Addon موجودہ OptiScaler لوڈر محفوظ رکھتا ہے۔ تبدیلی واپس لینے کے لیے **پچھلی حالت بحال کریں** استعمال کریں۔
@@ -30,9 +32,13 @@
 
 ## آزاد OptiScaler
 
-**عوامی پری ریلیز: OptiScaler انضمام زیرِ آزمائش ہے۔ مستحکم مینیجر 0.4.5 اوپر دستیاب ہے۔ مستحکم تنصیبات یہ پری ریلیز خودکار طور پر حاصل نہیں کرتیں۔**
+**مستحکم مینیجر 0.5.1 میں آزاد OptiScaler انضمام شامل ہے۔**
 
-[پری ریلیز ڈاؤن لوڈ کریں v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
+[مستحکم ورژن ڈاؤن لوڈ کریں v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+
+مینیجر 0.4.3 اور نئے ورژن اپ ڈیٹ خودکار طور پر جانچتے اور اطلاع دکھاتے ہیں؛ مینیجر اپ ڈیٹ ڈاؤن لوڈ اور نصب کرنے کے لیے آپ کی رضامندی چاہیے۔ ریپوزٹری کا نام بدلنے کی وجہ سے 0.4.2 اور پرانے ورژن کو پہلے ایک دستی اپ ڈیٹ درکار ہو سکتا ہے۔ مینیجر اپ ڈیٹ گیم کے موڈ نہیں بدلتا۔
+
+تنصیب اور بحالی خودکار ٹیسٹ سے جانچی گئی ہیں۔ ہم نے آزاد OptiScaler کو ابھی حقیقی گیم پلے میں تصدیق نہیں کیا؛ اپنے گیم میں منتخب بیک اینڈ اور بصری معیار جانچیں۔
 
 [آفیشل OptiScaler](https://github.com/optiscaler/OptiScaler) کے آزاد انضمام کے لیے **OptiScaler · اپ اسکیلنگ / FG** منتخب کریں۔ **یہ مینیجر آفیشل OptiScaler ایپ نہیں ہے۔** جانچا گیا پیکیج مستحکم **v0.9.5** ہے؛ v10 nightly/master اور ANR کا لوڈر مختلف طریقے استعمال کرتے ہیں۔
 
@@ -43,7 +49,7 @@
 
 OptiScaler لاگ تشخیصی لوڈنگ دکھاتا ہے، **بنائے گئے فریم یا بہتر کارکردگی کا ثبوت نہیں**۔ گیم میں فعال بیک اینڈ، اعداد اور تصویر کا معیار دیکھیں۔ موڈ صرف **آف لائن واحد کھلاڑی گیمز** میں استعمال کریں؛ اینٹی چیٹ پابندی لگا سکتا ہے۔
 
-![OptiScaler پیش منظر کی ترتیبات](../settings-optiscaler.png)
+![OptiScaler کی ترتیبات](../settings-optiscaler.png)
 
 ![ایپ کا پیش منظر](../screenshot.png)
 
@@ -66,7 +72,7 @@ OptiScaler لاگ تشخیصی لوڈنگ دکھاتا ہے، **بنائے گئ�
 
 ## ڈاؤن لوڈ اور استعمال
 
-[مستحکم v0.4.5 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
+[مستحکم v0.5.1 ڈاؤن لوڈ کریں](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
 
 پورٹیبل پیکیج سے `DLSSGModManager.exe` چلائیں یا صرف موجودہ صارف کے لیے نصب ہونے والا `DLSSGModManager-Setup.msi` چلائیں۔ شائع شدہ بائنریز کے لیے الگ سے .NET، Python یا CUDA Toolkit نصب کرنے کی ضرورت نہیں ہے۔
 
@@ -157,7 +163,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## اپنا فورک شائع کریں
 
-ایک عوامی GitHub repository بنائیں اور اس source tree کو push کریں۔ شامل Windows workflow، pull requests اور مرکزی branch پر pushes کے لیے بلڈ اور ٹیسٹ کرتا ہے۔ `v0.4.5` جیسا tag اسی repository کے Actions token سے بائنریز کو GitHub release کے طور پر بھی شائع کرتا ہے۔ source میں کوئی token محفوظ نہیں ہوتا اور آخری صارفین کو token درکار نہیں ہے۔
+ایک عوامی GitHub repository بنائیں اور اس source tree کو push کریں۔ شامل Windows workflow، pull requests اور مرکزی branch پر pushes کے لیے بلڈ اور ٹیسٹ کرتا ہے۔ `v0.5.1` جیسا tag اسی repository کے Actions token سے بائنریز کو GitHub release کے طور پر بھی شائع کرتا ہے۔ source میں کوئی token محفوظ نہیں ہوتا اور آخری صارفین کو token درکار نہیں ہے۔
 
 [CONTRIBUTING.md](../../CONTRIBUTING.md)، [SECURITY.md](../../SECURITY.md) اور [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) دیکھیں۔ یہ آزاد مینیجر MIT لائسنس کے تحت ہے؛ اصل منصوبے کے موڈ مواد پر اس کی اپنی شرائط لاگو ہوتی ہیں۔
 

@@ -4,7 +4,7 @@
 
 <div dir="rtl">
 
-تطبيق مكتبي لنظام Windows يرافق مشروعي [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86) و[Apex Neural Rendering](https://github.com/apex-compute/ANR): يفحص الكمبيوتر واللعبة، ويثبّت حزمة تعديل تم التحقق منها، ويحتفظ بسجل تغييرات يمكن الرجوع عنه.
+تطبيق مكتبي لنظام Windows يرافق مشروعات [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86)، [Apex Neural Rendering](https://github.com/apex-compute/ANR) و[OptiScaler](https://github.com/optiscaler/OptiScaler): يفحص الكمبيوتر واللعبة، ويثبّت حزمة تعديل تم التحقق منها، ويحتفظ بسجل تغييرات يمكن الرجوع عنه.
 
 ## الشكر ونسب العمل
 
@@ -12,13 +12,15 @@
 - **التكييف لبطاقات RTX 20 / SM75:** [Coldwood1026](https://github.com/Coldwood1026)، المذكور في [إشعارات المشروع الأصلي](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **هذا المدير:** واجهة مستقلة للتثبيت والتشخيص. يظل الفضل في التعديل الأصلي لمؤلفيه؛ ولا ينسب المدير أعمالهم إلى نفسه أو يدّعي تأييدًا رسميًا منهم.
 
-## دمج ANR — المدير المستقر 0.4.5
+## المدير المستقر 0.5.1
 
-[تنزيل الإصدار المستقر v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). المدير إصدار مستقر. **يبقى ANR نفسه نسخة تجريبية من المشروع الأصلي، FG-V.B17**؛ وتشير علامة «تجريبي» إلى هذه التقنية لا إلى إصدار المدير.
+[تنزيل الإصدار المستقر v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). المدير إصدار مستقر. **يبقى ANR نفسه نسخة تجريبية من المشروع الأصلي، FG-V.B17**؛ وتشير علامة «تجريبي» إلى هذه التقنية لا إلى إصدار المدير.
 
-يقدّم الإصدار **0.4.5** أيقونة محدّثة للمدير داخل التطبيق وفي Windows.
+يضيف الإصدار **0.5.1** OptiScaler المستقل إلى جانب SM86 وANR.
 
-- اختر **تقنية توليد الإطارات**: مسار SM86 الأصلي (NVIDIA DLSS-G / XeSS-FG)، أو **Apex Neural Rendering · تجريبي**. يدعم المدير ANR على **NVIDIA GTX 16 / RTX 20–50** و**AMD Radeon RX 5000/6000/7000/9000**؛ **GTX 10 / Pascal غير مدعومة**. يجب أن توفر اللعبة DLSS Frame Generation الأصلي عبر **Direct3D 12 أو Vulkan**.
+### متطلبات SM86 وANR
+
+- اختر **رفع الدقة وتوليد الإطارات**: مسار SM86 الأصلي (NVIDIA DLSS-G / XeSS-FG)، أو **Apex Neural Rendering · تجريبي**. يدعم المدير ANR على **NVIDIA GTX 16 / RTX 20–50** و**AMD Radeon RX 5000/6000/7000/9000**؛ **GTX 10 / Pascal غير مدعومة**. يجب أن توفر اللعبة DLSS Frame Generation الأصلي عبر **Direct3D 12 أو Vulkan**.
 - يدعم هذا المدير ANR على **Windows 10/11 x64** فقط؛ **لا يشمل نطاق دعم هذا الإصدار Linux أو Steam Deck أو Intel Arc**. جرى فحص دعم AMD باختبارات آلية، دون اختبار فعلي داخل لعبة على أجهزة AMD. أكّد توليد الإطارات الفعلي في سجل اللعبة.
 - يختار المدير **Full** عند غياب OptiScaler أو **Addon** لتثبيت OptiScaler موجود ومتوافق. تُنزّل الحزم مباشرة من الإصدار الرسمي وتُفحص باستخدام SHA-256؛ **لا تُضمّن ملفات ANR وOptiScaler التنفيذية أو النماذج مع المدير**. طريقة ANR المراجعة هي **FG-V.B17**؛ وتبقى الطرق المستقبلية المجهولة محظورة. يفحص المدير مستودع ANR الرسمي عند بدء التشغيل إذا كان ANR محددًا، وكلما اخترت ANR. ينزّل الإصدار الجديد تلقائيًا أو يوضح أن الإصدار المخزّن هو الأحدث بالفعل. لا تُحدَّث أي لعبة إلا عند الضغط على إجراء التحديث، بعد الفحوصات والنسخ الاحتياطي.
 - أغلق اللعبة قبل التثبيت أو التبديل. يفحص المدير التعارضات، ويسجل الملفات التي يديرها، وينشئ نسخًا قابلة للاستعادة قبل التغيير. يستخدم تبديل الموفّر والتعطيل والاستعادة سجل معاملات وتاريخًا مشتركًا؛ وتُحمى الملفات المجهولة أو المعدلة خارجيًا. يحافظ Addon على محمّل OptiScaler الموجود. استخدم **استعادة الحالة السابقة** للتراجع عن التبديل.
@@ -30,9 +32,13 @@
 
 ## OptiScaler المستقل
 
-**إصدار تمهيدي عام: دمج OptiScaler قيد الاختبار. يبقى المدير المستقر 0.4.5 متاحًا أعلاه. لا تتلقى التركيبات المستقرة هذا الإصدار التمهيدي تلقائيًا.**
+**يتضمن المدير المستقر 0.5.1 دمج OptiScaler المستقل.**
 
-[تنزيل الإصدار التمهيدي v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
+[تنزيل الإصدار المستقر v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+
+يفحص المدير 0.4.3 والإصدارات الأحدث التحديثات تلقائيًا ويعرض إشعارًا؛ يتطلب تنزيل تحديث المدير وتثبيته موافقتك. قد تحتاج الإصدارات 0.4.2 والأقدم إلى تحديث يدوي أولي بسبب إعادة تسمية المستودع. تحديثات المدير لا تغيّر تعديلات الألعاب.
+
+تم التحقق من التثبيت والاستعادة باختبارات آلية. لم نتحقق بعد من OptiScaler المستقل أثناء لعب فعلي؛ تحقق من المحرك المختار وجودة الصورة في لعبتك.
 
 اختر **OptiScaler · رفع الدقة / توليد الإطارات** للدمج المستقل مع [OptiScaler الرسمي](https://github.com/optiscaler/OptiScaler). **هذا المدير ليس تطبيقًا رسميًا لـ OptiScaler.** الحزمة المراجعة هي المستقرة **v0.9.5**؛ فرع v10 nightly/master ومحمّل ANR يستخدمان إجراءات مختلفة.
 
@@ -43,7 +49,7 @@
 
 سجل OptiScaler يثبت التحميل التشخيصي، **ولا يثبت إطارات مولدة أو تحسن الأداء**. تحقق من المحرك والإحصاءات والصورة داخل اللعبة. استخدم التعديلات فقط في **ألعاب اللاعب الواحد دون اتصال**؛ قد تؤدي أنظمة مكافحة الغش إلى الحظر.
 
-![إعدادات معاينة OptiScaler](../settings-optiscaler.png)
+![إعدادات OptiScaler](../settings-optiscaler.png)
 
 ![معاينة التطبيق](../screenshot.png)
 
@@ -66,7 +72,7 @@
 
 ## التنزيل والاستخدام
 
-[تنزيل الإصدار المستقر v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
+[تنزيل الإصدار المستقر v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
 
 شغّل `DLSSGModManager.exe` من الحزمة المحمولة، أو شغّل `DLSSGModManager-Setup.msi` لتثبيته للمستخدم الحالي. لا تحتاج الملفات التنفيذية المنشورة إلى تثبيت .NET أو Python أو CUDA Toolkit بصورة منفصلة.
 
@@ -157,7 +163,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## نشر نسختك المتفرعة
 
-أنشئ مستودع GitHub عامًا وادفع إليه شجرة الشيفرة المصدرية هذه. يقوم سير العمل المضمَّن لنظام Windows بالبناء والاختبار عند طلبات السحب وعمليات الدفع إلى الفرع الرئيسي. كما تنشر علامة مثل `v0.4.5` الملفات التنفيذية كإصدار GitHub باستخدام رمز Actions الخاص بذلك المستودع. ولا يُخزَّن أي رمز وصول في الشيفرة المصدرية، ولا يحتاج المستخدمون النهائيون إليه.
+أنشئ مستودع GitHub عامًا وادفع إليه شجرة الشيفرة المصدرية هذه. يقوم سير العمل المضمَّن لنظام Windows بالبناء والاختبار عند طلبات السحب وعمليات الدفع إلى الفرع الرئيسي. كما تنشر علامة مثل `v0.5.1` الملفات التنفيذية كإصدار GitHub باستخدام رمز Actions الخاص بذلك المستودع. ولا يُخزَّن أي رمز وصول في الشيفرة المصدرية، ولا يحتاج المستخدمون النهائيون إليه.
 
 راجع [CONTRIBUTING.md](../../CONTRIBUTING.md) و[SECURITY.md](../../SECURITY.md) و[THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md). يخضع هذا المدير المستقل لترخيص MIT؛ أما مواد التعديل الأصلي فلها شروطها الخاصة.
 

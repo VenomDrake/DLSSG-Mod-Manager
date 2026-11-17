@@ -2,7 +2,7 @@
 
 **Leer en:** [English](../../README.md) · [Italiano](README.it.md) · [简体中文](README.zh-Hans.md) · [हिन्दी](README.hi.md) · **Español** · [Français](README.fr.md) · [العربية](README.ar.md) · [বাংলা](README.bn.md) · [Português](README.pt.md) · [Русский](README.ru.md) · [اردو](README.ur.md)
 
-Una aplicación de escritorio para Windows que complementa [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86) y [Apex Neural Rendering](https://github.com/apex-compute/ANR): comprueba el PC y el juego, instala un paquete verificado del mod y conserva un historial de cambios que permite recuperar el estado anterior.
+Una aplicación de escritorio para Windows que complementa [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86), [Apex Neural Rendering](https://github.com/apex-compute/ANR) y [OptiScaler](https://github.com/optiscaler/OptiScaler): comprueba el PC y el juego, instala un paquete verificado del mod y conserva un historial de cambios que permite recuperar el estado anterior.
 
 ## Créditos
 
@@ -10,13 +10,15 @@ Una aplicación de escritorio para Windows que complementa [DLSSG for SM86](http
 - **Adaptación para RTX 20 / SM75:** [Coldwood1026](https://github.com/Coldwood1026), reconocido en los [avisos del proyecto original](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt).
 - **Este gestor:** una interfaz independiente de instalación y diagnóstico. El mérito del mod original corresponde a sus autores; el gestor no se atribuye su trabajo ni afirma tener su aprobación oficial.
 
-## Integración ANR — gestor estable 0.4.5
+## Gestor estable 0.5.1
 
-[Descarga la versión estable v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [ZIP portátil](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [instalador de Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). El gestor es una versión estable. **ANR sigue siendo la beta FG-V.B17 del proyecto original**; la etiqueta Beta se refiere a esa tecnología, no a esta versión del gestor.
+[Descarga la versión estable v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP portátil](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [instalador de Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). El gestor es una versión estable. **ANR sigue siendo la beta FG-V.B17 del proyecto original**; la etiqueta Beta se refiere a esa tecnología, no a esta versión del gestor.
 
-La versión **0.4.5** renueva el icono del gestor en la aplicación y en Windows.
+La versión **0.5.1** añade OptiScaler independiente junto a SM86 y ANR.
 
-- Elige **Tecnología de generación de fotogramas**: SM86 original (NVIDIA DLSS-G / XeSS-FG) o **Apex Neural Rendering · Beta**. El gestor admite ANR en **NVIDIA GTX 16 / RTX 20–50** y **AMD Radeon RX 5000/6000/7000/9000**; **GTX 10 / Pascal no es compatible**. El juego debe ofrecer DLSS Frame Generation nativo mediante **Direct3D 12 o Vulkan**.
+### Requisitos de SM86 y ANR
+
+- Elige **Reescalado y generación de fotogramas**: SM86 original (NVIDIA DLSS-G / XeSS-FG) o **Apex Neural Rendering · Beta**. El gestor admite ANR en **NVIDIA GTX 16 / RTX 20–50** y **AMD Radeon RX 5000/6000/7000/9000**; **GTX 10 / Pascal no es compatible**. El juego debe ofrecer DLSS Frame Generation nativo mediante **Direct3D 12 o Vulkan**.
 - Este gestor admite ANR solo en **Windows 10/11 x64**; **Linux, Steam Deck e Intel Arc quedan fuera del alcance compatible de esta versión**. La compatibilidad con AMD se comprobó mediante pruebas automáticas, sin una prueba en el juego con hardware AMD. Confirma la generación real en el registro del juego.
 - El gestor elige **Full** si el juego no tiene OptiScaler o **Addon** para una instalación OptiScaler compatible. Descarga los paquetes directamente de la versión oficial y verifica SHA-256; los binarios y modelos ANR y OptiScaler **no se incluyen con el gestor**. La receta ANR revisada es **FG-V.B17**; las futuras recetas desconocidas quedan bloqueadas. El gestor comprueba el repositorio oficial de ANR al iniciar si ANR está seleccionado y cada vez que eliges ANR. Descarga automáticamente una versión nueva o indica que la versión en caché ya es la última. Cada juego se actualiza solo al pulsar la acción de actualización, tras las comprobaciones y la copia de seguridad.
 - Cierra el juego antes de instalar o cambiar. El gestor verifica conflictos, registra los archivos gestionados y crea copias recuperables antes de modificar. El cambio de proveedor, la desactivación y la restauración comparten diario e historial; los archivos desconocidos o modificados externamente están protegidos. Addon conserva el cargador OptiScaler existente. Usa **Restaurar estado anterior** para deshacer el cambio.
@@ -28,9 +30,13 @@ Activa **NVIDIA DLSS Frame Generation** en el juego. El selector **2×** gris o 
 
 ## OptiScaler independiente
 
-**Versión preliminar pública: la integración OptiScaler está en pruebas. El gestor estable 0.4.5 sigue disponible arriba. Las instalaciones estables no reciben esta versión preliminar automáticamente.**
+**El gestor estable 0.5.1 incluye la integración independiente de OptiScaler.**
 
-[Descargar versión preliminar v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [ZIP portátil](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [instalador de Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
+[Descargar versión estable v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+
+El gestor 0.4.3 y posteriores comprueban automáticamente las actualizaciones y muestran un aviso; descargar e instalar la actualización del gestor exige tu consentimiento. La versión 0.4.2 y anteriores pueden necesitar una actualización manual inicial por el cambio de nombre del repositorio. Actualizar el gestor no modifica las mods de los juegos.
+
+La instalación y la recuperación se comprobaron mediante pruebas automáticas. Todavía no hemos validado OptiScaler independiente en una partida real; comprueba el motor y la calidad visual en tu juego.
 
 Elige **OptiScaler · Reescalado / FG** para integrar [OptiScaler oficial](https://github.com/optiscaler/OptiScaler). **Este gestor no es una aplicación oficial de OptiScaler.** El paquete revisado es el estable **v0.9.5**; la rama v10 nightly/master y el cargador incluido en ANR usan procedimientos distintos.
 
@@ -41,7 +47,7 @@ Elige **OptiScaler · Reescalado / FG** para integrar [OptiScaler oficial](https
 
 El registro OptiScaler acredita carga diagnóstica, **no fotogramas generados ni mejoras de rendimiento**. Comprueba el motor activo, las estadísticas y la calidad dentro del juego. Usa mods solo en **juegos de un jugador sin conexión**; el anti-cheat puede causar expulsiones permanentes.
 
-![Ajustes de la vista previa de OptiScaler](../settings-optiscaler.png)
+![Ajustes de OptiScaler](../settings-optiscaler.png)
 
 ![Vista previa de la aplicación](../screenshot.png)
 
@@ -70,7 +76,7 @@ El registro OptiScaler acredita carga diagnóstica, **no fotogramas generados ni
 
 ## Descarga y uso
 
-[Descarga la versión estable v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [ZIP portátil](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [instalador de Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
+[Descarga la versión estable v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP portátil](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [instalador de Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
 
 Utiliza `DLSSGModManager.exe` del paquete portátil o ejecuta `DLSSGModManager-Setup.msi`, que instala el programa para el usuario actual. Los binarios publicados no requieren instalar por separado .NET, Python ni CUDA Toolkit.
 
@@ -155,6 +161,6 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## Publicar tu fork
 
-Crea un repositorio público de GitHub y sube este árbol de código fuente. El flujo de trabajo de Windows incluido compila y prueba las pull requests y los envíos a la rama principal. Una etiqueta como `v0.4.5` también publica los binarios como una versión de GitHub mediante el token de Actions del repositorio. No se guarda ningún token en el código fuente ni se exige a los usuarios finales.
+Crea un repositorio público de GitHub y sube este árbol de código fuente. El flujo de trabajo de Windows incluido compila y prueba las pull requests y los envíos a la rama principal. Una etiqueta como `v0.5.1` también publica los binarios como una versión de GitHub mediante el token de Actions del repositorio. No se guarda ningún token en el código fuente ni se exige a los usuarios finales.
 
 Consulta [CONTRIBUTING.md](../../CONTRIBUTING.md), [SECURITY.md](../../SECURITY.md) y [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md). Este gestor independiente tiene licencia MIT; el material del mod original mantiene sus propias condiciones.

@@ -2,7 +2,7 @@
 
 **পড়ার ভাষা:** [English](../../README.md) · [Italiano](README.it.md) · [简体中文](README.zh-Hans.md) · [हिन्दी](README.hi.md) · [Español](README.es.md) · [Français](README.fr.md) · [العربية](README.ar.md) · **বাংলা** · [Português](README.pt.md) · [Русский](README.ru.md) · [اردو](README.ur.md)
 
-[DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86) ও [Apex Neural Rendering](https://github.com/apex-compute/ANR)-এর জন্য Windows ডেস্কটপ সহায়ক: PC ও গেম যাচাই করুন, যাচাইকৃত মড প্যাকেজ ইনস্টল করুন এবং পরিবর্তনের এমন ইতিহাস রাখুন যা থেকে আগের অবস্থা ফিরিয়ে আনা যায়।
+[DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86), [Apex Neural Rendering](https://github.com/apex-compute/ANR) ও [OptiScaler](https://github.com/optiscaler/OptiScaler)-এর জন্য Windows ডেস্কটপ সহায়ক: PC ও গেম যাচাই করুন, যাচাইকৃত মড প্যাকেজ ইনস্টল করুন এবং পরিবর্তনের এমন ইতিহাস রাখুন যা থেকে আগের অবস্থা ফিরিয়ে আনা যায়।
 
 ## কৃতজ্ঞতা ও স্বীকৃতি
 
@@ -10,13 +10,15 @@
 - **RTX 20 / SM75 অভিযোজন:** [Coldwood1026](https://github.com/Coldwood1026), যাঁর অবদানের উল্লেখ [মূল প্রকল্পের বিজ্ঞপ্তিতে](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt) রয়েছে।
 - **এই ম্যানেজার:** ইনস্টলেশন ও ত্রুটি নির্ণয়ের জন্য একটি স্বতন্ত্র ইন্টারফেস। মূল মডের কৃতিত্ব তার লেখকদেরই; এই ম্যানেজার তাঁদের কাজকে নিজের বলে দাবি করে না এবং কোনো আনুষ্ঠানিক অনুমোদনের দাবিও করে না।
 
-## ANR সংযোজন — স্থিতিশীল ম্যানেজার 0.4.5
+## স্থিতিশীল ম্যানেজার 0.5.1
 
-[স্থিতিশীল v0.4.5 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). ম্যানেজারটি স্থিতিশীল রিলিজ। **ANR নিজে এখনও মূল প্রকল্পের বিটা FG-V.B17**; বিটা লেবেলটি প্রযুক্তির জন্য, ম্যানেজারের এই সংস্করণের জন্য নয়।
+[স্থিতিশীল v0.5.1 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). ম্যানেজারটি স্থিতিশীল রিলিজ। **ANR নিজে এখনও মূল প্রকল্পের বিটা FG-V.B17**; বিটা লেবেলটি প্রযুক্তির জন্য, ম্যানেজারের এই সংস্করণের জন্য নয়।
 
-**0.4.5** সংস্করণে অ্যাপ ও Windows-এ ম্যানেজারের আইকন নতুন করে সাজানো হয়েছে।
+**0.5.1** সংস্করণে SM86 ও ANR-এর পাশাপাশি স্বাধীন OptiScaler যোগ হয়েছে।
 
-- **ফ্রেম জেনারেশন প্রযুক্তি** বেছে নিন: মূল SM86 (NVIDIA DLSS-G / XeSS-FG) অথবা **Apex Neural Rendering · বিটা**। ম্যানেজার **NVIDIA GTX 16 / RTX 20–50** এবং **AMD Radeon RX 5000/6000/7000/9000**-এ ANR সমর্থন করে; **GTX 10 / Pascal সমর্থিত নয়**। গেমে **Direct3D 12 বা Vulkan**-এর মাধ্যমে নেটিভ DLSS Frame Generation থাকতে হবে।
+### SM86 ও ANR-এর প্রয়োজনীয়তা
+
+- **আপস্কেলিং ও ফ্রেম জেনারেশন** বেছে নিন: মূল SM86 (NVIDIA DLSS-G / XeSS-FG) অথবা **Apex Neural Rendering · বিটা**। ম্যানেজার **NVIDIA GTX 16 / RTX 20–50** এবং **AMD Radeon RX 5000/6000/7000/9000**-এ ANR সমর্থন করে; **GTX 10 / Pascal সমর্থিত নয়**। গেমে **Direct3D 12 বা Vulkan**-এর মাধ্যমে নেটিভ DLSS Frame Generation থাকতে হবে।
 - এই ম্যানেজার শুধু **Windows 10/11 x64**-এ ANR সমর্থন করে; **Linux, Steam Deck ও Intel Arc এই রিলিজের সমর্থনের বাইরে**। AMD সমর্থন স্বয়ংক্রিয় পরীক্ষায় যাচাই করা হয়েছে, AMD হার্ডওয়্যারে গেম চালিয়ে নয়। প্রকৃত ফ্রেম জেনারেশন গেমের লগে নিশ্চিত করুন।
 - OptiScaler না থাকলে ব্যবস্থাপক **Full**, আর সামঞ্জস্যপূর্ণ বিদ্যমান OptiScaler থাকলে **Addon** বেছে নেয়। প্যাকেজ সরাসরি মূল প্রকল্পের অফিসিয়াল রিলিজ থেকে আসে এবং SHA-256 দিয়ে যাচাই হয়; ANR ও OptiScaler-এর বাইনারি বা মডেল **ব্যবস্থাপকের সঙ্গে দেওয়া হয় না**। যাচাই করা ANR পদ্ধতি **FG-V.B17**; ভবিষ্যতের অজানা পদ্ধতি অবরুদ্ধ থাকে। ANR নির্বাচিত থাকলে ম্যানেজার চালুর সময় এবং প্রতিবার ANR বেছে নিলে অফিসিয়াল ANR রিপোজিটরি যাচাই করে। নতুন রিলিজ স্বয়ংক্রিয়ভাবে ডাউনলোড করে অথবা ক্যাশে থাকা রিলিজটি ইতিমধ্যে সর্বশেষ বলে জানায়। পরীক্ষা ও ব্যাকআপের পরে আপনি আপডেট বোতাম চাপলেই শুধু সংশ্লিষ্ট গেম আপডেট হয়।
 - ইনস্টল বা প্রদানকারী বদলানোর আগে গেম বন্ধ করুন। ব্যবস্থাপক সংঘাত যাচাই করে, পরিচালিত ফাইলের তালিকা রাখে এবং পরিবর্তনের আগে পুনরুদ্ধারযোগ্য ব্যাকআপ করে। বদল, নিষ্ক্রিয়করণ ও পুনরুদ্ধার একই জার্নাল ও ইতিহাস ব্যবহার করে; অজানা বা বাইরে থেকে বদলানো ফাইল সুরক্ষিত থাকে। Addon বিদ্যমান OptiScaler লোডার রাখে। বদল ফেরাতে **আগের অবস্থা পুনরুদ্ধার করুন** ব্যবহার করুন।
@@ -28,9 +30,13 @@
 
 ## স্বাধীন OptiScaler
 
-**প্রকাশ্য প্রি-রিলিজ: OptiScaler সংযোজনের পরীক্ষা চলছে। স্থিতিশীল ম্যানেজার 0.4.5 উপরে পাওয়া যাবে। স্থিতিশীল ইনস্টল এই প্রি-রিলিজ স্বয়ংক্রিয়ভাবে পায় না।**
+**স্থিতিশীল ম্যানেজার 0.5.1-এ স্বাধীন OptiScaler সংযোজন রয়েছে।**
 
-[প্রি-রিলিজ ডাউনলোড করুন v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
+[স্থিতিশীল সংস্করণ ডাউনলোড করুন v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+
+ম্যানেজার 0.4.3 ও নতুন সংস্করণ স্বয়ংক্রিয়ভাবে আপডেট খোঁজে এবং বিজ্ঞপ্তি দেখায়; ম্যানেজার আপডেট নামানো ও ইনস্টলে আপনার সম্মতি প্রয়োজন। রিপোজিটরির নাম বদলের কারণে 0.4.2 ও পুরোনো সংস্করণে প্রথমে একবার ম্যানুয়াল আপডেট লাগতে পারে। ম্যানেজার আপডেট গেমের মড বদলায় না।
+
+ইনস্টল ও পুনরুদ্ধার স্বয়ংক্রিয় পরীক্ষা দিয়ে যাচাই হয়েছে। আমরা এখনো আসল গেমপ্লেতে স্বাধীন OptiScaler যাচাই করিনি; নিজের গেমে নির্বাচিত ব্যাকএন্ড ও ছবির মান দেখুন।
 
 [আনুষ্ঠানিক OptiScaler](https://github.com/optiscaler/OptiScaler)-এর স্বাধীন সংযোজনের জন্য **OptiScaler · আপস্কেলিং / FG** বেছে নিন। **এই ম্যানেজার OptiScaler-এর আনুষ্ঠানিক অ্যাপ নয়।** যাচাইকৃত প্যাকেজ স্থিতিশীল **v0.9.5**; v10 nightly/master ও ANR-এর লোডারের পদ্ধতি আলাদা।
 
@@ -41,7 +47,7 @@
 
 OptiScaler লগ ডায়াগনস্টিক লোডিং দেখায়, **তৈরি ফ্রেম বা উন্নত পারফরম্যান্সের প্রমাণ নয়**। গেমে সক্রিয় ব্যাকএন্ড, পরিসংখ্যান ও ছবির মান দেখুন। শুধু **অফলাইন একক খেলোয়াড়ের গেমে** মড ব্যবহার করুন; অ্যান্টিচিট নিষেধাজ্ঞা দিতে পারে।
 
-![OptiScaler প্রাকদর্শনের সেটিং](../settings-optiscaler.png)
+![OptiScaler সেটিং](../settings-optiscaler.png)
 
 ![অ্যাপের পূর্বরূপ](../screenshot.png)
 
@@ -64,7 +70,7 @@ OptiScaler লগ ডায়াগনস্টিক লোডিং দেখ
 
 ## ডাউনলোড ও ব্যবহার
 
-[স্থিতিশীল v0.4.5 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
+[স্থিতিশীল v0.5.1 ডাউনলোড করুন](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
 
 পোর্টেবল প্যাকেজের `DLSSGModManager.exe` চালান, অথবা শুধু বর্তমান ব্যবহারকারীর জন্য ইনস্টল হওয়া `DLSSGModManager-Setup.msi` চালান। প্রকাশিত বাইনারি চালাতে আলাদাভাবে .NET, Python বা CUDA Toolkit ইনস্টল করতে হয় না।
 
@@ -155,7 +161,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## নিজের ফোর্ক প্রকাশ করুন
 
-একটি প্রকাশ্য GitHub রিপোজিটরি তৈরি করে এই source tree push করুন। সঙ্গে থাকা Windows workflow pull request এবং মূল branch-এ push-এর সময় বিল্ড ও পরীক্ষা চালায়। `v0.4.5`-এর মতো tag দিলে একই রিপোজিটরির Actions token ব্যবহার করে বাইনারিগুলো GitHub release হিসেবেও প্রকাশ করা হয়। source-এ কোনো token সংরক্ষণ করা হয় না এবং শেষ ব্যবহারকারীর token প্রয়োজন হয় না।
+একটি প্রকাশ্য GitHub রিপোজিটরি তৈরি করে এই source tree push করুন। সঙ্গে থাকা Windows workflow pull request এবং মূল branch-এ push-এর সময় বিল্ড ও পরীক্ষা চালায়। `v0.5.1`-এর মতো tag দিলে একই রিপোজিটরির Actions token ব্যবহার করে বাইনারিগুলো GitHub release হিসেবেও প্রকাশ করা হয়। source-এ কোনো token সংরক্ষণ করা হয় না এবং শেষ ব্যবহারকারীর token প্রয়োজন হয় না।
 
 [CONTRIBUTING.md](../../CONTRIBUTING.md), [SECURITY.md](../../SECURITY.md) এবং [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) দেখুন। এই স্বতন্ত্র ম্যানেজার MIT লাইসেন্সে প্রকাশিত; মূল প্রকল্পের মড উপকরণের নিজস্ব শর্ত প্রযোজ্য।
 

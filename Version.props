@@ -1,7 +1,5 @@
 <Project>
   <PropertyGroup>
-    <Version>0.5.0</Version>
-    <PrereleaseLabel>opti-preview.1</PrereleaseLabel>
-    <InformationalVersion>$(Version)-$(PrereleaseLabel)</InformationalVersion>
+    <Version>0.5.1</Version>
   </PropertyGroup>
 </Project>

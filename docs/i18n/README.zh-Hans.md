@@ -2,7 +2,7 @@
 
 **阅读语言:** [English](../../README.md) · [Italiano](README.it.md) · **简体中文** · [हिन्दी](README.hi.md) · [Español](README.es.md) · [Français](README.fr.md) · [العربية](README.ar.md) · [বাংলা](README.bn.md) · [Português](README.pt.md) · [Русский](README.ru.md) · [اردو](README.ur.md)
 
-[DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86) 和 [Apex Neural Rendering](https://github.com/apex-compute/ANR) 的 Windows 桌面管理工具：检查电脑与游戏、安装经过验证的模组包，并保留可恢复的更改历史。
+[DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86)、[Apex Neural Rendering](https://github.com/apex-compute/ANR)和[OptiScaler](https://github.com/optiscaler/OptiScaler) 的 Windows 桌面管理工具：检查电脑与游戏、安装经过验证的模组包，并保留可恢复的更改历史。
 
 ## 致谢
 
@@ -10,13 +10,15 @@
 - **RTX 20 / SM75 适配：** [Coldwood1026](https://github.com/Coldwood1026)，其贡献列于[原项目声明](https://github.com/sdli1995/dlssg_for_sm86/blob/main/THIRD_PARTY_NOTICES.txt)。
 - **本管理器：** 独立的安装和诊断界面。原始模组的功劳归其作者所有；本管理器不将其成果归为己有，也不声称获得官方认可。
 
-## ANR 集成 — 稳定版管理器 0.4.5
+## 稳定版管理器 0.5.1
 
-[下载稳定版 v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi). 管理器现为稳定版。**ANR 本身仍是上游测试版 FG-V.B17**；“测试版”标签指的是该技术，而非本次管理器发布。
+[下载稳定版 v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi). 管理器现为稳定版。**ANR 本身仍是上游测试版 FG-V.B17**；“测试版”标签指的是该技术，而非本次管理器发布。
 
-**0.4.5** 更新了管理器在应用内和 Windows 中使用的图标。
+**0.5.1** 在 SM86 和 ANR 之外新增独立 OptiScaler。
 
-- 选择**帧生成技术**：原有 SM86（NVIDIA DLSS-G / XeSS-FG）或 **Apex Neural Rendering · 测试版**。管理器支持 **NVIDIA GTX 16 / RTX 20–50** 和 **AMD Radeon RX 5000/6000/7000/9000** 上的 ANR；**不支持 GTX 10 / Pascal**。游戏必须通过 **Direct3D 12 或 Vulkan** 提供原生 DLSS Frame Generation。
+### SM86 和 ANR 的要求
+
+- 选择**超分辨率和帧生成**：原有 SM86（NVIDIA DLSS-G / XeSS-FG）或 **Apex Neural Rendering · 测试版**。管理器支持 **NVIDIA GTX 16 / RTX 20–50** 和 **AMD Radeon RX 5000/6000/7000/9000** 上的 ANR；**不支持 GTX 10 / Pascal**。游戏必须通过 **Direct3D 12 或 Vulkan** 提供原生 DLSS Frame Generation。
 - 本管理器仅在 **Windows 10/11 x64** 上支持 ANR；**Linux、Steam Deck 和 Intel Arc 不在本次发布的支持范围内**。AMD 支持已通过自动化测试检查，但尚未在 AMD 硬件上进行游戏实测。请通过游戏日志确认实际帧生成。
 - 没有 OptiScaler 时管理器选择 **Full**，已有兼容 OptiScaler 时选择 **Addon**。软件包直接从上游官方发布下载，并验证 SHA-256；管理器**不捆绑 ANR 和 OptiScaler 的二进制文件或模型**。已审核的 ANR 安装规则为 **FG-V.B17**，未知的后续规则会被阻止。 如果已选择 ANR，管理器会在启动时检查 ANR 官方仓库，每次选择 ANR 时也会检查。发现新版本时会自动下载；缓存已是同一版本时会提示已为最新版。只有点击更新操作后，才会在完成检查和备份后更新相应游戏。
 - 安装或切换前请关闭游戏。管理器会检查冲突、记录管理的文件，并在更改前创建可恢复备份。切换提供程序、禁用和恢复共用事务日志及历史记录；未知或外部修改的文件会受到保护。Addon 保留现有 OptiScaler 加载器。使用**恢复先前状态**可撤销切换。
@@ -28,9 +30,13 @@
 
 ## 独立 OptiScaler
 
-**公开预发布版：OptiScaler 集成正在测试。稳定版管理器 0.4.5 仍可通过上方链接下载。稳定版安装不会自动接收此预发布版。**
+**稳定版管理器 0.5.1 包含独立 OptiScaler 集成。**
 
-[下载预发布版 v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
+[下载稳定版 v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [MSI](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
+
+管理器 0.4.3 及更新版本会自动检查更新并显示通知；下载和安装管理器更新需要你的同意。由于仓库更名，0.4.2 及更早版本可能需要先手动更新一次。管理器更新不会修改游戏模组。
+
+安装和恢复流程已通过自动化测试。我们尚未在实际游戏过程中验证独立 OptiScaler；请在自己的游戏中确认所选后端及画面质量。
 
 选择 **OptiScaler · 超分辨率 / 帧生成**，使用[官方 OptiScaler](https://github.com/optiscaler/OptiScaler) 的独立集成。**本管理器不是 OptiScaler 官方应用。** 已审核的包为稳定版 **v0.9.5**；v10 nightly/master 分支及 ANR 内置加载器采用不同方案。
 
@@ -41,7 +47,7 @@
 
 OptiScaler 日志只证明诊断加载，**不能证明生成帧或性能提升**。请在游戏内检查当前后端、帧统计和画面质量。仅在**离线单人游戏**中使用模组；反作弊可能导致封禁。
 
-![OptiScaler 预览版设置](../settings-optiscaler.png)
+![OptiScaler 设置](../settings-optiscaler.png)
 
 ![应用预览](../screenshot.png)
 
@@ -64,7 +70,7 @@ OptiScaler 日志只证明诊断加载，**不能证明生成帧或性能提升*
 
 ## 下载与使用
 
-[下载稳定版 v0.4.5](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.4.5): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.4.5/DLSSGModManager-Setup.msi).
+[下载稳定版 v0.5.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.1): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.1/DLSSGModManager-Setup.msi).
 
 运行便携包中的 `DLSSGModManager.exe`，或使用仅为当前用户安装的 `DLSSGModManager-Setup.msi`。发布的二进制程序无需单独安装 .NET、Python 或 CUDA Toolkit。
 
@@ -155,7 +161,7 @@ dotnet run --project src/DlssgManager.Desktop -- --read-only --game 'D:\Games\Ex
 
 ## 发布自己的分支
 
-创建公开的 GitHub 仓库，并推送此源代码目录。随附的 Windows 工作流会对拉取请求和主分支推送进行构建与测试。推送如 `v0.4.5` 的标签时，还会使用该仓库的 Actions 令牌将二进制程序发布为 GitHub release。源代码不存储令牌，终端用户也不需要提供令牌。
+创建公开的 GitHub 仓库，并推送此源代码目录。随附的 Windows 工作流会对拉取请求和主分支推送进行构建与测试。推送如 `v0.5.1` 的标签时，还会使用该仓库的 Actions 令牌将二进制程序发布为 GitHub release。源代码不存储令牌，终端用户也不需要提供令牌。
 
 参阅 [CONTRIBUTING.md](../../CONTRIBUTING.md)、[SECURITY.md](../../SECURITY.md) 和 [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)。此独立管理器采用 MIT 许可证；原项目模组材料遵循各自的条款。
 
