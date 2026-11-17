@@ -30,7 +30,9 @@
 
 ## آزاد OptiScaler
 
-**مقامی پیش منظر: یہ OptiScaler انضمام زیرِ آزمائش ہے اور اوپر دیے گئے مستحکم مینیجر 0.4.5 ڈاؤن لوڈ میں شامل نہیں۔**
+**عوامی پری ریلیز: OptiScaler انضمام زیرِ آزمائش ہے۔ مستحکم مینیجر 0.4.5 اوپر دستیاب ہے۔ مستحکم تنصیبات یہ پری ریلیز خودکار طور پر حاصل نہیں کرتیں۔**
+
+[پری ریلیز ڈاؤن لوڈ کریں v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [پورٹیبل ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows انسٹالر](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 [آفیشل OptiScaler](https://github.com/optiscaler/OptiScaler) کے آزاد انضمام کے لیے **OptiScaler · اپ اسکیلنگ / FG** منتخب کریں۔ **یہ مینیجر آفیشل OptiScaler ایپ نہیں ہے۔** جانچا گیا پیکیج مستحکم **v0.9.5** ہے؛ v10 nightly/master اور ANR کا لوڈر مختلف طریقے استعمال کرتے ہیں۔
 

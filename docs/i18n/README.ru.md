@@ -28,7 +28,9 @@
 
 ## Отдельный OptiScaler
 
-**Локальное превью: интеграция OptiScaler тестируется и не входит в загрузки стабильного менеджера 0.4.5, указанные выше.**
+**Публичная предварительная версия: интеграция OptiScaler тестируется. Стабильный менеджер 0.4.5 по-прежнему доступен выше. Стабильные установки не получают эту предварительную версию автоматически.**
+
+[Скачать предварительную версию v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [портативный ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [установщик Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 Выберите **OptiScaler · Масштабирование / FG** для независимой интеграции [официального OptiScaler](https://github.com/optiscaler/OptiScaler). **Этот менеджер не является официальным приложением OptiScaler.** Проверен стабильный пакет **v0.9.5**; ветка v10 nightly/master и загрузчик из ANR используют другие процедуры.
 

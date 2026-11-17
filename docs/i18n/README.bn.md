@@ -28,7 +28,9 @@
 
 ## স্বাধীন OptiScaler
 
-**স্থানীয় প্রাকদর্শন: এই OptiScaler সংযোজন পরীক্ষা চলছে এবং উপরের স্থিতিশীল ম্যানেজার 0.4.5 ডাউনলোডে অন্তর্ভুক্ত নয়।**
+**প্রকাশ্য প্রি-রিলিজ: OptiScaler সংযোজনের পরীক্ষা চলছে। স্থিতিশীল ম্যানেজার 0.4.5 উপরে পাওয়া যাবে। স্থিতিশীল ইনস্টল এই প্রি-রিলিজ স্বয়ংক্রিয়ভাবে পায় না।**
+
+[প্রি-রিলিজ ডাউনলোড করুন v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [পোর্টেবল ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows ইনস্টলার](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 [আনুষ্ঠানিক OptiScaler](https://github.com/optiscaler/OptiScaler)-এর স্বাধীন সংযোজনের জন্য **OptiScaler · আপস্কেলিং / FG** বেছে নিন। **এই ম্যানেজার OptiScaler-এর আনুষ্ঠানিক অ্যাপ নয়।** যাচাইকৃত প্যাকেজ স্থিতিশীল **v0.9.5**; v10 nightly/master ও ANR-এর লোডারের পদ্ধতি আলাদা।
 

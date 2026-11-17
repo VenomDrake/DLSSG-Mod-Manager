@@ -226,7 +226,7 @@
   "anr_api": "DirectX 12 or Vulkan evidence",
   "anr_runtime": "Native x64 DLSS Frame Generation runtime inspected",
   "anr_log_scope": "ANR beta: confirmation refers to the latest matching session log. Verify smoothness and stability in the game.",
-  "prerelease_notice": "Local preview · OptiScaler integration is under test. Stable manager installations do not receive this preview automatically.",
+  "prerelease_notice": "Pre-release · OptiScaler integration is under test. Stable manager installations do not receive this prerelease automatically.",
   "anr_driver_requirements": "ANR: check GPU driver and runtime log",
   "anr_graphics_api": "DirectX 12 or Vulkan evidence",
   "anr_vulkan_loader": "64-bit Vulkan loader installed",

@@ -226,7 +226,7 @@
   "anr_api": "دلائل على DirectX 12 أو Vulkan",
   "anr_runtime": "تم فحص بيئة DLSS Frame Generation الأصلية ذات 64 بت",
   "anr_log_scope": "ANR تجريبي: يشير التأكيد إلى أحدث سجل جلسة مطابق. تحقّق من السلاسة والاستقرار داخل اللعبة.",
-  "prerelease_notice": "معاينة محلية · دمج OptiScaler قيد الاختبار. لا تتلقى التركيبات المستقرة هذه المعاينة تلقائيًا.",
+  "prerelease_notice": "إصدار تمهيدي · دمج OptiScaler قيد الاختبار. لا تتلقى التركيبات المستقرة هذا الإصدار التمهيدي تلقائيًا.",
   "anr_driver_requirements": "ANR: تحقّق من تعريف البطاقة وسجل التشغيل",
   "anr_graphics_api": "دلائل على DirectX 12 أو Vulkan",
   "anr_vulkan_loader": "محمّل Vulkan ذو 64 بت مثبّت",

@@ -226,7 +226,7 @@
   "anr_api": "DirectX 12 یا Vulkan کے شواہد",
   "anr_runtime": "مقامی x64 DLSS Frame Generation رن ٹائم کا معائنہ ہوا",
   "anr_log_scope": "ANR بیٹا: تصدیق تازہ ترین مماثل سیشن لاگ کے لیے ہے۔ گیم میں روانی اور استحکام جانچیں۔",
-  "prerelease_notice": "مقامی پیش منظر · OptiScaler انضمام زیرِ آزمائش ہے۔ مستحکم تنصیبات یہ پیش منظر خودکار طور پر حاصل نہیں کرتیں۔",
+  "prerelease_notice": "پری ریلیز · OptiScaler انضمام زیرِ آزمائش ہے۔ مستحکم تنصیبات یہ پری ریلیز خودکار طور پر حاصل نہیں کرتیں۔",
   "anr_driver_requirements": "ANR: GPU ڈرائیور اور رن ٹائم لاگ جانچیں",
   "anr_graphics_api": "DirectX 12 یا Vulkan کے شواہد",
   "anr_vulkan_loader": "64 بٹ Vulkan لوڈر نصب ہے",

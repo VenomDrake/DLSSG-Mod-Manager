@@ -226,7 +226,7 @@
   "anr_api": "DirectX 12 或 Vulkan 的相关证据",
   "anr_runtime": "已检查原生 x64 DLSS Frame Generation 运行库",
   "anr_log_scope": "ANR 测试版：确认结果仅对应最近的匹配会话日志。请在游戏中检查流畅度和稳定性。",
-  "prerelease_notice": "本地预览 · OptiScaler 集成正在测试。稳定版管理器不会自动接收此预览。",
+  "prerelease_notice": "预发布版 · OptiScaler 集成正在测试。稳定版管理器不会自动接收此预发布版。",
   "anr_driver_requirements": "ANR：检查 GPU 驱动和运行日志",
   "anr_graphics_api": "DirectX 12 或 Vulkan 的相关证据",
   "anr_vulkan_loader": "已安装 64 位 Vulkan 加载器",

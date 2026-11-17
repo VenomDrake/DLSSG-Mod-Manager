@@ -28,7 +28,9 @@
 
 ## स्वतंत्र OptiScaler
 
-**स्थानीय पूर्वावलोकन: यह OptiScaler एकीकरण परीक्षण में है और ऊपर दिए गए स्थिर मैनेजर 0.4.5 डाउनलोड में शामिल नहीं है।**
+**सार्वजनिक पूर्व-रिलीज़: OptiScaler एकीकरण परीक्षण में है। स्थिर मैनेजर 0.4.5 ऊपर उपलब्ध है। स्थिर इंस्टॉलेशन को यह पूर्व-रिलीज़ अपने आप नहीं मिलती।**
+
+[पूर्व-रिलीज़ डाउनलोड करें v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [पोर्टेबल ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows इंस्टॉलर](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 [आधिकारिक OptiScaler](https://github.com/optiscaler/OptiScaler) के स्वतंत्र एकीकरण के लिए **OptiScaler · अपस्केलिंग / FG** चुनें। **यह मैनेजर आधिकारिक OptiScaler ऐप नहीं है।** जाँचा गया पैकेज स्थिर **v0.9.5** है; v10 nightly/master और ANR का लोडर अलग प्रक्रियाएँ उपयोग करते हैं।
 

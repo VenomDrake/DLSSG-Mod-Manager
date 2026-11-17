@@ -226,7 +226,7 @@
   "anr_api": "Indices de DirectX 12 ou Vulkan",
   "anr_runtime": "Runtime natif x64 DLSS Frame Generation inspecté",
   "anr_log_scope": "ANR bêta : la confirmation concerne le dernier journal de session correspondant. Vérifiez fluidité et stabilité dans le jeu.",
-  "prerelease_notice": "Aperçu local · Intégration OptiScaler en cours de test. Les installations stables ne reçoivent pas automatiquement cet aperçu.",
+  "prerelease_notice": "Préversion · Intégration OptiScaler en cours de test. Les installations stables ne reçoivent pas automatiquement cette préversion.",
   "anr_driver_requirements": "ANR : vérifiez le pilote GPU et le journal d’exécution",
   "anr_graphics_api": "Indices de DirectX 12 ou Vulkan",
   "anr_vulkan_loader": "Chargeur Vulkan 64 bits installé",

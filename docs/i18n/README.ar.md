@@ -30,7 +30,9 @@
 
 ## OptiScaler المستقل
 
-**معاينة محلية: دمج OptiScaler هذا قيد الاختبار، وهو غير موجود في تنزيلات المدير المستقر 0.4.5 المذكورة أعلاه.**
+**إصدار تمهيدي عام: دمج OptiScaler قيد الاختبار. يبقى المدير المستقر 0.4.5 متاحًا أعلاه. لا تتلقى التركيبات المستقرة هذا الإصدار التمهيدي تلقائيًا.**
+
+[تنزيل الإصدار التمهيدي v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [ZIP محمول](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [مثبّت Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 اختر **OptiScaler · رفع الدقة / توليد الإطارات** للدمج المستقل مع [OptiScaler الرسمي](https://github.com/optiscaler/OptiScaler). **هذا المدير ليس تطبيقًا رسميًا لـ OptiScaler.** الحزمة المراجعة هي المستقرة **v0.9.5**؛ فرع v10 nightly/master ومحمّل ANR يستخدمان إجراءات مختلفة.
 

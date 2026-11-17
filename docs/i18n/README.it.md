@@ -28,7 +28,9 @@ Nel gioco, attiva **NVIDIA DLSS Frame Generation**. Il selettore **2×** grigio 
 
 ## OptiScaler autonomo
 
-**Anteprima locale: questa integrazione OptiScaler è in prova e non è inclusa nei download del gestore stabile 0.4.5 indicati sopra.**
+**Pre-release pubblica: l’integrazione OptiScaler è in prova. Il gestore stabile 0.4.5 resta disponibile sopra. Le installazioni stabili non ricevono automaticamente questa anteprima.**
+
+[Scarica la pre-release v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [ZIP portatile](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [installer Windows](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 Scegli **OptiScaler · Upscaling / FG** per l'integrazione indipendente di [OptiScaler ufficiale](https://github.com/optiscaler/OptiScaler). **Questo gestore non è un'applicazione ufficiale di OptiScaler.** Il pacchetto verificato è la versione stabile **v0.9.5**; il ramo v10 nightly/master e il loader OptiScaler incluso in ANR hanno procedure diverse.
 

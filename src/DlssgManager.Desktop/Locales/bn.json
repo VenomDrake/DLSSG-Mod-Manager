@@ -226,7 +226,7 @@
   "anr_api": "DirectX 12 বা Vulkan-এর প্রমাণ",
   "anr_runtime": "নেটিভ x64 DLSS Frame Generation রানটাইম পরীক্ষা করা হয়েছে",
   "anr_log_scope": "ANR বিটা: নিশ্চয়তা সর্বশেষ মিলে যাওয়া সেশন লগের জন্য। গেমে মসৃণতা ও স্থায়িত্ব পরীক্ষা করুন।",
-  "prerelease_notice": "স্থানীয় প্রাকদর্শন · OptiScaler সংযোজন পরীক্ষা চলছে। স্থিতিশীল ইনস্টল এই প্রাকদর্শন স্বয়ংক্রিয়ভাবে পায় না।",
+  "prerelease_notice": "প্রি-রিলিজ · OptiScaler সংযোজনের পরীক্ষা চলছে। স্থিতিশীল ইনস্টল এই প্রি-রিলিজ স্বয়ংক্রিয়ভাবে পায় না।",
   "anr_driver_requirements": "ANR: GPU ড্রাইভার ও রানটাইম লগ যাচাই করুন",
   "anr_graphics_api": "DirectX 12 বা Vulkan-এর প্রমাণ",
   "anr_vulkan_loader": "64-বিট Vulkan লোডার ইনস্টল করা আছে",

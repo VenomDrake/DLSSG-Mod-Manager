@@ -28,7 +28,9 @@
 
 ## 独立 OptiScaler
 
-**本地预览：此 OptiScaler 集成仍在测试，不包含在上方稳定版管理器 0.4.5 的下载中。**
+**公开预发布版：OptiScaler 集成正在测试。稳定版管理器 0.4.5 仍可通过上方链接下载。稳定版安装不会自动接收此预发布版。**
+
+[下载预发布版 v0.5.0-opti-preview.1](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/tag/v0.5.0-opti-preview.1): [便携 ZIP](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Portable-win-x64.zip) · [Windows 安装程序](https://github.com/VenomDrake/DLSSG-Mod-Manager/releases/download/v0.5.0-opti-preview.1/DLSSGModManager-Setup.msi).
 
 选择 **OptiScaler · 超分辨率 / 帧生成**，使用[官方 OptiScaler](https://github.com/optiscaler/OptiScaler) 的独立集成。**本管理器不是 OptiScaler 官方应用。** 已审核的包为稳定版 **v0.9.5**；v10 nightly/master 分支及 ANR 内置加载器采用不同方案。
 

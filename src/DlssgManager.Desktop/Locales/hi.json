@@ -226,7 +226,7 @@
   "anr_api": "DirectX 12 या Vulkan के संकेत",
   "anr_runtime": "मूल x64 DLSS Frame Generation रनटाइम की जाँच हुई",
   "anr_log_scope": "ANR बीटा: पुष्टि नवीनतम मेल खाते सत्र लॉग की है। गेम में सहजता और स्थिरता जाँचें।",
-  "prerelease_notice": "स्थानीय पूर्वावलोकन · OptiScaler एकीकरण परीक्षण में है। स्थिर इंस्टॉलेशन को यह पूर्वावलोकन अपने आप नहीं मिलता।",
+  "prerelease_notice": "पूर्व-रिलीज़ · OptiScaler एकीकरण परीक्षण में है। स्थिर इंस्टॉलेशन को यह पूर्व-रिलीज़ अपने आप नहीं मिलती।",
   "anr_driver_requirements": "ANR: GPU ड्राइवर और रनटाइम लॉग जाँचें",
   "anr_graphics_api": "DirectX 12 या Vulkan के संकेत",
   "anr_vulkan_loader": "64-बिट Vulkan लोडर इंस्टॉल है",
