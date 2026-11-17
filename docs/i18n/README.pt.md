@@ -2,6 +2,8 @@
 
 **Ler em:** [English](../../README.md) · [Italiano](README.it.md) · [简体中文](README.zh-Hans.md) · [हिन्दी](README.hi.md) · [Español](README.es.md) · [Français](README.fr.md) · [العربية](README.ar.md) · [বাংলা](README.bn.md) · **Português** · [Русский](README.ru.md) · [اردو](README.ur.md)
 
+**[Tutorial completo de uso: todos os botões, configurações, verificações e etapas de recuperação](USER_GUIDE.pt.md)**
+
 Um aplicativo de desktop para Windows que acompanha o [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86), [Apex Neural Rendering](https://github.com/apex-compute/ANR) e [OptiScaler](https://github.com/optiscaler/OptiScaler): verifica o PC e o jogo, instala um pacote verificado do mod e mantém um histórico de alterações que permite recuperar o estado anterior.
 
 ## Créditos
@@ -87,9 +89,9 @@ Use `DLSSGModManager.exe` do pacote portátil ou execute `DLSSGModManager-Setup.
 1. Abra o gerenciador e deixe-o verificar ou baixar o pacote oficial do mod.
 2. Em **Gerenciamento de jogos**, escolha um jogo Steam, uma pasta de jogo ou seu EXE de renderização.
 3. Leia o painel de resultados e abra **Diagnóstico** para ver todas as verificações. Um anti-cheat detectado, um runtime não compatível, um carregador desconhecido em conflito ou o jogo em execução impedem a instalação.
-4. Revise todas as opções em **Configurações do mod** e comece com **2×**. Escolha **Instalar mod** ou **Atualizar mod** na barra de ações inferior e confirme o destino.
-5. Inicie o jogo e ative **DLSS Frame Generation** nas configurações gráficas. Alguns jogos exigem uma reinicialização.
-6. Em **Diagnóstico**, escolha **Ler registro do jogo** para verificar se o mod foi carregado, se a função foi criada e se a geração realmente começou.
+4. Revise todas as opções em **Configurações do mod**. Para **SM86/ANR**, comece com **2×**; para **OptiScaler**, use **ampliação Auto e entrada/saída FG desativadas (Off/Off)**. Escolha **Instalar mod** ou **Atualizar mod** na barra de ações inferior e confirme o destino.
+5. Inicie o jogo. Com **SM86/ANR**, ative **DLSS Frame Generation** nas configurações gráficas; alguns jogos exigem uma reinicialização. Com **OptiScaler**, ative um **ampliador temporal compatível** e pressione **Insert** para conferir a saída ativa; DLSS FG não é necessário para este primeiro teste de ampliação.
+6. Em **Diagnóstico**, escolha **Ler registro do jogo**. Para **SM86/ANR**, confira se o recurso foi criado e se a geração realmente começou. Para **OptiScaler**, o registro informa o carregamento e os erros; confirme a saída ativa e o resultado visual na interface sobreposta **Insert**.
 
 O gerenciador não altera HAGS nem os drivers automaticamente. Ele abre as configurações gráficas do Windows e a página apropriada de drivers NVIDIA ou AMD. Para SM86, ative HAGS e reinicie o Windows; depois confirme a ativação no log do jogo. O projeto ANR não especifica um requisito de HAGS.
 

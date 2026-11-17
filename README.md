@@ -2,6 +2,8 @@
 
 **Read in:** **English** · [Italiano](docs/i18n/README.it.md) · [简体中文](docs/i18n/README.zh-Hans.md) · [हिन्दी](docs/i18n/README.hi.md) · [Español](docs/i18n/README.es.md) · [Français](docs/i18n/README.fr.md) · [العربية](docs/i18n/README.ar.md) · [বাংলা](docs/i18n/README.bn.md) · [Português](docs/i18n/README.pt.md) · [Русский](docs/i18n/README.ru.md) · [اردو](docs/i18n/README.ur.md)
 
+**New here? Read the [complete step-by-step tutorial](docs/USER_GUIDE.md): every button, setting, check, update and restore, in all 11 manager languages.**
+
 A Windows desktop companion for [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86), [Apex Neural Rendering](https://github.com/apex-compute/ANR) and [OptiScaler](https://github.com/optiscaler/OptiScaler): check a PC and game, install a verified mod package, and keep a recoverable history of changes.
 
 ## Credits
@@ -87,9 +89,9 @@ Use `DLSSGModManager.exe` from the portable package, or run the per-user `DLSSGM
 1. Open the manager and let it check/download the official mod package.
 2. In **Game management**, choose a Steam game, a game folder, or its rendering EXE.
 3. Read the main result panel; open **Diagnostics** for all checks. A detected anti-cheat, unsupported runtime, unknown conflicting loader or running game prevents installation.
-4. Review all options in **Mod settings**; start at **2×**. Choose **Install mod** or **Update mod** in the bottom action bar and confirm the target.
-5. Launch the game and enable **DLSS Frame Generation** in its graphics settings. Some games require a restart.
-6. In **Diagnostics**, choose **Read game log** to see whether the mod loaded, the feature was created and generation actually began.
+4. Review **Mod settings**: start SM86/ANR at **2×**, or OptiScaler with **automatic upscaling and FG Off/Off**. Choose **Install mod** or **Update mod** in the bottom action bar and confirm the target.
+5. For SM86/ANR, enable the game's **DLSS Frame Generation**. For the first OptiScaler test, enable a compatible temporal upscaler and inspect its output with **Insert**. Some settings require restarting the game; see the tutorial for each provider.
+6. In **Diagnostics**, choose **Read game log**. SM86/ANR have provider-specific FG confirmation rules. OptiScaler's log is diagnostic only: use **Insert** in-game to check its active backend, frame statistics and visual result.
 
 The manager does not change HAGS or drivers automatically. It opens Windows graphics settings and the appropriate NVIDIA or AMD driver page. For SM86, enable HAGS and restart Windows, then confirm it in the game log. ANR’s upstream project does not specify a HAGS requirement.
 

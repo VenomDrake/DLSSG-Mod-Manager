@@ -2,6 +2,8 @@
 
 **阅读语言:** [English](../../README.md) · [Italiano](README.it.md) · **简体中文** · [हिन्दी](README.hi.md) · [Español](README.es.md) · [Français](README.fr.md) · [العربية](README.ar.md) · [বাংলা](README.bn.md) · [Português](README.pt.md) · [Русский](README.ru.md) · [اردو](README.ur.md)
 
+**完整教程：**[逐步使用说明，包含全部设置、检查和还原方法](USER_GUIDE.zh-Hans.md)。
+
 [DLSSG for SM86](https://github.com/sdli1995/dlssg_for_sm86)、[Apex Neural Rendering](https://github.com/apex-compute/ANR)和[OptiScaler](https://github.com/optiscaler/OptiScaler) 的 Windows 桌面管理工具：检查电脑与游戏、安装经过验证的模组包，并保留可恢复的更改历史。
 
 ## 致谢
@@ -87,9 +89,9 @@ OptiScaler 日志只证明诊断加载，**不能证明生成帧或性能提升*
 1. 打开管理器，等待它检查并下载官方模组包。
 2. 在**游戏管理**中选择 Steam 游戏、游戏文件夹或其渲染 EXE。
 3. 在主页面查看结果，打开**诊断**查看完整检查列表。检测到反作弊、不受支持的运行库、未知的加载器冲突或游戏正在运行时，将阻止安装。
-4. 打开**模组设置**并检查选项，首次从 **2×** 开始。选择**安装模组（Install mod）**或**更新模组（Update mod）**，并确认目标位置。
-5. 启动游戏，在图形设置中启用 **DLSS Frame Generation**。某些游戏需要重新启动。
-6. 在**诊断**中选择**读取游戏日志（Read game log）**，检查模组是否加载、功能是否创建，以及帧生成是否真正开始。
+4. 打开**模组设置**并检查选项。**SM86/ANR** 首次从 **2×** 开始；**OptiScaler** 首次保留超分辨率输出为 **Auto**，FG 输入和输出均为**关闭**。选择**安装模组（Install mod）**或**更新模组（Update mod）**，并确认目标位置。
+5. 启动游戏。**SM86/ANR** 需要在图形设置中启用 **DLSS Frame Generation**。**OptiScaler** 需要启用兼容的时域超分辨率选项，再按 **Insert** 查看 OptiScaler 界面中的实际输出。更改文件后，以及游戏要求时，请重新启动游戏。
+6. 在**诊断**中选择**读取游戏日志（Read game log）**。**SM86/ANR** 日志满足对应条件时，可确认模组加载、功能创建及 FG 开始。**OptiScaler** 日志仅用于诊断：加载成功不证明超分辨率或 FG 已生效，还需按 **Insert** 查看实际输出与统计，并检查游戏画面。
 
 管理器不会自动更改 HAGS 或驱动。它会打开 Windows 图形设置及适用的 NVIDIA 或 AMD 驱动页面。使用 SM86 时，请启用 HAGS、重启 Windows，再通过游戏日志确认生效。ANR 上游未指定 HAGS 要求。
 
