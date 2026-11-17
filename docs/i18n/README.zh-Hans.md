@@ -26,6 +26,21 @@
 
 **ANR 致谢：**[Apex Compute / Apex Neural Rendering](https://github.com/apex-compute/ANR)；[OptiScaler](https://github.com/optiscaler/OptiScaler) 及其贡献者。OptiScaler 使用 GPL-3.0；ANR 代码、二进制文件和模型仍遵循作者的条款。管理器不更改上游材料的许可。参见[许可问题](https://github.com/apex-compute/ANR/issues/9)。
 
+## 独立 OptiScaler
+
+**本地预览：此 OptiScaler 集成仍在测试，不包含在上方稳定版管理器 0.4.5 的下载中。**
+
+选择 **OptiScaler · 超分辨率 / 帧生成**，使用[官方 OptiScaler](https://github.com/optiscaler/OptiScaler) 的独立集成。**本管理器不是 OptiScaler 官方应用。** 已审核的包为稳定版 **v0.9.5**；v10 nightly/master 分支及 ANR 内置加载器采用不同方案。
+
+- 启动或选择此方案时，管理器检查官方稳定版、下载完整包并验证 SHA-256 与文件清单。未来尚未审核的版本可以下载，但禁止安装。不执行上游安装脚本，管理器也不附带上游二进制文件。
+- 选择游戏真正的 x64 渲染程序。需要兼容的 DLSS、FSR 或 XeSS 输入；超分辨率不要求原生 DLSS Frame Generation。部分内嵌 FSR 无法根据文件识别：结果不明确时会请求审核，而非直接判定游戏不受支持。要求取决于后端、API、显卡和驱动；检测到 NVIDIA、AMD 或 Intel 并不保证所有输出可用。
+- 首次建议**自动超分辨率并关闭帧生成**。可分别设置 DirectX 11、DirectX 12 和 Vulkan 超分辨率、FG 输入/输出、DXGI 显卡身份模拟及诊断。在游戏内按 **Insert** 查看全部设置及当前后端。DLSS 需要 NVIDIA RTX；帧生成另有要求。不会在不受支持的硬件上强制启用 FSR 4。
+- 安装、更新或在 SM86、ANR 和独立 OptiScaler 间切换时必须关闭游戏，并保留已验证的备份历史。第三方加载器、被修改的二进制和未知文件受到保护；不会直接接管手动安装。外部 ANR 插件可能需要先恢复原有外部安装。更新缓存不会自动修改游戏。
+
+OptiScaler 日志只证明诊断加载，**不能证明生成帧或性能提升**。请在游戏内检查当前后端、帧统计和画面质量。仅在**离线单人游戏**中使用模组；反作弊可能导致封禁。
+
+![OptiScaler 预览版设置](../settings-optiscaler.png)
+
 ![应用预览](../screenshot.png)
 
 ![ANR 模组设置](../settings-anr.png)

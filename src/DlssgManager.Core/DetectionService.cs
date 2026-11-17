@@ -136,7 +136,7 @@ internal static class DetectionProcess
 
 public sealed class GameScanner
 {
-    private static readonly string[] Proxies = ["version.dll", "winmm.dll", "dbghelp.dll", "dinput8.dll", "dxgi.dll", "d3d12.dll"];
+    private static readonly string[] Proxies = ["version.dll", "winmm.dll", "dbghelp.dll", "dinput8.dll", "dxgi.dll", "d3d12.dll", "wininet.dll", "winhttp.dll"];
     private const int MaxEntries = 50000;
     private const int MaxDepth = 24;
 
@@ -221,7 +221,7 @@ public sealed class GameScanner
         else if (candidates.Count == 1) exe = candidates[0].Path;
         else if (candidates.Count(c => c.Score >= 100) == 1) exe = candidates.Single(c => c.Score >= 100).Path;
         checks.Add(new("render_exe", exe is null ? CheckLevel.Blocked : CheckLevel.Pass, exe ?? string.Join(Environment.NewLine, candidates.Select(c => c.Path))));
-        bool x64 = false, directDx12 = false, directVulkan = false, exeInspectionFailed = false;
+        bool x64 = false, directDx12 = false, directDx11 = false, directVulkan = false, exeInspectionFailed = false;
         if (exe is not null)
         {
             try
@@ -229,6 +229,7 @@ public sealed class GameScanner
                 var pe = DetectionPe.Read(exe);
                 x64 = pe.X64;
                 directDx12 = pe.Imports.Any(i => i.Equals("d3d12.dll", StringComparison.OrdinalIgnoreCase));
+                directDx11 = pe.Imports.Any(i => i.Equals("d3d11.dll", StringComparison.OrdinalIgnoreCase));
                 directVulkan = pe.Imports.Any(i => i.Equals("vulkan-1.dll", StringComparison.OrdinalIgnoreCase));
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or BadImageFormatException) { exeInspectionFailed = true; }
@@ -238,8 +239,27 @@ public sealed class GameScanner
         var runtimes = files.Where(p => Path.GetFileName(p).Equals("nvngx_dlssg.dll", StringComparison.OrdinalIgnoreCase)).Select(p => (Path: p, Version: ReadVersion(p))).ToArray();
         var runtime = runtimes.OrderByDescending(r => r.Path.Contains("Streamline", StringComparison.OrdinalIgnoreCase)).ThenByDescending(r => r.Version?.StartsWith("310.", StringComparison.Ordinal) == true).FirstOrDefault();
         bool nativeRuntime = runtime.Path is not null;
-        checks.Add(new("game_dlssg", nativeRuntime ? CheckLevel.Pass : CheckLevel.Blocked, runtime.Path ?? ""));
-        if (nativeRuntime)
+        string? nativeFrameGenerationPath = nativeRuntime && IsX64Runtime(runtime.Path!) ? runtime.Path : null;
+        string? dlssUpscalerPath = null;
+        if (provider == ModProvider.OptiScaler) nativeRuntime = nativeFrameGenerationPath is not null;
+        checks.Add(new("game_dlssg", nativeRuntime ? CheckLevel.Pass : provider == ModProvider.OptiScaler ? CheckLevel.Info : CheckLevel.Blocked, runtime.Path ?? ""));
+        if (provider == ModProvider.OptiScaler)
+        {
+            // Standalone OptiScaler replaces temporal upscalers. Native DLSS-G is optional.
+            var inputNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            { "nvngx_dlss.dll", "libxess.dll", "libxess_dx11.dll", "ffx_fsr2_api_x64.dll", "ffx_fsr2_api_dx12_x64.dll",
+              "ffx_fsr2_api_vk_x64.dll", "ffx_fsr3_x64.dll", "ffx_fsr3upscaler_x64.dll", "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll" };
+            var inputs = files.Where(p => inputNames.Contains(Path.GetFileName(p)) && IsX64Runtime(p)).ToArray();
+            string? inputRuntime = inputs.OrderByDescending(p => Path.GetFileName(p).Equals("nvngx_dlss.dll", StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            dlssUpscalerPath = inputs.FirstOrDefault(p => Path.GetFileName(p).Equals("nvngx_dlss.dll", StringComparison.OrdinalIgnoreCase));
+            checks.Add(new(inputRuntime is null ? "opti_input_unverified" : "opti_input", inputRuntime is null ? CheckLevel.Blocked : CheckLevel.Pass,
+                inputRuntime ?? "Temporal upscaler may be embedded; confirm the game's input before installation."));
+            runtime = (inputRuntime!, inputRuntime is null ? null : ReadVersion(inputRuntime));
+            var streamline = files.FirstOrDefault(p => Path.GetFileName(p).Equals("sl.interposer.dll", StringComparison.OrdinalIgnoreCase));
+            if (streamline is not null)
+                checks.Add(new("opti_streamline2", ReadVersion(streamline)?.StartsWith("2.", StringComparison.Ordinal) == true ? CheckLevel.Pass : CheckLevel.Warning));
+        }
+        else if (nativeRuntime)
         {
             bool accepted = provider == ModProvider.Anr
                 ? IsX64Runtime(runtime.Path!) : runtime.Version?.StartsWith("310.", StringComparison.Ordinal) == true;
@@ -247,7 +267,11 @@ public sealed class GameScanner
         }
         if (runtimes.Select(r => r.Version).Distinct().Count() > 1) checks.Add(new("runtime_multiple", CheckLevel.Warning, string.Join(Environment.NewLine, runtimes.Select(r => $"{r.Path} · {r.Version}"))));
         bool dx12Evidence = directDx12 || files.Any(p => Path.GetFileName(p).Equals("D3D12Core.dll", StringComparison.OrdinalIgnoreCase) || Path.GetFileName(p).Equals("sl.interposer.dll", StringComparison.OrdinalIgnoreCase));
-        if (provider == ModProvider.Anr)
+        var apiCount = (directDx12 ? 1 : 0) + (directDx11 ? 1 : 0) + (directVulkan ? 1 : 0);
+        string graphicsApi = apiCount != 1 ? "Unknown" : directDx12 ? "DX12" : directDx11 ? "DX11" : "Vulkan";
+        if (provider == ModProvider.OptiScaler)
+            checks.Add(new("opti_graphics_api", graphicsApi == "Unknown" ? CheckLevel.Warning : CheckLevel.Pass, graphicsApi));
+        else if (provider == ModProvider.Anr)
         {
             bool apiEvidence = dx12Evidence || directVulkan || files.Any(p => Path.GetFileName(p).Equals("vulkan-1.dll", StringComparison.OrdinalIgnoreCase));
             checks.Add(new("anr_graphics_api", apiEvidence ? CheckLevel.Pass : CheckLevel.Warning, directVulkan ? "Vulkan" : dx12Evidence ? "Direct3D 12" : "Direct3D 12 / Vulkan: confirm in game"));
@@ -280,7 +304,8 @@ public sealed class GameScanner
         }
         if (package is null) checks.Add(new("package_ready", CheckLevel.Blocked));
         else checks.Add(new("package_ready", package.SupportedLayout && package.Provider == provider ? CheckLevel.Pass : CheckLevel.Blocked, package.Release.Version));
-        return new(root, exe, candidates, runtime.Path, runtime.Version, state, installedVersion, checks);
+        return new(root, exe, candidates, runtime.Path, runtime.Version, state, installedVersion, checks)
+        { GraphicsApi = graphicsApi, NativeFrameGenerationPath = nativeFrameGenerationPath, DlssUpscalerPath = dlssUpscalerPath };
     }
 
     private static GameScan Empty(string root, string code, List<CheckResult> checks)
@@ -314,6 +339,16 @@ public sealed class GameScanner
         string record = Path.Combine(dir, ".dlssg-manager.json");
         string[] present = Proxies.Where(p => File.Exists(Path.Combine(dir, p))).ToArray();
         bool modFolder = Directory.Exists(Path.Combine(dir, "dlssg_sm86"));
+        if (provider == ModProvider.OptiScaler && !File.Exists(record))
+        {
+            var legacy = new[] { "OptiScaler.ini", "OptiScaler.dll", "OptiScaler.asi", "nvngx.dll", "nvapi64.dll" }
+                .Where(name => File.Exists(Path.Combine(dir, name))).ToArray();
+            if (legacy.Length != 0)
+            {
+                checks.Add(new("opti_conflict", CheckLevel.Blocked, string.Join(Environment.NewLine, legacy)));
+                return (ModState.UnknownConflict, null);
+            }
+        }
         if (File.Exists(record))
         {
             try
@@ -326,6 +361,12 @@ public sealed class GameScanner
                 bool external = r.TryGetProperty("ExternalOptiScaler", out var externalValue) && externalValue.ValueKind == JsonValueKind.True;
                 string externalProxy = external && r.TryGetProperty("ExternalProxy", out var ep) ? ep.GetString() ?? "" : "";
                 bool recordAnr = r.TryGetProperty("Provider", out var recordProvider) && recordProvider.ValueKind == JsonValueKind.Number && recordProvider.GetInt32() == (int)ModProvider.Anr;
+                if (r.TryGetProperty("Provider", out var declaredProvider))
+                {
+                    if (declaredProvider.ValueKind != JsonValueKind.Number || !Enum.IsDefined((ModProvider)declaredProvider.GetInt32())) throw new JsonException();
+                    if (declaredProvider.GetInt32() == (int)ModProvider.OptiScaler)
+                        _ = new InstallService().ReadRecordAsync(dir, token).GetAwaiter().GetResult() ?? throw new JsonException();
+                }
                 if (!Proxies.Contains(proxy, StringComparer.OrdinalIgnoreCase) || present.Any(p => !p.Equals(proxy, StringComparison.OrdinalIgnoreCase)
                     && !(recordAnr && external && p.Equals(externalProxy, StringComparison.OrdinalIgnoreCase)))) throw new JsonException();
                 if (external)
@@ -348,7 +389,9 @@ public sealed class GameScanner
                     string full = Path.GetFullPath(Path.Combine(dir, rel));
                     if (Path.IsPathRooted(rel) || !DetectionPaths.IsWithin(full, dir) || DetectionPaths.HasReparsePoint(full, dir)) throw new JsonException();
                     if (rel.Equals("dlssg_sm86.ini", StringComparison.OrdinalIgnoreCase)) continue;
-                    if (rel.Equals("OptiScaler.ini", StringComparison.OrdinalIgnoreCase) || rel.Replace('\\', '/').Equals("OptiScaler/custom/Apex Neural Rendering FG/dlssg/nr_fg.ini", StringComparison.OrdinalIgnoreCase))
+                    if (rel.Equals("OptiScaler.ini", StringComparison.OrdinalIgnoreCase) ||
+                        rel.Replace('\\', '/').Equals("OptiScaler/fakenvapi.ini", StringComparison.OrdinalIgnoreCase) ||
+                        rel.Replace('\\', '/').Equals("OptiScaler/custom/Apex Neural Rendering FG/dlssg/nr_fg.ini", StringComparison.OrdinalIgnoreCase))
                     {
                         if (!File.Exists(full)) throw new JsonException();
                         continue;
@@ -363,7 +406,7 @@ public sealed class GameScanner
                 checks.Add(new("mod_managed", CheckLevel.Pass, version));
                 return (ModState.Managed, version);
             }
-            catch (Exception ex) when (ex is JsonException or IOException or UnauthorizedAccessException or KeyNotFoundException or InvalidOperationException or ArgumentException)
+            catch (Exception ex) when (ex is JsonException or IOException or InvalidDataException or UnauthorizedAccessException or KeyNotFoundException or InvalidOperationException or ArgumentException)
             {
                 checks.Add(new("mod_record", CheckLevel.Blocked, record));
                 return (ModState.UnknownConflict, null);

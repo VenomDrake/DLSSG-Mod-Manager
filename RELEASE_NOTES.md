@@ -1,14 +1,17 @@
-DLSSG Mod Manager 0.4.5 — a new icon for the manager.
+DLSSG Mod Manager 0.5.0-opti-preview.1 — standalone OptiScaler integration (local preview).
 
-The manager now has a dedicated graphics-chip icon with overlapping frames and a plus symbol for frame generation, keeping the midnight-blue and mint theme.
+Choose OptiScaler alongside DLSSG for SM86 and Apex Neural Rendering. This independent manager downloads the official stable OptiScaler release; it is not an official OptiScaler application.
 
-- Uses the new icon in the app header, window, executable, taskbar, Start menu and desktop shortcuts, and Windows installed-apps list.
-- Includes ten Windows icon sizes from 16 to 256 pixels, with a simplified design for the smallest sizes.
-- Refreshes the GitHub screenshots and download links in all eleven documentation languages.
+- Reviews stable OptiScaler v0.9.5 using its exact archive digest and 23-file manifest. The 7z reader is included in the manager; no separate extractor is needed. Setup scripts are never executed or installed.
+- Checks temporal-upscaler input files, the rendering executable, graphics API, Visual C++ prerequisites, selected backend requirements, conflicts, anti-cheat indicators, running games and disk space. Missing evidence requires review instead of a claim that the game is unsupported.
+- Exposes upscalers per API, FG input/output, DXGI spoofing, logging and seven loader names. FG starts disabled. The upstream Insert overlay provides advanced settings and output verification.
+- Uses verified backups and the existing transaction journal for install, update, settings, disable, provider switching and restore. Only reviewed individual payload files are owned; unrelated plugins and custom files are preserved. Unmanaged conflicting installations require review.
+- Checks the official repository for updates. A verified future download remains blocked until its installation recipe is reviewed. Existing games are changed only after the user chooses to apply the package.
+- Adds eleven-language interface and guides. Log diagnostics never treat a loaded DLL or an initialized swapchain as proof of successful upscaling or frame generation.
 
-This is a stable manager release. Reviewed SM86 0.4.2 / 0.4.1 and ANR FG-V.B17 / B15 support remains available; ANR itself remains an upstream beta.
+This local preview has automated fixture tests and read-only validation against the official package. OptiScaler has not yet been tested in gameplay through this integration. The existing stable public manager remains 0.4.5.
 
-**Updating:** manager 0.4.3 and 0.4.4 can receive this release through Update and restart. Close and reopen the manager if the notice has not appeared yet. Updating the manager does not apply or change mods in your games. Versions 0.4.2 and earlier may require one manual MSI or complete portable update because the repository was renamed.
+Stable OptiScaler 0.9.5 and the custom OptiScaler loader bundled by ANR are different recipes. Managed switches replace them through backup and restore; an external ANR addon installation must be restored before switching to standalone OptiScaler.
 
 **Online games: risk of a ban.** Use injected mods only in offline single-player games. No anti-cheat bypass or protection against bans is provided.
 

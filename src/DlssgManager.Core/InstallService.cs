@@ -46,7 +46,8 @@ public sealed partial class InstallService
     public const string RecordName = ".dlssg-manager.json";
     private const string JournalName = ".dlssg-manager.transaction.json";
     private const string BackupRoot = ".dlssg-manager-backups";
-    private static readonly string[] ProxyNames = ["version.dll", "winmm.dll", "dbghelp.dll", "dinput8.dll", "dxgi.dll", "d3d12.dll"];
+    private static readonly string[] Sm86ProxyNames = ["version.dll", "winmm.dll", "dbghelp.dll", "dinput8.dll", "dxgi.dll", "d3d12.dll"];
+    private static readonly string[] ProxyNames = [.. Sm86ProxyNames, "wininet.dll", "winhttp.dll"];
     private static readonly JsonSerializerOptions Json = new() { PropertyNameCaseInsensitive = true, WriteIndented = true };
 
     public async Task<InstallOutcome> InstallAsync(GameScan scan, ReleasePackage package, ModOptions options,
@@ -59,6 +60,7 @@ public sealed partial class InstallService
         ValidateOptions(options);
         if (package.Provider != options.Provider || scan.Provider != options.Provider)
             throw new InvalidOperationException("The selected provider changed after analysis. Scan the game again.");
+        ValidateOptiScalerScan(scan, options);
         var directory = ValidateGameDirectory(scan.RenderingDirectory);
         var exe = Path.GetFullPath(scan.RenderingExe);
         if (!SamePath(Path.GetDirectoryName(exe)!, directory) || !File.Exists(exe) || !IsX64Executable(exe))
@@ -67,7 +69,7 @@ public sealed partial class InstallService
         {
             EnsureNoReparse(scan.RuntimePath);
             if (!File.Exists(scan.RuntimePath) || !IsX64Executable(scan.RuntimePath) || options.Provider == ModProvider.Sm86 && FileVersionInfo.GetVersionInfo(scan.RuntimePath).FileMajorPart != 310)
-                throw new InvalidOperationException("The game's DLSS-G runtime changed after analysis. Scan the game again.");
+                throw new InvalidOperationException("A required game runtime changed after analysis. Scan the game again.");
         }
         using var operationLock = AcquireLock(directory);
         await RecoverPendingAsync(directory, cancellationToken);
@@ -84,7 +86,8 @@ public sealed partial class InstallService
             previous.ReleaseId == package.Release.ReleaseId && previous.AssetId == package.Release.AssetId &&
             string.Equals(previous.PackageSha256, package.Release.Sha256, StringComparison.OrdinalIgnoreCase);
         if (samePackage && previous!.Options == options &&
-            (options.Provider != ModProvider.Anr || await AnrConfigurationMatchesAsync(directory, options, cancellationToken)))
+            (options.Provider != ModProvider.Anr || await AnrConfigurationMatchesAsync(directory, options, cancellationToken)) &&
+            (options.Provider != ModProvider.OptiScaler || await OptiScalerConfigurationMatchesAsync(directory, options, cancellationToken)))
             return new(previous, "already_current", false);
 
         var stageRelative = ".dlssg-manager-stage-" + Guid.NewGuid().ToString("N");
@@ -93,9 +96,12 @@ public sealed partial class InstallService
         try
         {
             progress?.Report(new("install_staging", 5));
-            var stagedFiles = package.Provider == ModProvider.Anr
-                ? await StageAnrPackageAsync(package, stage, options, directory, previous, cancellationToken)
-                : await StageSm86PackageAsync(package, stage, options, directory, previous, cancellationToken);
+            var stagedFiles = package.Provider switch
+            {
+                ModProvider.Anr => await StageAnrPackageAsync(package, stage, options, directory, previous, cancellationToken),
+                ModProvider.OptiScaler => await StageOptiScalerPackageAsync(package, stage, options, directory, previous, cancellationToken),
+                _ => await StageSm86PackageAsync(package, stage, options, directory, previous, cancellationToken)
+            };
             var roots = InstallationRoots(previous, options.Proxy, package.Provider)
                 .Union(ProxyNames.Where(p => File.Exists(Child(directory, p))), StringComparer.OrdinalIgnoreCase).ToArray();
             var packageBytes = stagedFiles.Sum(f => f.Size);
@@ -124,6 +130,7 @@ public sealed partial class InstallService
             await VerifySnapshotSourceAsync(directory, snapshot, cancellationToken);
             if (previous is not null) await VerifyInstalledFilesAsync(directory, previous, cancellationToken);
             await ValidateCollisionsAsync(directory, scan, package, previous, cancellationToken);
+            ValidateOptiScalerScan(scan, options);
             await WriteJournalAsync(directory, snapshot, stageRelative, cancellationToken, exe);
             try
             {
@@ -273,10 +280,13 @@ public sealed partial class InstallService
         var actualProxy = record.State == "Disabled" && !(record.Provider == ModProvider.Anr && record.ExternalOptiScaler) ? record.Proxy + ".disabled" : record.Proxy;
         ValidateExternalOptiScalerRecord(record);
         if (!record.Files.Any(f => SameRelative(f.Path, actualProxy)) ||
-            (record.Provider == ModProvider.Sm86
-                ? !record.Files.Any(f => SameRelative(f.Path, "dlssg_sm86.ini")) || !record.Files.Any(f => SameRelative(f.Path, "dlssg_sm86/backend/sm86_backend.dll"))
-                : !record.Files.Any(f => SameRelative(f.Path, "OptiScaler.ini")) || !record.Files.Any(f => SameRelative(f.Path, AnrProviderRoot + "/dlssg/nvngx_dlssg.dll")) ||
-                  !record.Files.Any(f => SameRelative(f.Path, AnrIniPath)) || !record.Files.Any(f => SameRelative(f.Path, AnrProviderRoot + "/dlssg/kernels/pack.nrx"))))
+            (record.Provider switch
+            {
+                ModProvider.Sm86 => !record.Files.Any(f => SameRelative(f.Path, "dlssg_sm86.ini")) || !record.Files.Any(f => SameRelative(f.Path, "dlssg_sm86/backend/sm86_backend.dll")),
+                ModProvider.OptiScaler => !IsValidOptiScalerRecord(record, actualProxy),
+                _ => !record.Files.Any(f => SameRelative(f.Path, "OptiScaler.ini")) || !record.Files.Any(f => SameRelative(f.Path, AnrProviderRoot + "/dlssg/nvngx_dlssg.dll")) ||
+                    !record.Files.Any(f => SameRelative(f.Path, AnrIniPath)) || !record.Files.Any(f => SameRelative(f.Path, AnrProviderRoot + "/dlssg/kernels/pack.nrx"))
+            }))
             throw new InvalidDataException("The installation record is missing required files.");
         return record;
     }
@@ -285,6 +295,11 @@ public sealed partial class InstallService
     {
         ArgumentNullException.ThrowIfNull(options);
         if (!Enum.IsDefined(options.Provider)) throw new ArgumentException("Unknown frame generation provider.", nameof(options));
+        if (options.Provider == ModProvider.OptiScaler)
+        {
+            ValidateOptiScalerOptions(options);
+            return;
+        }
         if (options.Provider == ModProvider.Anr)
         {
             ValidateAnrOptions(options);
@@ -296,7 +311,7 @@ public sealed partial class InstallService
             options.SuperResolution is not ("Off" or "M-INT8" or "L-INT8" or "M-FP16" or "L-FP16") ||
             options.FlowResolution is not ("Coarse" or "Middle" or "Fine" or "CoarseAt4K") ||
             options.UseHudless is not ("Auto" or "0" or "1") || options.LoggingLevel is < 0 or > 3 ||
-            !ProxyNames.Contains(options.Proxy, StringComparer.OrdinalIgnoreCase))
+            !Sm86ProxyNames.Contains(options.Proxy, StringComparer.OrdinalIgnoreCase))
             throw new ArgumentException("One or more mod options are invalid or unsupported.", nameof(options));
     }
 
@@ -383,6 +398,11 @@ public sealed partial class InstallService
     private async Task ValidateCollisionsAsync(string directory, GameScan scan, ReleasePackage package,
         InstallationRecord? previous, CancellationToken token)
     {
+        if (package.Provider == ModProvider.OptiScaler || previous?.Provider == ModProvider.OptiScaler)
+        {
+            ValidateOptiScalerCollisions(directory, scan, package, previous);
+            return;
+        }
         if (package.Provider == ModProvider.Anr || previous?.Provider == ModProvider.Anr || previous?.ExternalOptiScaler == true)
         {
             await ValidateProviderCollisionsAsync(directory, scan, package, previous, token);
@@ -420,6 +440,8 @@ public sealed partial class InstallService
         {
             roots.Add(AnrProviderRoot); roots.Add("OptiScaler.ini");
         }
+        if (provider == ModProvider.OptiScaler || previous?.Provider == ModProvider.OptiScaler)
+            roots.UnionWith(OptiScalerInstalledPaths);
         if (previous is not null) roots.Add(previous.State == "Disabled" && !(previous.Provider == ModProvider.Anr && previous.ExternalOptiScaler) ? previous.Proxy + ".disabled" : previous.Proxy);
         // Recognized manual installations may have selected a different proxy.
         return roots.Order(StringComparer.OrdinalIgnoreCase).ToArray();
@@ -509,7 +531,7 @@ public sealed partial class InstallService
         await using var stream = File.OpenRead(path);
         var snapshot = await JsonSerializer.DeserializeAsync<Snapshot>(stream, Json, token) ?? throw new InvalidDataException("The backup manifest is empty.");
         if (snapshot.Roots is null || snapshot.Files is null || !SameRelative(snapshot.RelativeDirectory, relative) ||
-            snapshot.Roots.Count is < 1 or > 12 || snapshot.Files.Count > 20000 ||
+            snapshot.Roots.Count is < 1 or > 64 || snapshot.Files.Count > 20000 ||
             snapshot.Directories is null || snapshot.Directories.Count > 20000)
             throw new InvalidDataException("The backup manifest is invalid.");
         var roots = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -815,7 +837,7 @@ public sealed partial class InstallService
     }
     private static void ValidatePlannedRoot(string root)
     {
-        if (root is not ("dlssg_sm86" or "dlssg_sm86.ini" or RecordName or "OptiScaler.ini") && !SameRelative(root, AnrProviderRoot) && !IsProxyFile(root))
+        if (root is not ("dlssg_sm86" or "dlssg_sm86.ini" or RecordName or "OptiScaler.ini") && !SameRelative(root, AnrProviderRoot) && !IsProxyFile(root) && !IsOptiScalerInstalledFile(root))
             throw new InvalidDataException("An operation tried to modify an unexpected game file.");
     }
     private static void ValidateInstalledRelative(string relative, string proxy)
@@ -823,7 +845,7 @@ public sealed partial class InstallService
         var normalized = Normalize(relative);
         if (!SameRelative(normalized, proxy) && !SameRelative(normalized, proxy + ".disabled") &&
             !SameRelative(normalized, "dlssg_sm86.ini") && !normalized.StartsWith("dlssg_sm86/", StringComparison.OrdinalIgnoreCase) &&
-            !SameRelative(normalized, "OptiScaler.ini") && !normalized.StartsWith(AnrProviderRoot + "/", StringComparison.OrdinalIgnoreCase))
+            !SameRelative(normalized, "OptiScaler.ini") && !normalized.StartsWith(AnrProviderRoot + "/", StringComparison.OrdinalIgnoreCase) && !IsOptiScalerInstalledFile(normalized))
             throw new InvalidDataException("The installed file inventory refers to an unexpected file.");
     }
     private static void DeletePlannedRoot(string directory, string relative)

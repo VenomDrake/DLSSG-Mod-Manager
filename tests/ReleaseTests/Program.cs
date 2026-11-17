@@ -120,8 +120,9 @@ foreach (var (model, version) in new[] { ("310.10.0", "310.9.16.0"), ("310.9.16"
 using (var changedRuntimeClient = new HttpClient(new FakeHandler(BuildArchive("0.4.2", model, version), "0.4.2")))
 using (var changedRuntimeUpdater = new ReleaseService(Path.Combine(testRoot, "changed-042-" + Guid.NewGuid().ToString("N")), changedRuntimeClient))
 {
-    Require((await changedRuntimeUpdater.EnsureLatestAsync()).Package is { SupportedLayout: false },
-        "reviewed 0.4.2 refuses changed bundled runtime requirements: " + model + " / " + version);
+    var changedRuntime = await changedRuntimeUpdater.EnsureLatestAsync();
+    Require(changedRuntime.Package is { SupportedLayout: false },
+        "reviewed 0.4.2 refuses changed bundled runtime requirements: " + model + " / " + version + "; " + changedRuntime.State + "; " + changedRuntime.Detail);
 }
 
 if (args.Contains("--live"))

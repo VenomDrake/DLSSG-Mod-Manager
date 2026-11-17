@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>DLSSGModManager</AssemblyName>
     <Product>DLSSG Mod Manager</Product>
-    <Description>Independent manager for DLSSG for SM86</Description>
+    <Description>Independent manager for DLSSG for SM86, Apex Neural Rendering and OptiScaler</Description>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets/app.ico</ApplicationIcon>
   </PropertyGroup>

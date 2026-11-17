@@ -25,6 +25,9 @@ public sealed record GameScan(string Root, string? RenderingExe, IReadOnlyList<E
 {
     public ModProvider Provider { get; init; } = ModProvider.Sm86;
     public string? RenderingDirectory => RenderingExe is null ? null : System.IO.Path.GetDirectoryName(RenderingExe);
+    public string GraphicsApi { get; init; } = "Unknown";
+    public string? NativeFrameGenerationPath { get; init; }
+    public string? DlssUpscalerPath { get; init; }
     public bool CanInstall => RenderingExe is not null && Checks.All(c => c.Level != CheckLevel.Blocked);
 }
 public sealed record SteamGame(string AppId, string Name, string Directory);
@@ -43,6 +46,12 @@ public sealed record ModOptions
 {
     public ModProvider Provider { get; init; } = ModProvider.Sm86;
     public string AnrPath { get; init; } = "auto";
+    public string OptiDx11Upscaler { get; init; } = "auto";
+    public string OptiDx12Upscaler { get; init; } = "auto";
+    public string OptiVulkanUpscaler { get; init; } = "auto";
+    public string OptiFgInput { get; init; } = "nofg";
+    public string OptiFgOutput { get; init; } = "nofg";
+    public string OptiSpoofing { get; init; } = "auto";
     public bool AnrSceneCut { get; init; } = true;
     public int AnrNitsPerUnit { get; init; } = 80;
     public string Engine { get; init; } = "DLSS";

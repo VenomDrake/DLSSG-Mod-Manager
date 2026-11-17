@@ -26,6 +26,21 @@ Nel gioco, attiva **NVIDIA DLSS Frame Generation**. Il selettore **2×** grigio 
 
 **Crediti ANR:** [Apex Compute / Apex Neural Rendering](https://github.com/apex-compute/ANR); [OptiScaler](https://github.com/optiscaler/OptiScaler) e i suoi collaboratori. OptiScaler è GPL-3.0; codice, binari e modelli ANR restano soggetti ai termini dei rispettivi autori. Il gestore non modifica le licenze del materiale originale. Vedi la [domanda sulla licenza](https://github.com/apex-compute/ANR/issues/9).
 
+## OptiScaler autonomo
+
+**Anteprima locale: questa integrazione OptiScaler è in prova e non è inclusa nei download del gestore stabile 0.4.5 indicati sopra.**
+
+Scegli **OptiScaler · Upscaling / FG** per l'integrazione indipendente di [OptiScaler ufficiale](https://github.com/optiscaler/OptiScaler). **Questo gestore non è un'applicazione ufficiale di OptiScaler.** Il pacchetto verificato è la versione stabile **v0.9.5**; il ramo v10 nightly/master e il loader OptiScaler incluso in ANR hanno procedure diverse.
+
+- All'avvio e quando lo selezioni, il gestore controlla la release stabile ufficiale, scarica il pacchetto completo e verifica SHA-256 e inventario dei file. Una release futura non ancora verificata può essere scaricata, ma l'installazione resta bloccata. Nessuno script di installazione viene eseguito e i binari originali non sono inclusi nel download del gestore.
+- Scegli il vero eseguibile di rendering x64. OptiScaler richiede un ingresso DLSS, FSR o XeSS compatibile; per l'upscaling non serve DLSS Frame Generation nativo. I file non permettono di riconoscere ogni integrazione FSR incorporata: un'analisi inconcludente chiede una verifica, senza dichiarare il gioco incompatibile. GPU e driver dipendono dal motore e dall'API grafica; rilevare NVIDIA, AMD o Intel non garantisce tutte le uscite.
+- Inizia con **upscaling automatico e generazione dei fotogrammi disattivata**. Il gestore mostra upscaler separati per DirectX 11, DirectX 12 e Vulkan, ingresso/uscita FG, identità GPU in DXGI e diagnostica. Nel gioco premi **Ins** per tutte le impostazioni di OptiScaler e il motore attivo. DLSS richiede NVIDIA RTX; la generazione ha ulteriori requisiti di API, ingresso e GPU. FSR 4 non viene forzato su hardware non supportato.
+- Installazione, aggiornamento e cambio tra SM86, ANR e OptiScaler autonomo richiedono il gioco chiuso e conservano una cronologia di backup verificati. Loader estranei, binari modificati e file sconosciuti vengono protetti; le installazioni manuali non sono adottate automaticamente. Da un addon ANR esterno può essere necessario ripristinare prima l'installazione esterna. Aggiornare il pacchetto nella cache non modifica i giochi.
+
+Il log OptiScaler documenta il caricamento: **non dimostra fotogrammi generati o un aumento delle prestazioni**. Controlla motore attivo, statistiche e qualità nel gioco. Usa le mod soltanto nei **giochi per giocatore singolo offline**: gli anti-cheat possono causare ban.
+
+![Impostazioni dell’anteprima OptiScaler](../settings-optiscaler.png)
+
 ![Anteprima dell'applicazione](../screenshot.png)
 
 ![Impostazioni della mod ANR](../settings-anr.png)

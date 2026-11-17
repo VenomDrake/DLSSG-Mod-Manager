@@ -17,6 +17,17 @@ public sealed record GameSupportAssessment(GameSupportState State, IReadOnlyList
         if (!Has("game_scan", CheckLevel.Pass) || Has("exe_inspection", CheckLevel.Blocked)
             || scan.Checks.Any(c => c.Code is "game_path" or "game_scan" && c.Level == CheckLevel.Blocked))
             return Result(GameSupportState.NeedsReview, "support_reason_scan");
+        if (scan.Provider == ModProvider.OptiScaler)
+        {
+            if (string.IsNullOrWhiteSpace(scan.RenderingExe))
+                return Result(GameSupportState.NeedsReview, scan.Executables.Count > 0 ? "support_reason_exe" : "support_reason_no_exe");
+            if (Has("exe_x64", CheckLevel.Blocked)) return Result(GameSupportState.Unsupported, "support_reason_architecture");
+            if (!Has("opti_input", CheckLevel.Pass)) return Result(GameSupportState.NeedsReview, "opti_input_unverified");
+            if (Has("anticheat", CheckLevel.Blocked)) return Result(GameSupportState.InstallationBlocked, "support_reason_anticheat");
+            if (scan.Checks.Any(c => c.Level == CheckLevel.Blocked)) return Result(GameSupportState.InstallationBlocked, "support_reason_other");
+            return Has("render_exe", CheckLevel.Pass) && Has("exe_x64", CheckLevel.Pass)
+                ? Result(GameSupportState.RequirementsDetected, "opti_input") : Result(GameSupportState.NeedsReview, "support_reason_scan");
+        }
         // Runtime absence applies to the entire fully scanned folder, regardless of executable choice.
         if (Has("game_dlssg", CheckLevel.Blocked))
             return Has("anticheat", CheckLevel.Blocked)

@@ -43,7 +43,7 @@ public partial class MainWindow
         GameSupportSymbol.Foreground = BrushFor(text);
         GameSupportSymbol.Text = _gameSupportAnalyzing ? "…" : symbol;
         GameSupportTitle.Text = Localization.Get(titleKey);
-        GameSupportReason.Text = _gameSupportAnalyzing ? "" : confirmed ? Localization.Get(_provider == ModProvider.Anr ? "anr_log_scope" : "log_scope")
+        GameSupportReason.Text = _gameSupportAnalyzing ? "" : confirmed ? ProviderLogScope()
             : unreviewedPackage ? string.Join("\n", new[] { UnreviewedPackageHelp() }.Concat(assessment?.ReasonKeys
                 .Where(key => key != "support_reason_other").Select(Localization.Get) ?? []))
             : pcBlocked ? Localization.Get("support_reason_other") : string.Join("\n", assessment!.ReasonKeys.Select(Localization.Get));

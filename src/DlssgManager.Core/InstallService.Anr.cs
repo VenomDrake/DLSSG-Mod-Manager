@@ -25,7 +25,7 @@ public sealed partial class InstallService
     }
 
     private static bool IsMutableConfiguration(string path) => SameRelative(path, "dlssg_sm86.ini") ||
-        SameRelative(path, "OptiScaler.ini") || SameRelative(path, AnrIniPath);
+        SameRelative(path, "OptiScaler.ini") || SameRelative(path, AnrIniPath) || SameRelative(path, "OptiScaler/fakenvapi.ini");
 
     public static async Task<bool> IsCompatibleOptiScalerAsync(string directory, string proxy, CancellationToken cancellationToken = default)
     {

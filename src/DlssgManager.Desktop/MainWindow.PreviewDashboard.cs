@@ -28,7 +28,8 @@ public partial class MainWindow
         NextActionText.Text = Localization.Get(nextKey);
         NextActionText.Foreground = (Brush)FindResource(nextKey == "up_to_date" ? "Accent" : "Muted");
         InstallButton.ToolTip = _readOnly ? Localization.Get("ui_preview_description") : NextActionText.Text;
-        LaunchButton.ToolTip = _readOnly ? Localization.Get("ui_preview_description") : Localization.Get("launch_note");
+        LaunchButton.ToolTip = _readOnly ? Localization.Get("ui_preview_description")
+            : Localization.Get(_provider == DlssgManager.Core.ModProvider.OptiScaler ? "opti_launch_note" : "launch_note");
     }
 
     private void ViewChecks_Click(object sender, RoutedEventArgs e) => DiagnosticsTab.IsSelected = true;

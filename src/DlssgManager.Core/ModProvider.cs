@@ -1,3 +1,3 @@
 namespace DlssgManager.Core;
 
-public enum ModProvider { Sm86, Anr }
+public enum ModProvider { Sm86, Anr, OptiScaler }

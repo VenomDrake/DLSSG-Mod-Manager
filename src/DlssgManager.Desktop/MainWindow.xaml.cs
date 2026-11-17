@@ -16,6 +16,7 @@ public partial class MainWindow : Window
 {
     private readonly ReleaseService _releases = new(Path.Combine(App.DataDirectory, "cache"));
     private readonly AnrReleaseService _anrReleases = new(Path.Combine(App.DataDirectory, "anr-cache"));
+    private readonly OptiScalerReleaseService _optiReleases = new(Path.Combine(App.DataDirectory, "optiscaler-cache"));
     private readonly InstallService _installer = new();
     private readonly GameScanner _scanner = new();
     private readonly HardwareService _hardwareService = new();
@@ -119,9 +120,12 @@ public partial class MainWindow : Window
 
     private async Task UpdatePackageAsync(CancellationToken token)
     {
-        var result = _provider == ModProvider.Anr
-            ? await _anrReleases.EnsureLatestAsync(_anrVariant, Progress(), token)
-            : await _releases.EnsureLatestAsync(Progress(), token);
+        var result = _provider switch
+        {
+            ModProvider.Anr => await _anrReleases.EnsureLatestAsync(_anrVariant, Progress(), token),
+            ModProvider.OptiScaler => await _optiReleases.EnsureLatestAsync(Progress(), token),
+            _ => await _releases.EnsureLatestAsync(Progress(), token)
+        };
         _package = result.Package;
         _updateState = result.State;
         RefreshSummaries();
@@ -138,7 +142,12 @@ public partial class MainWindow : Window
     {
         SetStatus("hardware_checking");
         _rawHardware = await _hardwareService.InspectAsync(token);
-        _hardware = _provider == ModProvider.Anr ? AnrSupport.AdaptHardware(_rawHardware) : _rawHardware;
+        _hardware = _provider switch
+        {
+            ModProvider.Anr => AnrSupport.AdaptHardware(_rawHardware),
+            ModProvider.OptiScaler => OptiScalerSupport.AdaptHardware(_rawHardware),
+            _ => _rawHardware
+        };
         RefreshSummaries();
         RenderChecks();
         SetStatus("idle");
@@ -169,7 +178,9 @@ public partial class MainWindow : Window
             token.ThrowIfCancellationRequested();
             if (_provider == ModProvider.Anr)
             {
-                var variant = AnrSupport.RequiredVariant(scan);
+                // A manager-owned standalone installation is a complete provider switch,
+                // not adoption of an external ANR-compatible OptiScaler fork.
+                var variant = record?.Provider == ModProvider.OptiScaler ? "full" : AnrSupport.RequiredVariant(scan);
                 if (_package is null || _package.Provider != ModProvider.Anr || _package.Variant != variant)
                 {
                     _anrVariant = variant;
@@ -215,7 +226,8 @@ public partial class MainWindow : Window
         HardwareStatus.Text = _hardware is null ? Localization.Get("hardware_pending")
             : string.Join(" · ", _hardware.Gpus.Select(g => $"{g.Name} / {g.DriverVersion}"));
         if (_hardware is not null && !_hardware.Gpus.Any(g => g.Eligible))
-            HardwareStatus.Text = Localization.Get(_provider == ModProvider.Anr ? "anr_no_gpu" : "no_gpu")
+            HardwareStatus.Text = Localization.Get(_provider switch
+            { ModProvider.Anr => "anr_no_gpu", ModProvider.OptiScaler => "opti_no_gpu", _ => "no_gpu" })
                 + (string.IsNullOrWhiteSpace(HardwareStatus.Text) ? "" : "\n" + HardwareStatus.Text);
         if (_scan is not null)
         {
@@ -232,7 +244,7 @@ public partial class MainWindow : Window
 
     private void RenderChecks()
     {
-        var checks = (_package?.Checks ?? []).Concat(_hardware?.Checks ?? []).Concat(_scan?.Checks ?? []).ToList();
+        var checks = (_package?.Checks ?? []).Concat(_hardware?.Checks ?? []).Concat(_scan?.Checks ?? []).Concat(OptionChecks()).ToList();
         if (_verification?.HagsActive == true)
             checks = checks.Select(c => c.Code == "hags_runtime" ? c with { Level = CheckLevel.Pass } : c).ToList();
         CheckList.ItemsSource = checks.Select(c => new CheckRow(Localization.Get(c.Code), c.Detail,
@@ -266,8 +278,10 @@ public partial class MainWindow : Window
         ExePicker.IsEnabled = idle;
         ProviderPicker.IsEnabled = idle;
         AnrOptionsPanel.IsEnabled = idle;
+        OptiOptionsPanel.IsEnabled = idle;
         OptionsGrid.IsEnabled = idle;
-        var blockedHardware = _hardware is null || _hardware.Checks.Any(c => c.Level == CheckLevel.Blocked);
+        var blockedHardware = _hardware is null || _hardware.Checks.Any(c => c.Level == CheckLevel.Blocked)
+            || OptionChecks().Any(c => c.Level == CheckLevel.Blocked);
         InstallButton.IsEnabled = idle && !_readOnly && !blockedHardware && _package is { SupportedLayout: true } && _scan?.CanInstall == true;
         InstallButton.Content = _record is not null && _record.Provider != _provider ? Localization.Get("switch_provider") : Localization.Get(_scan?.ModState switch
         {
@@ -290,7 +304,8 @@ public partial class MainWindow : Window
             && string.Equals(_record.PackageSha256, _package.Release.Sha256, StringComparison.OrdinalIgnoreCase);
     }
     private bool PrechecksBlocked() => _scan?.CanInstall != true || _package is not { SupportedLayout: true }
-        || _hardware is null || _hardware.Checks.Any(c => c.Level == CheckLevel.Blocked);
+        || _hardware is null || _hardware.Checks.Any(c => c.Level == CheckLevel.Blocked)
+        || OptionChecks().Any(c => c.Level == CheckLevel.Blocked);
 
     private static string Value(ComboBox combo, string fallback) => (combo.SelectedItem as Choice)?.Value ?? fallback;
     private void Fill(ComboBox combo, IEnumerable<Choice> choices, string fallback)
@@ -303,17 +318,25 @@ public partial class MainWindow : Window
     private void RebuildChoices()
     {
         _changingChoices = true;
-        Fill(ProviderPicker, [new("Sm86", Localization.Get("provider_sm86")), new("Anr", Localization.Get("provider_anr"))], _provider.ToString());
+        Fill(ProviderPicker, [new("Sm86", Localization.Get("provider_sm86")), new("Anr", Localization.Get("provider_anr")), new("OptiScaler", Localization.Get("provider_opti"))], _provider.ToString());
         Select(ProviderPicker, _provider.ToString());
-        Fill(EnginePicker, _provider == ModProvider.Anr ? [new("ANR", "Apex Neural Rendering FG")] : [new("DLSS", "NVIDIA DLSS-G"), new("XeSS", "Intel XeSS-FG")], _provider == ModProvider.Anr ? "ANR" : "DLSS");
+        Fill(EnginePicker, _provider switch
+        { ModProvider.Anr => [new("ANR", "Apex Neural Rendering FG")], ModProvider.OptiScaler => [new("OptiScaler", "OptiScaler")], _ => [new("DLSS", "NVIDIA DLSS-G"), new("XeSS", "Intel XeSS-FG")] },
+            _provider == ModProvider.Anr ? "ANR" : _provider == ModProvider.OptiScaler ? "OptiScaler" : "DLSS");
         Fill(OptimizationPicker, Enumerable.Range(0, 4).Select(i => new Choice(i.ToString(), Localization.Get("tier" + i))), "1");
         Fill(PresetPicker, new[] { "A", "B", "C" }.Select(v => new Choice(v, v)), "A");
         Fill(SrPicker, new[] { "Off", "M-INT8", "L-INT8", "M-FP16", "L-FP16" }.Select(v => new Choice(v, v == "Off" ? Localization.Get("sr_off") : v)), "Off");
         Fill(FlowPicker, new[] { "Coarse", "Middle", "Fine", "CoarseAt4K" }.Select(v => new Choice(v, v)), "Middle");
         Fill(HudPicker, [new("Auto", Localization.Get("hud_auto")), new("1", Localization.Get("hud_strict")), new("0", Localization.Get("hud_never"))], "Auto");
-        Fill(ProxyPicker, (_provider == ModProvider.Anr ? new[] { "dxgi.dll", "winmm.dll", "version.dll" } : new[] { "version.dll", "winmm.dll", "dbghelp.dll", "dinput8.dll", "dxgi.dll", "d3d12.dll" }).Select(v => new Choice(v, v)), _provider == ModProvider.Anr ? "dxgi.dll" : "version.dll");
+        Fill(ProxyPicker, (_provider switch
+        {
+            ModProvider.Anr => new[] { "dxgi.dll", "winmm.dll", "version.dll" },
+            ModProvider.OptiScaler => new[] { "dxgi.dll", "winmm.dll", "version.dll", "d3d12.dll", "dbghelp.dll", "wininet.dll", "winhttp.dll" },
+            _ => new[] { "version.dll", "winmm.dll", "dbghelp.dll", "dinput8.dll", "dxgi.dll", "d3d12.dll" }
+        }).Select(v => new Choice(v, v)), _provider == ModProvider.Sm86 ? "version.dll" : "dxgi.dll");
         Fill(AnrPathPicker, new[] { "auto", "coopmat", "packed", "dp4a", "portable", "portable-linalg", "portable-xmx" }.Select(v => new Choice(v, v == "auto" ? Localization.Get("hud_auto") : v)), "auto");
         Fill(LogPicker, new[] { "log_off", "log_level_errors", "log_normal", "log_trace" }.Select((v, i) => new Choice(i.ToString(), Localization.Get(v))), "2");
+        FillOptiChoices();
         RefreshMultipliers();
         RefreshProviderUi();
         _changingChoices = false;
@@ -330,10 +353,13 @@ public partial class MainWindow : Window
         {
             Provider = _provider, AnrPath = Value(AnrPathPicker, "auto"), AnrSceneCut = AnrSceneCutCheck.IsChecked == true,
             AnrNitsPerUnit = nits,
+            OptiDx11Upscaler = Value(OptiDx11Picker, "auto"), OptiDx12Upscaler = Value(OptiDx12Picker, "auto"),
+            OptiVulkanUpscaler = Value(OptiVulkanPicker, "auto"), OptiFgInput = Value(OptiFgInputPicker, "nofg"),
+            OptiFgOutput = Value(OptiFgOutputPicker, "nofg"), OptiSpoofing = Value(OptiSpoofingPicker, "auto"),
             Engine = Value(EnginePicker, "DLSS"), Multiplier = int.Parse(Value(MultiplierPicker, "2")),
             Optimization = int.Parse(Value(OptimizationPicker, "1")), Preset = Value(PresetPicker, "A"),
             SuperResolution = Value(SrPicker, "Off"), FlowResolution = Value(FlowPicker, "Middle"),
-            UseHudless = Value(HudPicker, "Auto"), LoggingLevel = int.Parse(Value(LogPicker, "2")),
+            UseHudless = Value(HudPicker, "Auto"), LoggingLevel = int.Parse(Value(_provider == ModProvider.OptiScaler ? OptiLogPicker : LogPicker, "2")),
             FrameTiming = TimingCheck.IsChecked == true, Proxy = Value(ProxyPicker, "version.dll")
         };
     }
@@ -342,6 +368,9 @@ public partial class MainWindow : Window
     {
         _changingChoices = true;
         Select(AnrPathPicker, options.AnrPath); AnrNitsInput.Text = options.AnrNitsPerUnit.ToString(System.Globalization.CultureInfo.InvariantCulture); AnrSceneCutCheck.IsChecked = options.AnrSceneCut;
+        Select(OptiDx11Picker, options.OptiDx11Upscaler); Select(OptiDx12Picker, options.OptiDx12Upscaler); Select(OptiVulkanPicker, options.OptiVulkanUpscaler);
+        Select(OptiFgInputPicker, options.OptiFgInput); Select(OptiFgOutputPicker, options.OptiFgOutput); Select(OptiSpoofingPicker, options.OptiSpoofing);
+        Select(OptiLogPicker, options.LoggingLevel.ToString());
         Select(EnginePicker, options.Engine); RefreshMultipliers(); Select(MultiplierPicker, options.Multiplier.ToString());
         Select(OptimizationPicker, options.Optimization.ToString()); Select(PresetPicker, options.Preset);
         Select(SrPicker, options.SuperResolution); Select(FlowPicker, options.FlowResolution); Select(HudPicker, options.UseHudless);
@@ -356,10 +385,12 @@ public partial class MainWindow : Window
         RebuildChoices(); RefreshSummaries(); RenderChecks(); SetStatus(_statusKey, _statusDetail);
         RefreshManagerUpdateUi();
         if (_scan is not null) ReadLog(false);
-        else VerificationStatus.Text = Localization.Get("not_verified");
+        else VerificationStatus.Text = Localization.Get(_provider == ModProvider.OptiScaler ? "opti_log_missing" : "not_verified");
     }
     private void SetStatus(string key, string detail = "")
     {
+        if (_provider == ModProvider.OptiScaler)
+            key = key switch { "install_done" => "opti_install_done", "prechecks_only" or "launch_note" => "opti_launch_note", _ => key };
         _statusKey = key; _statusDetail = detail;
         var message = Localization.Get(key);
         StatusText.Text = message.Contains("{0}", StringComparison.Ordinal)
@@ -406,12 +437,15 @@ public partial class MainWindow : Window
         var options = GetOptions();
         await InspectHardwareAsync(token);
         await AnalyzeAsync(token);
-        if (_hardware!.Checks.Any(c => c.Level == CheckLevel.Blocked) || !_scan!.CanInstall) { SetStatus("checks_blocked"); return; }
         ApplyOptions(options);
-        if (MessageBox.Show(this, Localization.Get("online_warning_title") + "\n" + Localization.Get("online_warning_text") + "\n\n" + Localization.Get("confirm_install") + $"\n\n{_scan.RenderingDirectory}\nv{_package.Release.Version} · {ProviderName(_provider)} · {options.Engine} · {options.Multiplier}× · {options.Proxy}",
+        if (PrechecksBlocked()) { SetStatus("checks_blocked"); return; }
+        var settingsSummary = _provider == ModProvider.OptiScaler
+            ? $"DX11: {options.OptiDx11Upscaler} · DX12: {options.OptiDx12Upscaler} · Vulkan: {options.OptiVulkanUpscaler}\nFG: {options.OptiFgInput} → {options.OptiFgOutput} · {options.Proxy}"
+            : $"{options.Engine} · {options.Multiplier}× · {options.Proxy}";
+        if (MessageBox.Show(this, Localization.Get("online_warning_title") + "\n" + Localization.Get("online_warning_text") + "\n\n" + Localization.Get("confirm_install") + $"\n\n{_scan!.RenderingDirectory}\nv{_package.Release.Version} · {ProviderName(_provider)}\n{settingsSummary}",
             Title, MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
         await _installer.InstallAsync(_scan, _package, options, Progress(), token);
-        await AnalyzeAsync(token); SetStatus("install_done");
+        await AnalyzeAsync(token); SetStatus(_provider == ModProvider.OptiScaler ? "opti_install_done" : "install_done");
     });
     private async void Restore_Click(object sender, RoutedEventArgs e)
     {
@@ -433,7 +467,7 @@ public partial class MainWindow : Window
             var steam = _steamGames.FirstOrDefault(g => _scan.RenderingExe.StartsWith(Path.TrimEndingDirectorySeparator(g.Directory) + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase));
             Process.Start(steam is null ? new ProcessStartInfo(_scan.RenderingExe) { UseShellExecute = true, WorkingDirectory = _scan.RenderingDirectory }
                 : new ProcessStartInfo("steam://rungameid/" + steam.AppId) { UseShellExecute = true });
-            _logTimer.Start(); SetStatus("launch_note");
+            _logTimer.Start(); SetStatus(_provider == ModProvider.OptiScaler ? "opti_launch_note" : "launch_note");
         }
         catch (Exception error) { SetStatus("operation_failed", error.Message); SaveError(error); }
     }
@@ -442,11 +476,15 @@ public partial class MainWindow : Window
     {
         if (_scan?.RenderingDirectory is null) return;
         var path = Path.Combine(_scan.RenderingDirectory, "dlssg_sm86", "logs", "dlssg_sm86.log");
-        _verification = _provider == ModProvider.Anr ? AnrLogReader.ReadLatest(_scan.RenderingDirectory, _scan.RenderingExe)
-            : LogReader.Read(path, Path.GetFileName(_scan.RenderingExe));
+        _verification = _provider switch
+        {
+            ModProvider.Anr => AnrLogReader.ReadLatest(_scan.RenderingDirectory, _scan.RenderingExe),
+            ModProvider.OptiScaler => OptiScalerLogReader.ReadLatest(_scan.RenderingDirectory, _scan.RenderingExe),
+            _ => LogReader.Read(path, Path.GetFileName(_scan.RenderingExe))
+        };
         if (_record is not null && (_record.Provider != _provider || _record.State != "Installed"))
-            _verification = new(false, false, false, null, null, null, [], "not_verified");
-        VerificationStatus.Text = Localization.Get(_verification.PartialLog ? "anr_log_partial"
+            _verification = new(false, false, false, null, null, null, [], _provider == ModProvider.OptiScaler ? "opti_log_missing" : "not_verified");
+        VerificationStatus.Text = Localization.Get(_verification.PartialLog ? _provider == ModProvider.OptiScaler ? "opti_log_partial" : "anr_log_partial"
             : _provider == ModProvider.Anr && _verification.ModLoaded && !_verification.Evaluated && _verification.Errors.Count == 0 ? "anr_log_pending" : _verification.Summary);
         var metrics = new List<string>();
         if (_provider == ModProvider.Anr && _verification.GeneratedEvaluations is { } generated)
@@ -481,7 +519,7 @@ public partial class MainWindow : Window
                 ManagerVersion = App.DisplayVersion, Provider = _provider.ToString(), GeneratedAt = DateTimeOffset.UtcNow,
                 Package = _package?.Release.Version, PackageSha256 = _package?.Release.Sha256,
                 UpdateState = _updateState?.ToString(), Gpus = _hardware?.Gpus,
-                Checks = (_hardware?.Checks ?? []).Concat(_scan?.Checks ?? []).Select(c => new { c.Code, Level = c.Level.ToString(), Detail = Redact(c.Detail) }),
+                Checks = (_hardware?.Checks ?? []).Concat(_scan?.Checks ?? []).Concat(OptionChecks()).Select(c => new { c.Code, Level = c.Level.ToString(), Detail = Redact(c.Detail) }),
                 Game = _scan is null ? null : Path.GetFileName(_scan.Root), RuntimeVersion = _scan?.RuntimeVersion,
                 Verification = _verification is null ? null : new { _verification.ModLoaded, _verification.FrameGenerationCreated, _verification.Evaluated, _verification.HagsActive, _verification.GeneratedEvaluations, _verification.GenerationErrors, _verification.Multiplier, _verification.LogTimestamp, _verification.PartialLog, Errors = _verification.Errors.Select(Redact) }
             };
@@ -492,14 +530,16 @@ public partial class MainWindow : Window
     }
     private void Cancel_Click(object sender, RoutedEventArgs e) => _operation?.Cancel();
     private static void Open(string target) => Process.Start(new ProcessStartInfo(target) { UseShellExecute = true });
-    private void Upstream_Click(object sender, RoutedEventArgs e) => Open(_provider == ModProvider.Anr ? AnrReleaseService.RepositoryUrl : ReleaseService.RepositoryUrl);
+    private void Upstream_Click(object sender, RoutedEventArgs e) => Open(_provider switch
+    { ModProvider.Anr => AnrReleaseService.RepositoryUrl, ModProvider.OptiScaler => OptiScalerReleaseService.RepositoryUrl, _ => ReleaseService.RepositoryUrl });
     private void Driver_Click(object sender, RoutedEventArgs e) => Open("https://www.nvidia.com/Download/index.aspx");
     private void AmdDriver_Click(object sender, RoutedEventArgs e) => Open("https://www.amd.com/en/support/download/drivers.html");
-    private void Graphics_Click(object sender, RoutedEventArgs e) { Open("ms-settings:display-advancedgraphics"); SetStatus(_provider == ModProvider.Anr ? "anr_driver_requirements" : "hags_help"); }
+    private void IntelDriver_Click(object sender, RoutedEventArgs e) => Open("https://www.intel.com/content/www/us/en/download-center/home.html");
+    private void Graphics_Click(object sender, RoutedEventArgs e) { Open("ms-settings:display-advancedgraphics"); SetStatus(_provider == ModProvider.OptiScaler ? "opti_driver" : _provider == ModProvider.Anr ? "anr_driver_requirements" : "hags_help"); }
     private void Window_Closing(object? sender, CancelEventArgs e)
     {
         if (_operation is not null) { e.Cancel = true; _operation.Cancel(); SetStatus("close_busy"); return; }
-        _logTimer.Stop(); Localization.Changed -= LanguageChanged; _releases.Dispose(); _anrReleases.Dispose();
+        _logTimer.Stop(); Localization.Changed -= LanguageChanged; _releases.Dispose(); _anrReleases.Dispose(); _optiReleases.Dispose();
         StopManagerUpdates();
     }
 }
